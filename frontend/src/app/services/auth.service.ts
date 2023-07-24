@@ -13,12 +13,8 @@ export class AuthService {
     this.http.post<any>('http://localhost:8080/users/login', { username: username, password: password }).subscribe({
       next: data => {
         console.log(data);
-        let user = {
-          username: username,
-          password: password
-        }
-        localStorage.setItem('user', JSON.stringify(user));
-        this.router.navigate(['/announcements']);
+        localStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['/']);
       },
       error: error => {
         console.error(error);

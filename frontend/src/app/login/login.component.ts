@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 @Component({
