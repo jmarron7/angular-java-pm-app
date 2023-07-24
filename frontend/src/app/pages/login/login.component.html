@@ -1,0 +1,11 @@
+<h1 id="login-header">Login</h1>
+
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm.form.value);">
+  <input type="text" name="username" ngModel #nameField="ngModel" class="form-control" placeholder="username">
+  <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="password">
+  <button class="submit-button" value="Login">Submit</button>
+</form>
+
+<div *ngIf="invalid" id="login-error-msg-container">
+    <p id="login-error-msg">Invalid username and/or password</p>
+</div>
