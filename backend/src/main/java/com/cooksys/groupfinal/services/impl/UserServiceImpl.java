@@ -2,6 +2,9 @@ package com.cooksys.groupfinal.services.impl;
 
 import java.util.Optional;
 
+import com.cooksys.groupfinal.dtos.UserRequestDto;
+import com.cooksys.groupfinal.entities.Company;
+import com.cooksys.groupfinal.repositories.CompanyRepository;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.groupfinal.dtos.CredentialsDto;
@@ -22,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final CompanyRepository companyRepository;
     private final FullUserMapper fullUserMapper;
 	private final CredentialsMapper credentialsMapper;
 	
@@ -49,11 +53,21 @@ public class UserServiceImpl implements UserService {
         }
         return fullUserMapper.entityToFullUserDto(userToValidate);
 	}
-	
-	
-	
-	
-	
-	
+
+    @Override
+    public FullUserDto createUser(Long id, UserRequestDto userRequestDto) {
+        // untested
+        Optional<Company> opCompany = companyRepository.findById(id);
+        if(opCompany.isEmpty()) throw new BadRequestException("Could not find company with ID " + id);
+        Company company = opCompany.get();
+        if(userRequestDto.getCredentials() == null || userRequestDto.getProfile() == null)
+            throw new BadRequestException("User request body requires profile and credentials");
+        if(userRequestDto.getCredentials().getUsername() == null || userRequestDto.getCredentials().getPassword() == null)
+            throw new BadRequestException("User must include credentials (username and password)");
+        // Could add userRequestDto.getProfile().getAllThoseFields error handling here
+        User user = fullUserMapper.requestDtoToEntity(userRequestDto);
+        return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+    }
+
 
 }

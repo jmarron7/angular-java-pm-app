@@ -49,10 +49,8 @@ public class ProjectServiceImpl implements ProjectService {
         // untested
         Optional<Company> opCompany = companyRepository.findById(companyId);
         if(opCompany.isEmpty()) throw new NotFoundException("Could not find company with ID " + companyId);
-        Company company = opCompany.get();
         Optional<Team> opTeam = teamRepository.findById(teamId);
         if(opTeam.isEmpty()) throw new NotFoundException("Could not find team with ID " + teamId);
-        Team team = opTeam.get();
         Optional<Project> opProject = projectRepository.findById(projectId);
         if(opProject.isEmpty()) throw new NotFoundException("Could not find project with ID " + projectId);
         Project project = opProject.get();
