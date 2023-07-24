@@ -64,4 +64,10 @@ public class CompanyController {
         return projectService.postProject(companyId, teamId, projectDto);
     }
 
+    @PutMapping("/{companyId}/teams/{teamId}/project/{projectId}")
+    public ProjectDto updateProject(@PathVariable Long companyId, @PathVariable Long teamId,
+                                    @PathVariable Long projectId, @RequestBody ProjectDto projectDto) {
+        return projectService.updateProject(companyId, teamId, projectId, projectDto);
+    }
+
 }
