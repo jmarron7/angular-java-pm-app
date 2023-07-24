@@ -1,19 +1,15 @@
 package com.cooksys.groupfinal.services.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import com.cooksys.groupfinal.dtos.*;
 import org.springframework.stereotype.Service;
 
-import com.cooksys.groupfinal.dtos.AnnouncementDto;
-import com.cooksys.groupfinal.dtos.FullUserDto;
-import com.cooksys.groupfinal.dtos.ProjectDto;
-import com.cooksys.groupfinal.dtos.TeamDto;
 import com.cooksys.groupfinal.entities.Announcement;
 import com.cooksys.groupfinal.entities.Company;
 import com.cooksys.groupfinal.entities.Project;
@@ -40,7 +36,14 @@ public class CompanyServiceImpl implements CompanyService {
 	private final AnnouncementMapper announcementMapper;
 	private final TeamMapper teamMapper;
 	private final ProjectMapper projectMapper;
-	
+
+
+	@Override
+	public Set<CompanyDto> getAllCompanies(CredentialsDto credentials) {
+		Optional<User> opUser = userRepository.findByCredentialsUsernameAndCredentialsPassword(credentials);
+
+	}
+
 	private Company findCompany(Long id) {
         Optional<Company> company = companyRepository.findById(id);
         if (company.isEmpty()) {
@@ -48,7 +51,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return company.get();
     }
-	
+
 	private Team findTeam(Long id) {
         Optional<Team> team = teamRepository.findById(id);
         if (team.isEmpty()) {
@@ -56,7 +59,7 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return team.get();
     }
-	
+
 	@Override
 	public Set<FullUserDto> getAllUsers(Long id) {
 		Company company = findCompany(id);
