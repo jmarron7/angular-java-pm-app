@@ -6,10 +6,12 @@ describe('SelectCompanyComponent', () => {
   let component: SelectCompanyComponent;
   let fixture: ComponentFixture<SelectCompanyComponent>;
 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SelectCompanyComponent]
     });
+
     fixture = TestBed.createComponent(SelectCompanyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

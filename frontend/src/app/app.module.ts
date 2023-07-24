@@ -23,6 +23,7 @@ import { AddUserOverlayComponent } from './components/add-user-overlay/add-user-
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { AuthGuard } from './services/auth.guard';
     CreateProjectOverlayComponent,
     EditProjectOverlayComponent,
     AddUserOverlayComponent
+
   ],
   imports: [
     BrowserModule,

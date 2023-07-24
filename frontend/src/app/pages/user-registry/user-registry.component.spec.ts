@@ -6,10 +6,12 @@ describe('UserRegistryComponent', () => {
   let component: UserRegistryComponent;
   let fixture: ComponentFixture<UserRegistryComponent>;
 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [UserRegistryComponent]
     });
+
     fixture = TestBed.createComponent(UserRegistryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
