@@ -8,6 +8,7 @@ import { TeamsComponent } from './teams/teams.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UserRegistryComponent } from './user-registry/user-registry.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { SelectCompanyComponent } from './select-company/select-company.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     ProjectsComponent,
     UserRegistryComponent,
     AnnouncementsComponent,
+    SelectCompanyComponent,
     
   ],
   imports: [
