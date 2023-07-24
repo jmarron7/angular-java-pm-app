@@ -9,9 +9,10 @@ import com.cooksys.groupfinal.entities.Announcement;
 
 @Mapper(componentModel = "spring", uses = { BasicUserMapper.class })
 public interface AnnouncementMapper {
-	
-	AnnouncementDto entityToDto(Announcement announcement);
+    AnnouncementDto entityToDto(Announcement announcement);
 
-  Set<AnnouncementDto> entitiesToDtos(Set<Announcement> announcement);
+    Set<AnnouncementDto> entitiesToDtos(Set<Announcement> announcement);
+
+    Announcement dtoToEntity(AnnouncementDto announcementDto);
     
 }
