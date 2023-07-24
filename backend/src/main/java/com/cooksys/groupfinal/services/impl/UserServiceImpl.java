@@ -66,6 +66,8 @@ public class UserServiceImpl implements UserService {
             throw new BadRequestException("User must include credentials (username and password)");
         // Could add userRequestDto.getProfile().getAllThoseFields error handling here
         User user = fullUserMapper.requestDtoToEntity(userRequestDto);
+        user.setActive(true);
+        user.getCompanies().add(company);
         return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
     }
 
