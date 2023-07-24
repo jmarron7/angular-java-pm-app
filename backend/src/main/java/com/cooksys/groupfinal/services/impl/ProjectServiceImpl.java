@@ -32,6 +32,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectDto postProject(Long companyId, Long teamId, ProjectDto projectDto) {
         // untested
+        // ensure team belongs to company
         Optional<Company> opCompany = companyRepository.findById(companyId);
         if(opCompany.isEmpty()) throw new NotFoundException("Could not find company with ID " + companyId);
         Company company = opCompany.get();
