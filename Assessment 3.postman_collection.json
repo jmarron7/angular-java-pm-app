@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "acd15d4e-4743-4bfb-8be4-e7bdb60d3f44",
 		"name": "Assessment 3",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28265467"
 	},
 	"item": [
@@ -20,7 +20,17 @@
 						}
 					}
 				},
-				"url": "localhost:8080/users/login"
+				"url": {
+					"raw": "localhost:8080/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					]
+				}
 			},
 			"response": []
 		},
@@ -29,7 +39,18 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/company/6/users"
+				"url": {
+					"raw": "localhost:8080/company/6/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"users"
+					]
+				}
 			},
 			"response": []
 		},
@@ -38,7 +59,18 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/company/6/announcements"
+				"url": {
+					"raw": "localhost:8080/company/6/announcements",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"announcements"
+					]
+				}
 			},
 			"response": []
 		},
@@ -47,7 +79,18 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/company/6/teams"
+				"url": {
+					"raw": "localhost:8080/company/6/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams"
+					]
+				}
 			},
 			"response": []
 		},
@@ -56,7 +99,20 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "localhost:8080/company/6/teams/11/projects"
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"projects"
+					]
+				}
 			},
 			"response": []
 		},
