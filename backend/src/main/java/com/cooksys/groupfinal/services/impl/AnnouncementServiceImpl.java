@@ -25,7 +25,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public AnnouncementDto postAnnouncement(Long id, AnnouncementDto announcementDto) {
-        //unfinished
+        //untested
         Announcement announcement = announcementMapper.dtoToEntity(announcementDto);
         Optional<Company> opCompany = companyRepository.findById(id);
         if(opCompany.isEmpty()) throw new NotFoundException("Could not find company with ID " + id);

@@ -3,6 +3,7 @@ package com.cooksys.groupfinal.controllers;
 import java.util.Set;
 
 import com.cooksys.groupfinal.services.AnnouncementService;
+import com.cooksys.groupfinal.services.TeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class CompanyController {
 	
 	private final CompanyService companyService;
     private final AnnouncementService announcementService;
+    private final TeamService teamService;
 	
 	@GetMapping("/{id}/users")
     public Set<FullUserDto> getAllUsers(@PathVariable Long id) {
@@ -46,6 +48,12 @@ public class CompanyController {
     @ResponseStatus(HttpStatus.CREATED)
     public AnnouncementDto postAnnouncement(@PathVariable Long id, @RequestBody AnnouncementDto announcementDto) {
         return announcementService.postAnnouncement(id, announcementDto);
+    }
+
+    @PostMapping("/{id}/team")
+    @ResponseStatus(HttpStatus.CREATED)
+    public TeamDto postTeam(@PathVariable Long id, @RequestBody TeamDto teamDto) {
+        return teamService.postTeam(id, teamDto);
     }
 
 }
