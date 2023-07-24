@@ -2,10 +2,9 @@ package com.cooksys.groupfinal.controllers;
 
 import java.util.Set;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.cooksys.groupfinal.services.AnnouncementService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.cooksys.groupfinal.dtos.AnnouncementDto;
 import com.cooksys.groupfinal.dtos.FullUserDto;
@@ -21,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class CompanyController {
 	
 	private final CompanyService companyService;
+    private final AnnouncementService announcementService;
 	
 	@GetMapping("/{id}/users")
     public Set<FullUserDto> getAllUsers(@PathVariable Long id) {
@@ -41,5 +41,11 @@ public class CompanyController {
 	public Set<ProjectDto> getAllProjects(@PathVariable Long companyId, @PathVariable Long teamId) {
 		return companyService.getAllProjects(companyId, teamId);
 	}
+
+    @PostMapping("/{id}/announcement")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AnnouncementDto postAnnouncement(@PathVariable Long id, @RequestBody AnnouncementDto announcementDto) {
+        return announcementService.postAnnouncement(id, announcementDto);
+    }
 
 }
