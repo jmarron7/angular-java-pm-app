@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { SelectCompanyComponent } from './select-company/select-company.component';
 import { TeamsComponent } from './teams/teams.component';
@@ -22,6 +23,7 @@ import { EditProjectOverlayComponent } from './components/edit-project-overlay/e
 import { AddUserOverlayComponent } from './components/add-user-overlay/add-user-overlay.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { AuthGuard } from './services/auth.guard';
     CreateProjectOverlayComponent,
     EditProjectOverlayComponent,
     AddUserOverlayComponent
+
   ],
   imports: [
     BrowserModule,

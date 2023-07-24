@@ -1,1 +1,7 @@
-<p>select-company works!</p>
+
+<label for="s">Select Company:</label>
+
+<select>
+    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+  </select>
+

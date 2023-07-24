@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: "teams", component: TeamsComponent,canActivate:[AuthGuard]},
   { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
   { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard]},
+
 ];
 
 @NgModule({

@@ -6,10 +6,12 @@ describe('AnnouncementsComponent', () => {
   let component: AnnouncementsComponent;
   let fixture: ComponentFixture<AnnouncementsComponent>;
 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AnnouncementsComponent]
     });
+
     fixture = TestBed.createComponent(AnnouncementsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
