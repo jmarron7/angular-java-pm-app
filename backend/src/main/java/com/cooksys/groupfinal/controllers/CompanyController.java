@@ -6,12 +6,9 @@ import com.cooksys.groupfinal.services.AnnouncementService;
 import com.cooksys.groupfinal.services.ProjectService;
 import com.cooksys.groupfinal.services.TeamService;
 import org.springframework.http.HttpStatus;
+import com.cooksys.groupfinal.dtos.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.cooksys.groupfinal.dtos.AnnouncementDto;
-import com.cooksys.groupfinal.dtos.FullUserDto;
-import com.cooksys.groupfinal.dtos.ProjectDto;
-import com.cooksys.groupfinal.dtos.TeamDto;
 import com.cooksys.groupfinal.services.CompanyService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +22,12 @@ public class CompanyController {
     private final AnnouncementService announcementService;
     private final TeamService teamService;
     private final ProjectService projectService;
-	
+
+    @GetMapping("/all")
+    public Set<CompanyDto> getAllCompanies(@RequestBody CredentialsDto credentialsDto) {
+        return  companyService.getAllCompanies(credentialsDto);
+    }
+
 	@GetMapping("/{id}/users")
     public Set<FullUserDto> getAllUsers(@PathVariable Long id) {
         return companyService.getAllUsers(id);
