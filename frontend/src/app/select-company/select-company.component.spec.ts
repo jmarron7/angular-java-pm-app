@@ -6,11 +6,11 @@ describe('SelectCompanyComponent', () => {
   let component: SelectCompanyComponent;
   let fixture: ComponentFixture<SelectCompanyComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ SelectCompanyComponent ]
-    })
-    .compileComponents();
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SelectCompanyComponent]
+    });
 
     fixture = TestBed.createComponent(SelectCompanyComponent);
     component = fixture.componentInstance;
