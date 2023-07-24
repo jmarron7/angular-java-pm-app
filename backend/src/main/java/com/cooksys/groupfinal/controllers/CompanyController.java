@@ -22,7 +22,7 @@ public class CompanyController {
 
     @GetMapping("/all")
     public Set<CompanyDto> getAllCompanies(@RequestBody CredentialsDto credentialsDto) {
-        return  companyService.getAllCompanies(credentialsDto);
+        return companyService.getAllCompanies(credentialsDto);
     }
 
 	@GetMapping("/{id}/users")
