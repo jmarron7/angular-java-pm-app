@@ -6,7 +6,7 @@ import com.cooksys.groupfinal.dtos.*;
 
 public interface CompanyService {
 
-	Set<CompanyDto> getAllCompanies(CredentialsDto credentials);
+	Set<CompanyDto> getAllCompanies(CredentialsDto credentialsDto);
 
 	Set<FullUserDto> getAllUsers(Long id);
 

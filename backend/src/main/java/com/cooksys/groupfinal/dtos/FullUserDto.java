@@ -23,4 +23,7 @@ public class FullUserDto {
     
     private Set<TeamDto> teams;
 
+    public Set<CompanyDto> getCompanies() {
+        return this.companies;
+    }
 }
