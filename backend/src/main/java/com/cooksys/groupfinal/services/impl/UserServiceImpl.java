@@ -21,9 +21,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-	
-	private final UserRepository userRepository;
-  private final FullUserMapper fullUserMapper;
+    private final UserRepository userRepository;
+    private final FullUserMapper fullUserMapper;
 	private final CredentialsMapper credentialsMapper;
 	
 	private User findUser(String username) {
