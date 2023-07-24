@@ -10,6 +10,8 @@ import com.cooksys.groupfinal.mappers.AnnouncementMapper;
 import com.cooksys.groupfinal.repositories.AnnouncementRepository;
 import com.cooksys.groupfinal.repositories.CompanyRepository;
 import com.cooksys.groupfinal.repositories.UserRepository;
+import com.cooksys.groupfinal.services.CompanyService;
+import com.cooksys.groupfinal.services.ValidateService;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.groupfinal.services.AnnouncementService;
@@ -25,22 +27,17 @@ import java.util.Optional;
 public class AnnouncementServiceImpl implements AnnouncementService {
 
     private final AnnouncementRepository announcementRepository;
-    private final UserRepository userRepository;
-    private final CompanyRepository companyRepository;
     private final AnnouncementMapper announcementMapper;
+    private final ValidateService validateService;
 
     @Override
     public AnnouncementDto postAnnouncement(Long id, AnnouncementDto announcementDto) {
-        //tested 1
-        Optional<Company> opCompany = companyRepository.findById(id);
-        Optional<User> opUser = userRepository.findById(announcementDto.getAuthor().getId());
-        if(opUser.isEmpty()) throw new BadRequestException("Unable to find user");
-        User user = opUser.get();
-        if(opCompany.isEmpty()) throw new NotFoundException("Could not find company with ID " + id);
-        if(!announcementDto.getAuthor().isActive()) throw new BadRequestException("This user is not currently active");
+        Company company = validateService.findCompany(id);
+        User user = validateService.findUser(announcementDto.getAuthor().getId());
+        if (!announcementDto.getAuthor().isActive()) throw new BadRequestException("This user is not currently active");
         Announcement announcement = announcementMapper.dtoToEntity(announcementDto);
         announcement.setDate(Timestamp.valueOf(LocalDateTime.now()));
-        announcement.setCompany(opCompany.get());
+        announcement.setCompany(company);
         announcement.getAuthor().setProfile(user.getProfile());
         return announcementMapper.entityToDto(announcementRepository.saveAndFlush(announcement));
     }

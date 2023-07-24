@@ -7,6 +7,8 @@ import com.cooksys.groupfinal.exceptions.NotFoundException;
 import com.cooksys.groupfinal.mappers.TeamMapper;
 import com.cooksys.groupfinal.repositories.CompanyRepository;
 import com.cooksys.groupfinal.repositories.TeamRepository;
+import com.cooksys.groupfinal.services.CompanyService;
+import com.cooksys.groupfinal.services.ValidateService;
 import org.springframework.stereotype.Service;
 
 import com.cooksys.groupfinal.services.TeamService;
@@ -19,16 +21,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TeamServiceImpl implements TeamService {
 
-    private final CompanyRepository companyRepository;
     private final TeamMapper teamMapper;
     private final TeamRepository teamRepository;
+    private final ValidateService validateService;
 
     @Override
     public TeamDto postTeam(Long id, TeamDto teamDto) {
-        // untested
-        Optional<Company> opCompany = companyRepository.findById(id);
-        if(opCompany.isEmpty()) throw new NotFoundException("Could not find company with ID " + id);
-        Company company = opCompany.get();
+        Company company = validateService.findCompany(id);
         Team team = teamMapper.dtoToEntity(teamDto);
         team.setCompany(company);
         return teamMapper.entityToDto(teamRepository.saveAndFlush(team));
