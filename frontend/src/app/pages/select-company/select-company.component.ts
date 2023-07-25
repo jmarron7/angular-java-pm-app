@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SelectCompanyComponent implements OnInit {
   // TODO = ensure fetch only returns companies the logged in user is part of
   companies: CompanyDto[] = [];
+  selectedCompanyId: number = 0;
 
   constructor(
     private generalService: GeneralService,
@@ -31,7 +32,8 @@ export class SelectCompanyComponent implements OnInit {
     }
   }
 
-  setCompany() {
-    // TODO, set company the user chooses in local storage
+  nextPage() {
+    alert(this.selectedCompanyId);
+    this.router.navigateByUrl('');
   }
 }
