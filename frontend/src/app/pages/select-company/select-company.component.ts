@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyDto, GeneralService } from '../../services/general.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-company',
@@ -10,10 +11,12 @@ import { HttpClient } from '@angular/common/http';
 export class SelectCompanyComponent implements OnInit {
   // TODO = ensure fetch only returns companies the logged in user is part of
   companies: CompanyDto[] = [];
+  selectedCompanyId: number = 0;
 
   constructor(
     private generalService: GeneralService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -21,19 +24,16 @@ export class SelectCompanyComponent implements OnInit {
   }
 
   loadCompanies() {
-    // this.generalService.getAllCompanies().subscribe({
-    //   next: (companies) => {
-    //     console.log(companies);
-    //     this.companies = companies;
-    //   },
-    //   error: (e) => console.log('Error fetching companies: ', e),
-    // });
-    // this.generalService.getCompany().subscribe({
-    //   next: (company) => {
-    //     console.log(company);
-    //     localStorage.setItem('company', JSON.stringify(company));
-    //   },
-    //   error: (e) => console.error('Error fetching companies:', e),
-    // });
+    let user = JSON.parse(localStorage.getItem('user')!);
+    if (user) {
+      console.log(user);
+      console.log(user.companies);
+      this.companies = user.companies;
+    }
+  }
+
+  nextPage() {
+    alert(this.selectedCompanyId);
+    this.router.navigateByUrl('');
   }
 }
