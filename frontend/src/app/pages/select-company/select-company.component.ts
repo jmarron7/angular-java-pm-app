@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { Router, NavigationExtras } from '@angular/router';
-// import { CompanyDto, GeneralService } from '../services/general.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router, NavigationExtras } from '@angular/router';
+import { CompanyDto, GeneralService } from '../../services/general.service';
 
 
 
@@ -34,14 +34,4 @@ export class SelectCompanyComponent implements OnInit  {
       );
     }
   
-
-  
-
-  // // async ngOnInit(): Promise<void> {
-  // //   try {
-  // //     this.options = await this.generalService.getOptions().toPromise();
-  // //   } catch (error) {
-  // //     console.error('Error fetching dropdown options:', error);
-  // //   }
-  // // }
 }

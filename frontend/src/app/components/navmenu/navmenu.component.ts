@@ -14,20 +14,20 @@ export class NavmenuComponent {
 
   createUser() {
    
-    this.user.profile = `${this.user.firstname} ${this.user.lastname}`;
+    // this.user.profile = `${this.user.firstname} ${this.user.lastname}`;
     
 
    
-    this.generalService.getFullUserDto(this.user).subscribe(
-      (response) => {
+    // this.generalService.getFullUserDto(this.user).subscribe(
+  //     (response) => {
         
-        console.log('User created successfully!', response);
-      },
-      (error) => {
+  //       console.log('User created successfully!', response);
+  //     },
+  //     (error) => {
        
-        console.error('Error creating user:', error);
-      }
-    );
+  //       console.error('Error creating user:', error);
+  //     }
+  //   );
   }
 
 }

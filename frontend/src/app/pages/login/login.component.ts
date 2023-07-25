@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class LoginComponent {
       
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) {}
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
   
   isInvalid: boolean = false;
   isPending: boolean = true;

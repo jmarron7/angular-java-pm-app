@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "select-company", component: SelectCompanyComponent,canActivate:[AuthGuard, RoleGuard]},
   { path: "teams", component: TeamsComponent,canActivate:[AuthGuard, RoleGuard]},
   { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
-  { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]},
+  { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]}
 ];
 
 @NgModule({

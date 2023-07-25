@@ -42,7 +42,6 @@ import { AuthGuard } from './services/auth.guard';
     CreateProjectOverlayComponent,
     EditProjectOverlayComponent,
     AddUserOverlayComponent
-
   ],
   imports: [
     BrowserModule,
