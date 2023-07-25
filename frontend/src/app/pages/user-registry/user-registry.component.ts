@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserRegistryComponent {
   users: any;
+  isAddingUser: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {

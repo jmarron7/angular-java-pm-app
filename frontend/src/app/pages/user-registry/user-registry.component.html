@@ -1,3 +1,4 @@
+<app-add-user-overlay *ngIf="isAddingUser"></app-add-user-overlay>
 <div class="container">
   <div class="title-div">
     <h1>User Registry</h1>
@@ -18,14 +19,20 @@
         <tr *ngFor="let user of users">
           <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
           <td>{{ user.profile.email }}</td>
-          <td>{{ user.active }}</td>
-          <td>{{ user.admin }}</td>
+          <td [ngClass]="{ green: user.active, red: !user.active }">
+            {{ user.active ? "YES" : "NO" }}
+          </td>
+          <td [ngClass]="{ green: user.admin, red: !user.admin }">
+            {{ user.admin ? "YES" : "NO" }}
+          </td>
           <td>{{ user.status }}</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="add-btn-div">
-    <button class="add-btn" routerLink="/add-user">Add User</button>
+    <button class="add-btn" (click)="isAddingUser = !isAddingUser">
+      Add User
+    </button>
   </div>
 </div>
