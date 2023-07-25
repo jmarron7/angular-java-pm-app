@@ -1,6 +1,3 @@
-
-<app-add-user-overlay *ngIf="isAddingUser"></app-add-user-overlay>
-
 <div class="container">
   <div class="title-div">
     <h1>User Registry</h1>
@@ -32,9 +29,15 @@
       </tbody>
     </table>
   </div>
-  <div class="add-btn-div">
-    <button class="add-btn" (click)="isAddingUser = !isAddingUser">
-      Add User
+  <div class="btn-container-div">
+    <button class="add-admin-btn" (click)="toggleAdminOverlay()">
+      Add Existing Admin
+    </button>
+    <button class="create-user-btn" (click)="toggleUserOverlay()">
+      Create New User
     </button>
   </div>
+  
+  <app-add-user-overlay *ngIf="showUserOverlay" (updateUserOverlayVisibility)="toggleUserOverlay()"></app-add-user-overlay>
+  <app-add-admin-overlay *ngIf="showAdminOverlay" (updateAdminOverlayVisibility)="toggleAdminOverlay()"></app-add-admin-overlay>
 </div>

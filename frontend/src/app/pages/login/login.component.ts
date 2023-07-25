@@ -45,11 +45,16 @@ export class LoginComponent {
         this.user.isAdmin = userData.isAdmin;
 
         localStorage.setItem('user', userData);
+        localStorage.setItem('companyId', userData.companyId);
         if (userData.status === "PENDING") {
           this.isPending = true;
         }
         else {
-          this.router.navigate(['/']);
+          if (userData.isAdmin) {
+            this.router.navigate(['/select-company'])
+          } else {
+            this.router.navigate(['/']);
+          }
         }
       },
       error: error => {

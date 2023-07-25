@@ -42,15 +42,27 @@ th {
   color: green;
 }
 
-.add-btn-div {
+.btn-container-div {
   padding-top: 20px;
+
 }
 
-.add-btn {
+.add-admin-btn {
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: #0B2D45;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+}
+
+.create-user-btn {
   cursor: pointer;
   border-radius: 10px;
   border: none;
   background-color: rgba(27, 160, 152, 1);
   color: white;
-  padding: 10px 40px;
+  padding: 10px 20px;
+  margin: 5px;
 }

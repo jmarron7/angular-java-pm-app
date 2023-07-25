@@ -1,0 +1,9 @@
+<div class="add-admin-overlay" *ngIf="modalVisible">
+    <div class="add-admin-container">
+        <div (click)="handleOverlayExit()">[ X ]</div>
+        <form #addAdminForm="ngForm" (ngSubmit)="addAdminToCompany(addAdminForm.form.value);">
+            <input type="text" name="email" ngModel #emailField="ngModel" class="form-control" placeholder="email">
+            <button class="submit-button" value="Login">Add</button>
+        </form>
+    </div>
+</div>
