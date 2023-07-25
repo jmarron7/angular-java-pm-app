@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --background: rgba(5, 22, 34, 255);
+  --blue-text: rgba(27, 160, 152, 1);
+  --beige: rgba(222, 185, 146, 255);
+}
+
+@font-face {
+  font-family: Mulish;
+  src: url(./assets/fonts/Mulish-Regular.ttf) format("truetype");
+}
+
+* {
+  font-family: Mulish;
+}
+
+html {
+  background-color: var(--background);
+  color: var(--blue-text);
+}
