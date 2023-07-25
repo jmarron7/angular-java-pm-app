@@ -61,8 +61,10 @@ public class UserServiceImpl implements UserService {
     public BasicUserDto updateUser(Long id, UserRequestDto userRequestDto) {
         User user = validateService.findUser(id);
         if(userRequestDto.getCredentials() != null) {
-            if(userRequestDto.getCredentials().getPassword() != null)
+            if(userRequestDto.getCredentials().getPassword() != null) {
                 user.getCredentials().setPassword(userRequestDto.getCredentials().getPassword());
+                user.setStatus("JOINED");
+            }
             if(userRequestDto.getCredentials().getUsername() != null)
                 user.getCredentials().setUsername(userRequestDto.getCredentials().getUsername());
         }
