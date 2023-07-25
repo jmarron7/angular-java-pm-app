@@ -16,7 +16,7 @@ export class AnnouncementsComponent {
     let input = this.router.getCurrentNavigation();
     this.companyId = input?.extras?.state?.['companyId'];
     localStorage.setItem('companyId', this.companyId);
-  }
+  } 
 
   ngOnInit() {
     let url = 'company/' + this.companyId +  'announcements';

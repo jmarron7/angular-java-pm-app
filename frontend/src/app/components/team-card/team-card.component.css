@@ -1,3 +1,17 @@
-p {
+button {
+    background-color: transparent;
     border: 1px solid black;
+    margin: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    padding: 0;
+    text-align: left;
+}
+
+button:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
 }
