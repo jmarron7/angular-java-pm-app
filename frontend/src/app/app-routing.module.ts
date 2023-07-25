@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SelectCompanyComponent } from './pages/select-company/select-company.component';
 import { AnnouncementsComponent } from './pages/announcements/announcements.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "teams", component: TeamsComponent,canActivate:[AuthGuard, RoleGuard]},
   { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
   { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]},
+  { path: "navigation", component: NavmenuComponent,canActivate:[AuthGuard, RoleGuard]},
 ];
 
 @NgModule({

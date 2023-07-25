@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { Observable } from 'rxjs';
 // import { Router, NavigationExtras } from '@angular/router';
-// import { CompanyDto, GeneralService } from '../services/general.service';
+import { CompanyDto, GeneralService } from '../../services/general.service';
 
 
 
@@ -25,8 +25,21 @@ export class SelectCompanyComponent implements OnInit  {
   
     loadCompanies() {
       this.generalService.getAllCompanies().subscribe(
+        
         (companies) => {
           this.companies = companies;
+          
+        },
+        (error) => {
+          console.error('Error fetching companies:', error);
+        }
+      );
+
+      this.generalService.getCompany().subscribe(
+        
+        (company) => {
+          localStorage.setItem('company', JSON.stringify(company))
+          
         },
         (error) => {
           console.error('Error fetching companies:', error);

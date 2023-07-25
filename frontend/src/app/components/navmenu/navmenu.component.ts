@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FullUserDto, GeneralService } from '../../services/general.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navmenu',
@@ -9,25 +10,26 @@ import { FullUserDto, GeneralService } from '../../services/general.service';
 export class NavmenuComponent {
 
   user: FullUserDto = new FullUserDto();
+  
 
-  constructor(private generalService: GeneralService) {}
+  constructor(private generalService: GeneralService, private authService: AuthService) {}
 
-  createUser() {
+  // createUser() {
    
-    this.user.profile = `${this.user.firstname} ${this.user.lastname}`;
-    
-
    
-    this.generalService.getFullUserDto(this.user).subscribe(
-      (response) => {
+  //   this.generalService.getFullUserDto().subscribe(
+  //     (response) => {
         
-        console.log('User created successfully!', response);
-      },
-      (error) => {
+  //       console.log('User created successfully!', response);
+  //     },
+  //     (error) => {
        
-        console.error('Error creating user:', error);
-      }
-    );
-  }
+  //       console.error('Error creating user:', error);
+  //     }
+  //   );
+  // }
+
+  navLogout() {this.authService.logout()}
+
 
 }
