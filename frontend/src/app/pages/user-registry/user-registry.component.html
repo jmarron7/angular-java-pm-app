@@ -1,35 +1,10 @@
-<<<<<<< HEAD
-<h1>users</h1>
-
-<div *ngFor="let user of users">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Donec ac congue neque. Phasellus viverra gravida pharetra. 
-    Sed vel viverra turpis. Sed mattis in risus vel sagittis. 
-    Cras ut luctus libero, ut tincidunt velit. 
-    Quisque in lacinia arcu, non pharetra quam. 
-    Nunc nunc nibh, efficitur at justo ut, varius aliquet quam. 
-    Maecenas rutrum dolor non rhoncus placerat. 
-    Morbi interdum ex sed nisi interdum suscipit. 
-    Ut convallis et odio nec rutrum. 
-    Ut rhoncus laoreet nulla non rutrum. 
-    Nunc sit amet rutrum nibh. 
-    Maecenas mollis felis sed quam lobortis tincidunt. 
-    Integer cursus tellus dui, quis pulvinar ligula fringilla vel. 
-    In suscipit faucibus orci, a hendrerit orci varius eget. 
-    Proin tempus lectus ex, at sagittis leo sagittis ac. 
-    Aenean sed maximus metus, ut blandit leo. 
-    Donec pretium tortor lorem, vel facilisis est viverra eu. 
-    Aliquam ut odio et odio porta euismod nec sed nisl. 
-    Nullam laoreet vestibulum fermentum.
-</div>
-=======
 <div class="container">
   <div class="title-div">
     <h1>User Registry</h1>
     <p>A general view of all your members in your organization</p>
   </div>
   <div class="users-table-div">
-    <table>
+    <table class="table1">
       <thead>
         <tr>
           <th>Name</th>
@@ -40,18 +15,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Chris Purnell</td>
-          <td>yocrizzle@gmail.com</td>
-          <td>YES</td>
-          <td>YES</td>
-          <td>JOINED</td>
+        <tr *ngFor="let user of users">
+          <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
+          <td>{{ user.profile.email }}</td>
+          <td>{{ user.active }}</td>
+          <td>{{ user.admin }}</td>
+          <td>{{ user.status }}</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="add-btn-div">
-    <button class="add-btn">Add User</button>
+    <button class="add-btn" routerLink="/add-user">Add User</button>
   </div>
 </div>
->>>>>>> c39503da1610d3cf97b5ba94aee277e6e8eaabdb

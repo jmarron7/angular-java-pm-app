@@ -9,6 +9,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { UserRegistryComponent } from './pages/user-registry/user-registry.component';
 import { AuthGuard } from './services/auth.guard';
 import { RoleGuard } from './services/role.guard';
+import { AddUserOverlayComponent } from './components/add-user-overlay/add-user-overlay.component';
 
 const routes: Routes = [
   { path: "", component: AnnouncementsComponent,canActivate:[AuthGuard]},
@@ -18,10 +19,11 @@ const routes: Routes = [
   { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
   { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]},
   { path: "navigation", component: NavmenuComponent,canActivate:[AuthGuard, RoleGuard]},
-
+  { path: 'add-user', component: AddUserOverlayComponent,canActivate: [AuthGuard, RoleGuard]}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
