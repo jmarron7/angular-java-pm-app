@@ -15,7 +15,8 @@ export class UserRegistryComponent {
   }
 
   ngOnInit() {
-    let url = 'company/' + localStorage.getItem('companyId') +  '/users';
+    // let url = 'company/' + localStorage.getItem('companyId') +  '/users';
+    let url = 'http://localhost:8080/company/6/users';
     this.http.get<any>(url).subscribe({
         next: data => {
             this.users = data;

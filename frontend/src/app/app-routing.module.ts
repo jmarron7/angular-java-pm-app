@@ -11,14 +11,14 @@ import { AuthGuard } from './services/auth.guard';
 import { RoleGuard } from './services/role.guard';
 
 const routes: Routes = [
-  { path: "", component: AnnouncementsComponent,canActivate:[AuthGuard]},
+  { path: "", component: AnnouncementsComponent, canActivate:[AuthGuard]},
   { path: "login", component: LoginComponent},
-  { path: "select-company", component: SelectCompanyComponent,canActivate:[AuthGuard, RoleGuard]},
-  { path: "teams", component: TeamsComponent,canActivate:[AuthGuard, RoleGuard]},
-  { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
-  { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]},
-  { path: "navigation", component: NavmenuComponent,canActivate:[AuthGuard, RoleGuard]},
-
+  { path: "select-company", component: SelectCompanyComponent, canActivate:[AuthGuard, RoleGuard]},
+  { path: "teams", component: TeamsComponent, canActivate:[AuthGuard, RoleGuard]},
+  { path: "projects", component: ProjectsComponent, canActivate:[AuthGuard]},
+  { path: "user-registry", component: UserRegistryComponent, canActivate:[AuthGuard, RoleGuard]},
+  { path: "navigation", component: NavmenuComponent, canActivate:[AuthGuard, RoleGuard]}
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
