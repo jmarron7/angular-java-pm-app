@@ -16,8 +16,10 @@ export class NavmenuComponent {
 
   // createUser() {
    
+
    
   //   this.generalService.getFullUserDto().subscribe(
+
   //     (response) => {
         
   //       console.log('User created successfully!', response);
@@ -27,9 +29,11 @@ export class NavmenuComponent {
   //       console.error('Error creating user:', error);
   //     }
   //   );
+
   // }
 
   navLogout() {this.authService.logout()}
+
 
 
 }

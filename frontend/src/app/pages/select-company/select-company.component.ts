@@ -47,14 +47,4 @@ export class SelectCompanyComponent implements OnInit  {
       );
     }
   
-
-  
-
-  // // async ngOnInit(): Promise<void> {
-  // //   try {
-  // //     this.options = await this.generalService.getOptions().toPromise();
-  // //   } catch (error) {
-  // //     console.error('Error fetching dropdown options:', error);
-  // //   }
-  // // }
 }

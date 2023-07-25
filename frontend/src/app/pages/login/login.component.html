@@ -2,12 +2,25 @@
 <h1 id="login-header">Login</h1>
 
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm.form.value);">
-  <input type="text" name="username" ngModel #nameField="ngModel" class="form-control" placeholder="username">
-  <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="password">
-  <button class="submit-button" value="Login">Submit</button>
+  <input [disabled]="isPending" type="text" name="username" ngModel #nameField="ngModel" class="form-control" placeholder="username">
+  <input [disabled]="isPending" type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="password">
+  <button [disabled]="isPending" class="submit-button" value="Login">Submit</button>
 </form>
 
-<div *ngIf="invalid" id="login-error-msg-container">
-    <p id="login-error-msg">Invalid username and/or password</p>
+<div *ngIf="isInvalid">
+    <p>Invalid username and/or password</p>
 </div>
+
+<div id="new-password" *ngIf="isPending">
+  <form #loginForm="ngForm" (ngSubmit)="updatePassword(loginForm.form.value);">
+    <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="new password">
+    <button class="submit-button" value="Login">Submit</button>
+  </form>
+</div>
+
+
+
+
+
+
 
