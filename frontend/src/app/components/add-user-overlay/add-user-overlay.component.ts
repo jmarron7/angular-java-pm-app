@@ -18,11 +18,11 @@ export class AddUserOverlayComponent {
   addUser(form: any) {
     this.user.credentials.username = form.firstName + '.' + form.lastName;
     this.user.credentials.password = form.password;
-    this.user.profile.firstname = form.firstName;
-    this.user.profile.lastname = form.lastName;
+    this.user.profile.firstName = form.firstName;
+    this.user.profile.lastName = form.lastName;
     this.user.profile.email = form.email;
     this.user.profile.phone = form.phone;
-    this.user.isAdmin = form.userIsAdmin;
+    this.user.admin = form.userIsAdmin;
 
     let url = 'http://localhost:8080' + '/company/' + localStorage.getItem('companyId') +  '/user';
     this.http.post<UserRequestDto>(url, this.user).subscribe({
