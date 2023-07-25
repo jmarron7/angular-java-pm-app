@@ -1,4 +1,13 @@
-div {
-    border: 1px solid black;
-    margin: 10px;
+.container {
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table1 {
+  border: 1px solid black;
+  padding: 30px;
+  width: 800px;
 }

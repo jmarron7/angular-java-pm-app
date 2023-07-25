@@ -8,21 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-registry.component.css'],
 })
 export class UserRegistryComponent {
+  users: any;
 
-  users: any[] = [1,2,3,4];
-
-  constructor(private http: HttpClient, private router: Router) { 
-  }
-
+  constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {
-    let url = 'company/' + localStorage.getItem('companyId') +  '/users';
-    this.http.get<any>(url).subscribe({
-        next: data => {
-            this.users = data;
-        },
-        error: error => {
-            console.error(error);
-          }
-      })
+    // let url =
+    //   'http://localhost:8080/company/' +
+    //   localStorage.getItem('companyId') +
+    //   '/users';
+    this.http.get<any>('http://localhost:8080/company/6/users').subscribe({
+      next: (data) => {
+        console.log(data);
+        this.users = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }
