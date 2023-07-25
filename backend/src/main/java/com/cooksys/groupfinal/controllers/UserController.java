@@ -1,10 +1,8 @@
 package com.cooksys.groupfinal.controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.cooksys.groupfinal.dtos.BasicUserDto;
+import com.cooksys.groupfinal.dtos.UserRequestDto;
+import org.springframework.web.bind.annotation.*;
 
 import com.cooksys.groupfinal.dtos.CredentialsDto;
 import com.cooksys.groupfinal.dtos.FullUserDto;
@@ -23,6 +21,11 @@ public class UserController {
 	@CrossOrigin(origins="*")
     public FullUserDto login(@RequestBody CredentialsDto credentialsDto) {
         return userService.login(credentialsDto);
+    }
+
+    @PutMapping("/{id}")
+    public BasicUserDto updateUser(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto) {
+        return userService.updateUser(id, userRequestDto);
     }
 
 }

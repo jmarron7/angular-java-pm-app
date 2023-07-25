@@ -1,5 +1,6 @@
 package com.cooksys.groupfinal.services.impl;
 
+import com.cooksys.groupfinal.dtos.BasicUserDto;
 import com.cooksys.groupfinal.dtos.CredentialsDto;
 import com.cooksys.groupfinal.dtos.FullUserDto;
 import com.cooksys.groupfinal.dtos.UserRequestDto;
@@ -8,6 +9,7 @@ import com.cooksys.groupfinal.entities.Credentials;
 import com.cooksys.groupfinal.entities.User;
 import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotAuthorizedException;
+import com.cooksys.groupfinal.mappers.BasicUserMapper;
 import com.cooksys.groupfinal.mappers.CredentialsMapper;
 import com.cooksys.groupfinal.mappers.FullUserMapper;
 import com.cooksys.groupfinal.repositories.UserRepository;
@@ -22,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final FullUserMapper fullUserMapper;
+    private final BasicUserMapper basicUserMapper;
     private final CredentialsMapper credentialsMapper;
     private final ValidateService validateService;
 
@@ -33,10 +36,10 @@ public class UserServiceImpl implements UserService {
         User userToValidate = validateService.findUser(credentialsDto.getUsername());
         if (!userToValidate.getCredentials().equals(credentialsToValidate))
             throw new NotAuthorizedException("The provided credentials are invalid.");
-        if (userToValidate.getStatus().equals("PENDING")) {
-            userToValidate.setStatus("JOINED");
-            userRepository.saveAndFlush(userToValidate);
-        }
+//        if (userToValidate.getStatus().equals("PENDING")) {
+//            userToValidate.setStatus("JOINED");
+//        }
+        userRepository.saveAndFlush(userToValidate);
         return fullUserMapper.entityToFullUserDto(userToValidate);
     }
 
@@ -52,6 +55,29 @@ public class UserServiceImpl implements UserService {
         user.setActive(true);
         user.getCompanies().add(company);
         return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+    }
+
+    @Override
+    public BasicUserDto updateUser(Long id, UserRequestDto userRequestDto) {
+        User user = validateService.findUser(id);
+        if(userRequestDto.getCredentials() != null) {
+            if(userRequestDto.getCredentials().getPassword() != null)
+                user.getCredentials().setPassword(userRequestDto.getCredentials().getPassword());
+            if(userRequestDto.getCredentials().getUsername() != null)
+                user.getCredentials().setUsername(userRequestDto.getCredentials().getUsername());
+        }
+        if(userRequestDto.getProfile() != null) {
+            if(userRequestDto.getProfile().getEmail() != null)
+                user.getProfile().setEmail(userRequestDto.getProfile().getEmail());
+            if(userRequestDto.getProfile().getPhone() != null)
+                user.getProfile().setPhone(userRequestDto.getProfile().getPhone());
+            if(userRequestDto.getProfile().getFirstName() != null)
+                user.getProfile().setFirstName(userRequestDto.getProfile().getFirstName());
+            if(userRequestDto.getProfile().getLastName() != null)
+                user.getProfile().setLastName(userRequestDto.getProfile().getLastName());
+        }
+        userRepository.saveAndFlush(user);
+        return basicUserMapper.entityToBasicUserDto(user);
     }
 
 }
