@@ -11,7 +11,7 @@ export class UserRegistryComponent {
   users: any;
   isAddingUser: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
   ngOnInit() {
     // let url =
     //   'http://localhost:8080/company/' +

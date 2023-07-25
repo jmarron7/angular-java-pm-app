@@ -6,10 +6,32 @@
   align-items: center;
 }
 
+.title-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-div h1 {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.title-div p {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
 .table1 {
-  border: 1px solid black;
+  border: 1px solid var(--beige);
+  color: var(--beige);
   padding: 30px;
   width: 800px;
+}
+
+th {
+  color: white;
 }
 
 .red {
@@ -18,4 +40,17 @@
 
 .green {
   color: green;
+}
+
+.add-btn-div {
+  padding-top: 20px;
+}
+
+.add-btn {
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(27, 160, 152, 1);
+  color: white;
+  padding: 10px 40px;
 }
