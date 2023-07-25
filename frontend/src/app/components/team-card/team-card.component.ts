@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-team-card',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class TeamCardComponent {
 
+  @Input() teamId = '';
+
+  constructor(private router: Router) {}
+
+  goToProjects() {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        teamId: this.teamId
+      }
+    };
+    this.router.navigate(['/projects'], navigationExtras);
+  }
 }
