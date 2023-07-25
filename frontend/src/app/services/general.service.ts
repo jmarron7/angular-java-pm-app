@@ -7,32 +7,32 @@ export class CredentialsDto {
   password: string = '';
 }
 export class ProfileDto {
-  firstname: string = '';
-  lastname: string = '';
+  firstName: string = '';
+  lastName: string = '';
   email: string = '';
   phone: string = '';
 }
 export class BasicUserDto {
   id: number = 0;
   profile: ProfileDto = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
   };
-  isAdmin: boolean = false;
+  admin: boolean = false;
   active: boolean = false;
   status: string = '';
 }
 export class FullUserDto {
   id: number = 0;
   profile: ProfileDto = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
   };
-  isAdmin: boolean = false;
+  admin: boolean = false;
   active: boolean = false;
   status: string = '';
   companies: CompanyDto[] = [];
@@ -44,12 +44,12 @@ export class UserRequestDto {
     password: '',
   };
   profile: ProfileDto = {
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
   };
-  isAdmin: boolean = false;
+  admin: boolean = false;
 }
 export class TeamDto {
   id: number = 0;
@@ -72,12 +72,12 @@ export class AnnouncementDto {
   author: BasicUserDto = {
     id: 0,
     profile: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
     },
-    isAdmin: false,
+    admin: false,
     active: false,
     status: '',
   };

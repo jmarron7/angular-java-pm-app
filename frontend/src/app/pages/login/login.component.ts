@@ -26,12 +26,12 @@ export class LoginComponent {
       password: '',
     },
     profile: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
     },
-    isAdmin: false,
+    admin: false,
   };
 
   login(form: any) {
@@ -46,13 +46,19 @@ export class LoginComponent {
           username: form.username,
           password: form.password,
         };
-        this.user.isAdmin = userData.isAdmin;
+        this.user.admin = userData.admin;
 
         localStorage.setItem('user', userData);
-        if (userData.status === 'PENDING') {
+        localStorage.setItem('companyId', userData.companyId);
+        if (userData.status === "PENDING") {
           this.isPending = true;
-        } else {
-          this.router.navigate(['/']);
+        }
+        else {
+          if (userData.admin) {
+            this.router.navigate(['/select-company'])
+          } else {
+            this.router.navigate(['/']);
+          }
         }
       },
       error: (error) => {

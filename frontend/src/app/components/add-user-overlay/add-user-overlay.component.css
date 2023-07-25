@@ -1,4 +1,97 @@
-.add-user-overlay-container {
-    width: 60%;
-    background: red;
+input[type=text] {
+    background: none;
+    font-weight: 600;
+    color: var(--beige);
+    border: none;
+    border-bottom: 1px solid var(--beige);
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+input[type=password] {
+    background: none;
+    font-weight: 600;
+    color: var(--beige);
+    border: none;
+    border-bottom: 1px solid var(--beige);
+}
+
+input[type=password]:focus {
+    outline: none;
+}
+
+button {
+    background-color: var(--blue-text);
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white
+}
+
+.add-user-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    inset: 0px;
+    background-color: rgba(18, 18, 18, 0.6);
+    z-index: 10000140;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.add-user-container {
+    position: initial;
+    box-sizing: border-box;
+    width: 600px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 40px;
+    z-index: 1000000141;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--beige);
+    background-color: #0B2D45;
+    border: 1px solid var(--blue-text);
+    border-radius: 3px;
+}
+
+.add-user-form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.name-container * {
+    margin: 0px 5px;
+}
+
+.pass-container * {
+    margin: 0px 5px;
+}
+
+.checkbox-container * {
+    margin: 0px 5px;
+}
+
+.email-phone-container * {
+    margin: 0px 5px;
+}
+
+.exit-button {
+    position: relative;
+    left: 20px;
+    top: 5px;
 }

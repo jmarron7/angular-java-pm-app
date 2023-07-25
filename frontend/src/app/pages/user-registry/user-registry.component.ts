@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class UserRegistryComponent {
   users: any;
-  isAddingUser: boolean = false;
+  showUserOverlay: boolean = false;
+  showAdminOverlay: boolean = false;
 
   constructor(private http: HttpClient) {}
   ngOnInit() {
@@ -22,5 +23,13 @@ export class UserRegistryComponent {
             console.error(error);
           }
       })
+  }
+
+  toggleAdminOverlay() {
+    this.showAdminOverlay = !this.showAdminOverlay
+  }
+  
+  toggleUserOverlay() {
+    this.showUserOverlay = !this.showUserOverlay
   }
 }
