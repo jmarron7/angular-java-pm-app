@@ -5,13 +5,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-
-import { AnnouncementsComponent } from './announcements/announcements.component';
-import { SelectCompanyComponent } from './select-company/select-company.component';
-import { TeamsComponent } from './teams/teams.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { UserRegistryComponent } from './user-registry/user-registry.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AnnouncementsComponent } from './pages/announcements/announcements.component';
+import { SelectCompanyComponent } from './pages/select-company/select-company.component';
+import { TeamsComponent } from './pages/teams/teams.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
+import { UserRegistryComponent } from './pages/user-registry/user-registry.component';
 import { AnnouncementCardComponent } from './components/announcement-card/announcement-card.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CreateAnnouncementOverlayComponent } from './components/create-announcement-overlay/create-announcement-overlay.component';
