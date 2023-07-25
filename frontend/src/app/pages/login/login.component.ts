@@ -35,7 +35,7 @@ export class LoginComponent {
       next: data => {
         console.log(data);
 
-        let userData = JSON.parse(data);
+        let userData = JSON.parse(JSON.stringify(data));
         this.userId = userData.id;
         this.user.profile = userData.profile;
         this.user.credentials = {
@@ -44,7 +44,7 @@ export class LoginComponent {
         }
         this.user.isAdmin = userData.isAdmin;
 
-        localStorage.setItem('user', data);
+        localStorage.setItem('user', userData);
         if (userData.status === "PENDING") {
           this.isPending = true;
         }

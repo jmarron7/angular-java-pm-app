@@ -13,18 +13,14 @@ export class UserRegistryComponent {
 
   constructor(private http: HttpClient) {}
   ngOnInit() {
-    // let url =
-    //   'http://localhost:8080/company/' +
-    //   localStorage.getItem('companyId') +
-    //   '/users';
-    this.http.get<any>('http://localhost:8080/company/6/users').subscribe({
-      next: (data) => {
-        console.log(data);
-        this.users = data;
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') +  '/users';
+    this.http.get<any>(url).subscribe({
+        next: data => {
+            this.users = data;
+        },
+        error: error => {
+            console.error(error);
+          }
+      })
   }
 }
