@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { GeneralService, UserRequestDto } from '../../services/general.service';
 import { HttpClient } from '@angular/common/http'
 
 @Component({
@@ -10,12 +11,12 @@ import { HttpClient } from '@angular/common/http'
 })
 export class LoginComponent {
       
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
+  constructor(private generalService: GeneralService, private authService: AuthService, private router: Router, private http: HttpClient) { }
   
   isInvalid: boolean = false;
   isPending: boolean = true;
   userId = 0;
-  user: any = {
+  user: UserRequestDto = {
     credentials: {
       username: "",
       password: ""
@@ -59,7 +60,7 @@ export class LoginComponent {
   }
 
   updatePassword(form: any) {
-    let url = 'users/' + this.user.id;
+    let url = 'users/' + this.userId;
     this.user.credentials.password = form.password;
     
     this.http.put<any>(url, this.user).subscribe({
