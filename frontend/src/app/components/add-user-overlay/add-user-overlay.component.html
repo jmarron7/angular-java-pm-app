@@ -1,1 +1,18 @@
-<p>add-user-overlay works!</p>
+<div class="add-user-overlay-container" *ngIf="modalVisible">
+    <div (click)="closeAddUserOverlay()">[ X ]</div>
+    <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.form.value);">
+        <input type="text" name="firstName" ngModel #firstNameField="ngModel" class="form-control" placeholder="first name">
+        <input type="text" name="lastName" ngModel #lastNaneField="ngModel" class="form-control" placeholder="last name">
+        <br />
+        <input type="text" name="phoneNumber" ngModel #phoneField="ngModel" class="form-control" placeholder="phone">
+        <br />
+        <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="password">
+        <input type="password" name="confirmedPassword" ngModel #confirmedPassField="ngModel" class="login-field" placeholder="confirm password">
+        <br />
+        <input type="checkbox" name="userIsAdmin" id="isAdminCheckbox" ngModel #isAdminField="ngModel" class="admin-checkbox" value="isAdmin">
+        <label for="isAdminCheckbox">Is user an admin?</label>
+        <br />
+        <button class="submit-button" value="Login">Submit</button>
+      </form>
+      
+</div>
