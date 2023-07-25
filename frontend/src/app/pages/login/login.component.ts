@@ -60,6 +60,8 @@ export class LoginComponent {
 
   updatePassword(form: any) {
     let url = 'users/' + this.user.id;
+    this.user.credentials.password = form.password;
+    
     this.http.put<any>(url, this.user).subscribe({
         next: data => {
           console.log(data);
