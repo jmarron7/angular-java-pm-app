@@ -50,9 +50,9 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Set<AnnouncementDto> getAllAnnouncements(Long id) {
         Company company = validateService.findCompany(id);
-        List<Announcement> sortedList = new ArrayList<Announcement>(company.getAnnouncements());
+        List<Announcement> sortedList = new ArrayList<>(company.getAnnouncements());
         sortedList.sort(Comparator.comparing(Announcement::getDate).reversed());
-        Set<Announcement> sortedSet = new HashSet<Announcement>(sortedList);
+        Set<Announcement> sortedSet = new HashSet<>(sortedList);
         return announcementMapper.entitiesToDtos(sortedSet);
     }
 
