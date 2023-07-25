@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class AnnouncementsComponent {
 
-  announcements: any[] = [];
+  announcements: any[] = [1,2,3,4];
   companyId = '';
 
   constructor(private http: HttpClient, private router: Router) { 
     let input = this.router.getCurrentNavigation();
     this.companyId = input?.extras?.state?.['companyId'];
+    localStorage.setItem('companyId', this.companyId);
   }
 
   ngOnInit() {
