@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: "projects", component: ProjectsComponent,canActivate:[AuthGuard]},
   { path: "user-registry", component: UserRegistryComponent,canActivate:[AuthGuard, RoleGuard]},
   { path: "navigation", component: NavmenuComponent,canActivate:[AuthGuard, RoleGuard]},
+
 ];
 
 @NgModule({

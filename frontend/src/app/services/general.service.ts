@@ -18,7 +18,12 @@ export class ProfileDto
 export class BasicUserDto
 {
   id: number=0;
-  profile: string='';
+  profile: ProfileDto={
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: ''
+  };
   isAdmin: boolean=false;
   active: boolean=false;
   status: string='';
@@ -26,17 +31,30 @@ export class BasicUserDto
 export class FullUserDto
 {
   id: number=0;
-  profile: string='';
+  profile: ProfileDto={
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: ''
+  };
   isAdmin: boolean=false;
   active: boolean=false;
   status: string='';
-  companies: string='';
-  teams: string='';
+  companies: CompanyDto[] = [];
+  teams: TeamDto[] = [];
 }
 export class UserRequestDto
 {
-  credentials: string='';
-  profile: string='';
+  credentials: CredentialsDto={
+    username: '',
+    password: ''
+  }
+  profile: ProfileDto={
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: ''
+  };
   isAdmin: boolean=false;
 }
 export class TeamDto
@@ -44,15 +62,15 @@ export class TeamDto
   id: number=0;
   name: string='';
   description: string='';
-  users: string='';
+  teammates: BasicUserDto[] = [];
 }
 export class CompanyDto
 {
   id: number=0;
   name: string='';
   description: string='';
-  teams: string='';
-  users: string='';
+  teams: TeamDto[] = [];
+  employees: BasicUserDto[] = [];
 }
 export class AnnouncementDto
 {
@@ -60,7 +78,19 @@ export class AnnouncementDto
   date: string='';
   title: string='';
   message: string='';
-  author: string='';
+  author: BasicUserDto= 
+  {
+    id: 0,
+    profile: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: ''
+    },
+    isAdmin: false,
+    active: false,
+    status: ''
+  }
 }
 export class ProjectDto
 {
@@ -68,7 +98,12 @@ export class ProjectDto
   name: string='';
   description: string='';
   active: boolean=false;
-  team: string='';
+  team: TeamDto={
+    id: 0,
+    name: '',
+    description: '',
+    teammates: []
+  };
 }
 
 @Injectable({
