@@ -14,7 +14,7 @@ export class LoginComponent {
   constructor(private generalService: GeneralService, private authService: AuthService, private router: Router, private http: HttpClient) { }
   
   isInvalid: boolean = false;
-  isPending: boolean = true;
+  isPending: boolean = false;
   userId = 0;
   user: UserRequestDto = {
     credentials: {
@@ -34,8 +34,8 @@ export class LoginComponent {
     this.authService.login(form.username, form.password).subscribe({
       next: data => {
         console.log(data);
-
-        let userData = JSON.parse(data);
+        
+        let userData = JSON.parse(JSON.stringify(data));
         this.userId = userData.id;
         this.user.profile = userData.profile;
         this.user.credentials = {
@@ -49,7 +49,7 @@ export class LoginComponent {
           this.isPending = true;
         }
         else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/select-company']);
         }
       },
       error: error => {
@@ -66,7 +66,13 @@ export class LoginComponent {
     this.http.put<any>(url, this.user).subscribe({
         next: data => {
           console.log(data);
-          this.router.navigate(['/']);
+          let returnedUser = JSON.parse(data);
+          let navigationExtras: NavigationExtras = {
+            state: {
+
+            }
+          };
+          this.router.navigate(['/select-company']);
         },
         error: error => {
           console.error(error);

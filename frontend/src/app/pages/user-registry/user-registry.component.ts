@@ -18,6 +18,7 @@ export class UserRegistryComponent {
     let url = 'company/' + localStorage.getItem('companyId') +  '/users';
     this.http.get<any>(url).subscribe({
         next: data => {
+          console.log(data);
             this.users = data;
         },
         error: error => {
