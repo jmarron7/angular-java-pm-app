@@ -1,1 +1,8 @@
-<p>navmenu works!</p>
+<nav class="navbar">
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+      <li *ngIf="!user.isAdmin"><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+      <li *ngIf="user.isAdmin"><a routerLink="/teams" routerLinkActive="active">Teams</a></li>
+      <li><a routerLink="/" routerLinkActive="active">LogOut</a></li>
+    </ul>
+  </nav>
