@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router, NavigationExtras } from '@angular/router';
+import { CompanyDto, GeneralService } from '../services/general.service';
 
 
 
@@ -9,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './select-company.component.html',
   styleUrls: ['./select-company.component.css']
 })
-export class SelectCompanyComponent  {
+export class SelectCompanyComponent implements OnInit  {
 
-  options: string=""//CompanyDto[] = [];
+
+  
+    companies: CompanyDto[] = [];
+  
+    constructor(private generalService: GeneralService) {}
+  
+    ngOnInit(): void {
+      this.loadCompanies();
+    }
+  
+    loadCompanies() {
+      this.generalService.getAllCompanies().subscribe(
+        (companies) => {
+          this.companies = companies;
+        },
+        (error) => {
+          console.error('Error fetching companies:', error);
+        }
+      );
+    }
+  
 
   
 

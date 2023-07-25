@@ -1,7 +1,8 @@
 
 <label for="s">Select Company:</label>
 
-<select>
-    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+  
+    <select *ngFor="let company of companies">
+    <option >{{ company.name }}</option>
   </select>
 
