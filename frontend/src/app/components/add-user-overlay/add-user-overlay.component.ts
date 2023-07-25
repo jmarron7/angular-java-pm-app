@@ -21,7 +21,7 @@ export class AddUserOverlayComponent {
     this.user.profile.phone = form.phone;
     this.user.isAdmin = form.userIsAdmin;
 
-    let url = 'http://localhost:8080' + 'company/' + localStorage.getItem('companyId') +  '/user';
+    let url = 'http://localhost:8080' + '/company/' + localStorage.getItem('companyId') +  '/user';
     this.http.post<UserRequestDto>(url, this.user).subscribe({
       next: data => {
         console.log(data);

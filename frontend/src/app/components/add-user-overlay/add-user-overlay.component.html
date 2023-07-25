@@ -2,7 +2,9 @@
     <div (click)="closeAddUserOverlay()">[ X ]</div>
     <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.form.value);">
         <input type="text" name="firstName" ngModel #firstNameField="ngModel" class="form-control" placeholder="first name">
-        <input type="text" name="lastName" ngModel #lastNaneField="ngModel" class="form-control" placeholder="last name">
+        <input type="text" name="lastName" ngModel #lastNameField="ngModel" class="form-control" placeholder="last name">
+        <br />
+        <input type="text" name="email" ngModel #emailField="ngModel" class="form-control" placeholder="email">
         <br />
         <input type="text" name="phoneNumber" ngModel #phoneField="ngModel" class="form-control" placeholder="phone">
         <br />
