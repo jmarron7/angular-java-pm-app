@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   templateUrl: './user-registry.component.html',
   styleUrls: ['./user-registry.component.css'],
 })
-<<<<<<< HEAD
 export class UserRegistryComponent {
 
   users: any[] = [1,2,3,4];
@@ -27,6 +26,3 @@ export class UserRegistryComponent {
       })
   }
 }
-=======
-export class UserRegistryComponent {}
->>>>>>> c39503da1610d3cf97b5ba94aee277e6e8eaabdb
