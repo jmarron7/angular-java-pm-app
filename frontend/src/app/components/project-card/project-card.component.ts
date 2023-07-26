@@ -10,6 +10,8 @@ export class ProjectCardComponent {
   @Input() project: ProjectDto = new ProjectDto();
   modalVisible: boolean = false;
   daysAgo: number = 0;
+  hoursAgo: number = 0;
+  minutesAgo: number = 0;
 
   @Output() toggleModal = new EventEmitter<any>();
 
@@ -22,11 +24,14 @@ export class ProjectCardComponent {
       console.log(date2);
       let millDifference = date2.getTime() - date1.getTime();
 
-      return Math.floor(millDifference / (1000 * 3600 * 24));
+      this.daysAgo = Math.floor(millDifference / (1000 * 3600 * 24));
+      this.hoursAgo = Math.floor(millDifference / (1000 * 3600));
+      this.minutesAgo = Math.floor(millDifference / (1000 * 60));
     })();
   }
 
   edit() {
     this.modalVisible = !this.modalVisible;
   }
+
 }
