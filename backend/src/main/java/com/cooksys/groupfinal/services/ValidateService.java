@@ -1,5 +1,6 @@
 package com.cooksys.groupfinal.services;
 
+import com.cooksys.groupfinal.dtos.BasicUserDto;
 import com.cooksys.groupfinal.entities.Company;
 import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
@@ -12,6 +13,8 @@ public interface ValidateService {
     User findUser(Long id);
 
     User findUser(String username);
+
+    BasicUserDto findUserByEmail(String email);
 
     Team findTeam(Long id);
 
