@@ -12,3 +12,14 @@
   color: rgba(255, 255, 255, 0.69);
   width: 70%;
 }
+
+.new-btn {
+  margin-bottom: 15px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--blue-text);
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
