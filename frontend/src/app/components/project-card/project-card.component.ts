@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProjectDto } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-project-card',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class ProjectCardComponent {
 
+  @Input() project: ProjectDto = new ProjectDto();
+  
 }
