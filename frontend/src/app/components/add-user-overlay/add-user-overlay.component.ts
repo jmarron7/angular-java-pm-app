@@ -21,7 +21,7 @@ export class AddUserOverlayComponent {
     this.user.profile.firstName = form.firstName;
     this.user.profile.lastName = form.lastName;
     this.user.profile.email = form.email;
-    this.user.profile.phone = form.phone;
+    this.user.profile.phone = form.phoneNumber;
     this.user.admin = form.userIsAdmin;
 
     let url = 'http://localhost:8080' + '/company/' + localStorage.getItem('companyId') +  '/user';
