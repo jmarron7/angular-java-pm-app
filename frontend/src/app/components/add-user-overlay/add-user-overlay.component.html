@@ -1,6 +1,13 @@
 <div class="add-user-overlay" *ngIf="modalVisible">
   <div class="add-user-container">
-    <div class="exit-button" (click)="handleOverlayExit()">[ x ]</div>
+    <div class="exit-button" (click)="handleOverlayExit()">
+        <img
+          class="exit-icon"
+          src="../../../assets/images/exit-icon.svg"
+          alt="exit"
+          width=30
+        />
+      </div>
     <h3>Create A New User</h3>
     <form
       class="add-user-form"
@@ -79,7 +86,7 @@
         <label for="isAdminCheckbox">Admin?</label>
       </div>
       <br />
-      <button class="submit-button" value="Login">Submit</button>
+      <button class="submit-button" value="Submit">Submit</button>
     </form>
   </div>
 </div>

@@ -18,7 +18,7 @@ export class LoginComponent {
   ) {}
 
   isInvalid: boolean = false;
-  isPending: boolean = true;
+  isPending: boolean = false;
   userId = 0;
   user: UserRequestDto = {
     credentials: {
@@ -48,8 +48,8 @@ export class LoginComponent {
         };
         this.user.admin = userData.admin;
 
-        localStorage.setItem('user', userData);
-        localStorage.setItem('companyId', userData.companyId);
+        localStorage.setItem('user', JSON.stringify(userData));
+        console.log(userData);
         if (userData.status === "PENDING") {
           this.isPending = true;
         }
@@ -57,6 +57,7 @@ export class LoginComponent {
           if (userData.admin) {
             this.router.navigate(['/select-company'])
           } else {
+            localStorage.setItem('companyId', userData.companies[0].id)
             this.router.navigate(['/']);
           }
         }
@@ -69,13 +70,17 @@ export class LoginComponent {
   }
 
   updatePassword(form: any) {
-    let url = 'users/' + this.userId;
+    let url = 'http://localhost:8080/users/' + this.userId;
     this.user.credentials.password = form.password;
-
+    console.log(this.user);
     this.http.put<any>(url, this.user).subscribe({
       next: (data) => {
         console.log(data);
-        this.router.navigate(['/']);
+        if (this.user.admin) {
+          this.router.navigate(['/select-company'])
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error: (error) => {
         console.error(error);

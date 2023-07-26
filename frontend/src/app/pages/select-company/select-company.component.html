@@ -1,7 +1,7 @@
 <div class="container1">
   <div class="container">
     <label class="title">Select Company</label>
-    <select id="select-company" [(ngModel)]="selectedCompanyId">
+    <select id="select-company" [(ngModel)]="selectedCompanyId" (ngModelChange)="setCompany($event)">
       <option value="0">Pick an option</option>
       <option *ngFor="let company of companies" [value]="company.id">
         {{ company.name }}

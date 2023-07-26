@@ -4,6 +4,8 @@ input {
   color: var(--beige);
   border: none;
   border-bottom: 1px solid var(--beige);
+  width: 250px;
+  margin-bottom: 30px;
 }
 
 input:focus {
@@ -19,10 +21,16 @@ input:focus {
   color: white;
 }
 
+.submit-button:disabled {
+  background-color: rgb(63, 63, 63);
+  color: rgb(143, 143, 143);
+  cursor: default;
+}
+
 .add-user-overlay {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   inset: 0px;
   background-color: rgba(18, 18, 18, 0.6);
   z-index: 1;
@@ -36,9 +44,9 @@ input:focus {
 }
 
 .add-user-container {
-  position: initial;
+  position: relative;
   box-sizing: border-box;
-  width: 400px;
+  width: 450px;
   height: 400px;
   margin-left: 20px;
   margin-right: 20px;
@@ -47,6 +55,7 @@ input:focus {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
+  justify-content: space-evenly;
   flex-direction: column;
   color: var(--beige);
   background-color: #0b2d45;
@@ -54,27 +63,24 @@ input:focus {
   border-radius: 10px;
 }
 
-.add-user-form {
-  position: relative;
-  width: 100%;
+.label-input {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.name-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+label {
+  margin-bottom: 20px;
 }
 
 .exit-button {
-  position: relative;
-  left: 20px;
+  position: absolute;
+  right: 5px;
   top: 5px;
   cursor: pointer;
+}
+
+.exit-icon {
+  width: 30px;
 }
 
 .hide {
