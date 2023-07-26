@@ -1,14 +1,19 @@
 <div class="add-user-overlay" [ngClass]="{ hide: !isOpen }">
   <div class="add-user-container">
     <div class="exit-button" (click)="isOpen = !isOpen">[ X ]</div>
-    <form class="add-user-form" #addUserForm="ngForm">
-      <div class="name-container">
-        <label for="title">Title</label>
-        <input type="text" id="title" ngModel class="form-control" />
-        <label for="message">Message</label>
-        <input type="text" id="message" ngModel class="form-control" />
-      </div>
-      <button class="submit-button" value="Login">Submit</button>
-    </form>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" [(ngModel)]="title" />
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message" [(ngModel)]="message" />
+    <button
+      [disabled]="title == '' || message == '' || submit"
+      class="submit-button"
+      value="Login"
+      (click)="post()"
+    >
+      Submit
+    </button>
+    <p *ngIf="success">Success!</p>
+    <p *ngIf="fail">Oops, something went wrong</p>
   </div>
 </div>
