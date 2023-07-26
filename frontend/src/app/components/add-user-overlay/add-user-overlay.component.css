@@ -92,12 +92,12 @@ button {
 }
 
 .exit-button {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    cursor: pointer;
-  }
-  
-  .exit-icon {
-    width: 30px;
-  }
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.exit-icon {
+  width: 30px;
+}

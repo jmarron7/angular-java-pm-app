@@ -137,3 +137,24 @@ label {
   bottom: 3px;
   cursor: pointer;
 }
+
+.admin-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.active {
+  font-weight: 400;
+}
+
+#active-select {
+  padding: 5px 10px;
+  width: 12rem;
+  height: 2rem;
+  text-align-last: center;
+  outline: none;
+  border-radius: 0.5rem;
+}

@@ -1,10 +1,10 @@
-
 <app-create-project-overlay
-  *ngIf="creatingProject"
+  *ngIf="showOverlay"
+  (updateOverlay)="toggleOverlay()"
+  [teamId]="teamId"
 ></app-create-project-overlay>
-<button (click)="creatingProject = !creatingProject">
-  Click Create Proj test
-</button>
+<button (click)="toggleOverlay()">Click Create Proj test</button>
+
 
 <div id="projects-container">
     <h1 class="title"*ngIf="projects.length > 0">{{ teamName }}'s projects</h1>
