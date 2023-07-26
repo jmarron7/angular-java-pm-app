@@ -13,7 +13,7 @@ export class RoleGuard implements CanActivate {
       console.log('CanActivate called');
     let user = localStorage.getItem('user');
     if (user != null) {
-      if (JSON.parse(user).isAdmin) {
+      if (JSON.parse(user).admin) {
         return true;
       } else {
         this.router.navigate(['/login'])
