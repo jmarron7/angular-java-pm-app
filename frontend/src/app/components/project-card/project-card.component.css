@@ -1,0 +1,18 @@
+#title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%
+}
+
+.last-edited {
+    margin-top: 3px;
+    margin-left: 30px;
+    font-size: small;
+}
+
+#name {
+    font-size: x-large;
+    color: rgba(255, 255, 255, 1);
+}
+

@@ -9,5 +9,6 @@
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgba(222, 185, 146, .6);
-    color: rgba(255, 255, 255, .69)
+    color: rgba(255, 255, 255, .69);
+    width: 70%;
 }
