@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FullUserDto, GeneralService } from '../../services/general.service';
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-navmenu',
@@ -9,28 +9,26 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavmenuComponent {
 
-  user: FullUserDto = new FullUserDto();
+ user: any;
+
   
 
-  constructor(private generalService: GeneralService, private authService: AuthService) {}
+  constructor( private authService: AuthService) {}
 
-  // createUser() {
+  createUser() {
    
+    const navUser= localStorage.getItem('user');
 
    
-  //   this.generalService.getFullUserDto().subscribe(
+    if (navUser) {
+      this.user = JSON.parse(navUser);
+    } else {
+ 
+      console.error('User not found in local storage.');
+    }
+  }
 
-  //     (response) => {
-        
-  //       console.log('User created successfully!', response);
-  //     },
-  //     (error) => {
-       
-  //       console.error('Error creating user:', error);
-  //     }
-  //   );
-
-  // }
+  
 
   navLogout() {this.authService.logout()}
 

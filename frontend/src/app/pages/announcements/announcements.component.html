@@ -1,5 +1,17 @@
-<h1>announcements</h1>
-
-<div *ngFor="let announcement of announcements">
-    <app-announcement-card></app-announcement-card>
+<app-create-announcement-overlay
+  *ngIf="isCreatingPost"
+></app-create-announcement-overlay>
+<div class="container">
+  <div class="title">
+    <h1>Announcements</h1>
+    <button class="btn" (click)="isCreatingPost = !isCreatingPost">New</button>
+  </div>
+  <div *ngFor="let announcement of announcements">
+    <app-announcement-card
+      [name]="announcement.name"
+      [date]="announcement.date"
+      [title]="announcement.title"
+      [content]="announcement.content"
+    ></app-announcement-card>
+  </div>
 </div>

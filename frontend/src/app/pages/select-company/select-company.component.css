@@ -1,0 +1,26 @@
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 18rem;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+select,
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}

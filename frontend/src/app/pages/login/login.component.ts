@@ -1,85 +1,90 @@
 import { Component } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { GeneralService, UserRequestDto } from '../../services/general.service';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-      
-  constructor(private generalService: GeneralService, private authService: AuthService, private router: Router, private http: HttpClient) { }
-  
+  constructor(
+    private generalService: GeneralService,
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+
   isInvalid: boolean = false;
   isPending: boolean = false;
   userId = 0;
   user: UserRequestDto = {
     credentials: {
-      username: "",
-      password: ""
+      username: '',
+      password: '',
     },
     profile: {
-      firstname: "",
-      lastname: "",
-      email: "",
-      phone: ""
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
     },
-    isAdmin: false
+    admin: false,
   };
 
   login(form: any) {
     this.authService.login(form.username, form.password).subscribe({
-      next: data => {
+      next: (data) => {
         console.log(data);
-        
+
         let userData = JSON.parse(JSON.stringify(data));
         this.userId = userData.id;
         this.user.profile = userData.profile;
         this.user.credentials = {
           username: form.username,
-          password: form.password
-        }
-        this.user.isAdmin = userData.isAdmin;
+          password: form.password,
+        };
+        this.user.admin = userData.admin;
 
-        localStorage.setItem('user', data);
+        localStorage.setItem('user', JSON.stringify(userData));
+        console.log(userData);
         if (userData.status === "PENDING") {
           this.isPending = true;
         }
         else {
-          this.router.navigate(['/select-company']);
+          if (userData.admin) {
+            this.router.navigate(['/select-company'])
+          } else {
+            this.router.navigate(['/']);
+          }
         }
       },
-      error: error => {
+      error: (error) => {
         console.error(error);
         this.isInvalid = true;
-      }
-    })
+      },
+    });
   }
 
   updatePassword(form: any) {
-    let url = 'users/' + this.userId;
+    let url = 'http://localhost:8080/users/' + this.userId;
     this.user.credentials.password = form.password;
-    
+    console.log(this.user);
     this.http.put<any>(url, this.user).subscribe({
-        next: data => {
-          console.log(data);
-          let returnedUser = JSON.parse(data);
-          let navigationExtras: NavigationExtras = {
-            state: {
-
-            }
-          };
-          this.router.navigate(['/select-company']);
-        },
-        error: error => {
-          console.error(error);
-          this.isInvalid = true;
+      next: (data) => {
+        console.log(data);
+        if (this.user.admin) {
+          this.router.navigate(['/select-company'])
+        } else {
+          this.router.navigate(['/']);
         }
-      })
+      },
+      error: (error) => {
+        console.error(error);
+        this.isInvalid = true;
+      },
+    });
   }
-
 }
-

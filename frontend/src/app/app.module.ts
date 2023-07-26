@@ -22,6 +22,7 @@ import { EditProjectOverlayComponent } from './components/edit-project-overlay/e
 import { AddUserOverlayComponent } from './components/add-user-overlay/add-user-overlay.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
+import { AddAdminOverlayComponent } from './components/add-admin-overlay/add-admin-overlay.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AuthGuard } from './services/auth.guard';
     ProjectCardComponent,
     CreateProjectOverlayComponent,
     EditProjectOverlayComponent,
-    AddUserOverlayComponent
+    AddUserOverlayComponent,
+    AddAdminOverlayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,50 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { Router, NavigationExtras } from '@angular/router';
 import { CompanyDto, GeneralService } from '../../services/general.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-company',
   templateUrl: './select-company.component.html',
-  styleUrls: ['./select-company.component.css']
+  styleUrls: ['./select-company.component.css'],
 })
-export class SelectCompanyComponent implements OnInit  {
+export class SelectCompanyComponent implements OnInit {
+  companies: CompanyDto[] = [];
+  selectedCompanyId: number = 0;
 
+  constructor(private router: Router) {}
 
-  
-    companies: CompanyDto[] = [];
-  
-    constructor(private generalService: GeneralService) {}
-  
-    ngOnInit(): void {
-      this.loadCompanies();
+  ngOnInit(): void {
+    this.loadCompanies();
+  }
+
+  loadCompanies() {
+    let user = JSON.parse(localStorage.getItem('user')!);
+    if (user) {
+      this.companies = user.companies;
     }
-  
-    loadCompanies() {
-      this.generalService.getAllCompanies().subscribe(
-        
-        (companies) => {
-          this.companies = companies;
-          
-        },
-        (error) => {
-          console.error('Error fetching companies:', error);
-        }
-      );
+  }
 
-      this.generalService.getCompany().subscribe(
-        
-        (company) => {
-          localStorage.setItem('company', JSON.stringify(company))
-          
-        },
-        (error) => {
-          console.error('Error fetching companies:', error);
-        }
-      );
+  setCompany(selectedCompanyId: any) {
+    if (selectedCompanyId.length === 0) {
+      this.selectedCompanyId = 0
+    } else {
+    this.selectedCompanyId = selectedCompanyId;
     }
-  
+
+    localStorage.setItem('companyId', selectedCompanyId)
+  }
+
+  nextPage() {
+    this.router.navigateByUrl('');
+  }
 }
