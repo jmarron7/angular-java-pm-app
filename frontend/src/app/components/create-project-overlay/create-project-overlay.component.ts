@@ -33,13 +33,9 @@ export class CreateProjectOverlayComponent implements OnInit {
     }
   }
 
-  // handles the submit click and posts new project if no project came in as input (as it should when edit button is clicked)
-  // put, updates project if project field is populated by input (edit button was clicked to get here)
   postOrPut() {
     if (this.project) this.updateProject();
-    else {
-      this.getTeamData();
-    }
+    else this.getTeamData();
   }
 
   getTeamData() {
@@ -50,7 +46,6 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.teamProjects = data[0];
-          console.log(this.teamProjects.team);
         },
         error: (e) => {
           console.log(e);
@@ -63,7 +58,36 @@ export class CreateProjectOverlayComponent implements OnInit {
       });
   }
 
-  updateProject() {}
+  updateProject() {
+    this.http
+      .put(
+        `http://localhost:8080/company/${this.companyId}/teams/${this.project.team.id}/project/${this.project.id}`,
+        {
+          name: this.projectName,
+          description: this.description,
+          active: this.active,
+          team: this.project.team,
+        }
+      )
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => {
+          console.log(e);
+          this.fail = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+        complete: () => {
+          this.success = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+      });
+  }
 
   createProject() {
     this.http
@@ -78,7 +102,6 @@ export class CreateProjectOverlayComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
-          console.log('here');
           console.log(res);
         },
         error: (e) => {
@@ -89,7 +112,6 @@ export class CreateProjectOverlayComponent implements OnInit {
           }, 700);
         },
         complete: () => {
-          console.log('complete');
           this.success = true;
           setTimeout(() => {
             this.exit();
