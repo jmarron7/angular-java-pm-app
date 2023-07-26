@@ -10,9 +10,10 @@ export class ProjectCardComponent {
 
   @Input() project: ProjectDto = new ProjectDto();
   daysAgo: number = 0;
+  hoursAgo: number = 0;
+  minutesAgo: number = 0;
 
   ngOnInit() {
-    this.daysAgo = (() => {
     let date1 = new Date(this.project.date);
     let date2 = new Date();
     
@@ -20,7 +21,9 @@ export class ProjectCardComponent {
     console.log(date2)
     let millDifference = date2.getTime() - date1.getTime();
       
-    return Math.floor(millDifference / (1000 * 3600 * 24));
-    })()
+    this.daysAgo = Math.floor(millDifference / (1000 * 3600 * 24));
+    this.hoursAgo = Math.floor(millDifference / (1000 * 3600));
+    this.minutesAgo = Math.floor(millDifference / (1000 * 60));
   }
+
 }
