@@ -16,6 +16,7 @@ export class CreateProjectOverlayComponent implements OnInit {
   success: boolean = false;
   fail: boolean = false;
   companyId: number = 0;
+  active: boolean = true;
   @Input() teamId: number = 0;
   @Input() project: any;
   @Output() updateOverlay = new EventEmitter<any>();
@@ -25,7 +26,19 @@ export class CreateProjectOverlayComponent implements OnInit {
   ngOnInit(): void {
     const companyId = JSON.parse(localStorage.getItem('companyId')!);
     if (companyId) this.companyId = companyId;
+    if (this.project) {
+      this.projectName = this.project.name;
+      this.description = this.project.description;
+    }
   }
+
+  postOrPut() {
+    console.log(this.active);
+    if (this.project) this.updateProject();
+    else this.createProject();
+  }
+
+  updateProject() {}
 
   createProject() {
     this.http
@@ -34,7 +47,7 @@ export class CreateProjectOverlayComponent implements OnInit {
         {
           name: this.projectName,
           description: this.description,
-          active: true,
+          active: this.active,
           team: {
             id: 0,
             name: 'test',

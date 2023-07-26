@@ -1,10 +1,26 @@
-<div id="title">
-    <p id="name"> {{ project.name }} </p>
-    <div class="last-edited" *ngIf="daysAgo > 0">Last edited {{ daysAgo }} days ago</div>
-    <div class="last-edited" *ngIf="hoursAgo > 0">Last edited {{ hoursAgo }} hours ago</div>
-    <div class="last-edited" *ngIf="minutesAgo > 0">Last edited {{ minutesAgo }} minutes ago</div>
-    <div class="last-edited" *ngIf="minutesAgo < 1">Last edited now</div>
+<div class="card">
+  <div class="card1">
+    <div id="title">
+      <p
+        class="active"
+        [ngClass]="{ green: project.active, red: !project.active }"
+      >
+        {{ project.active ? "Active" : "Inactive" }}
+      </p>
+      <p id="name">{{ project.name }}</p>
+      <div class="last-edited" *ngIf="daysAgo > 0">Last edited {{ daysAgo }} days ago</div>
+      <div class="last-edited" *ngIf="hoursAgo > 0">Last edited {{ hoursAgo }} hours ago</div>
+      <div class="last-edited" *ngIf="minutesAgo > 0">Last edited {{ minutesAgo }} minutes ago</div>
+      <div class="last-edited" *ngIf="minutesAgo < 1">Last edited now</div>
+      <div class="last-edited" *ngIf="daysAgo <= 1">Last edited today</div>
+    </div>
+    <div id="content">
+      {{ project.description }}
+    </div>
+    <button class="btn" (click)="edit()">Edit</button>
+  </div>
 </div>
-<div id="content">
-    {{ project.description }}
-</div>
+<app-create-project-overlay
+  [project]="project"
+  *ngIf="modalVisible"
+></app-create-project-overlay>

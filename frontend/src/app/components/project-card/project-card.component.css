@@ -1,18 +1,53 @@
+.card {
+  border-bottom: 1px solid var(--beige);
+  position: relative;
+}
+
+.card1 {
+  width: 500px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--beige);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.active {
+  position: absolute;
+  right: 20px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
 #title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
 }
 
 .last-edited {
-    margin-top: 3px;
-    margin-left: 30px;
-    font-size: small;
+  margin-top: 3px;
+  margin-left: 30px;
+  font-size: small;
 }
 
 #name {
-    font-size: x-large;
-    color: rgba(255, 255, 255, 1);
+  font-size: x-large;
+  color: rgba(255, 255, 255, 1);
 }
-
