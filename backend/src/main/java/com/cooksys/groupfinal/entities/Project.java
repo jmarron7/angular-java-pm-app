@@ -5,6 +5,8 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Entity
 @NoArgsConstructor
 @Data
@@ -22,5 +24,8 @@ public class Project {
 	
 	@ManyToOne
 	private Team team;
+
+	private Timestamp date;
+
 
 }

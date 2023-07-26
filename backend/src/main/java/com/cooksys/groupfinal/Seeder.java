@@ -1,5 +1,7 @@
 package com.cooksys.groupfinal;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -260,16 +262,19 @@ public class Seeder implements CommandLineRunner {
 	  project1.setDescription("Brightstar theme park expansion to be led by newly appointed head of waystar|ROYCO's amusement park and cruise division, Tom Wambsgans.");
 	  project1.setActive(true);
 	  project1.setTeam(team1);
+	  project1.setDate(Timestamp.from(Instant.now()));
 
 	  project2.setName("New Angular Content");
 	  project2.setDescription("New Angular video content and assignments are on the way!");
 	  project2.setActive(true);
 	  project2.setTeam(team7);
+	  project2.setDate(Timestamp.from(Instant.now()));
 
 	  project3.setName("Shuttle Launch");
 	  project3.setDescription("Shuttle launch in Japan to be led by COO, Roman Roy.");
 	  project3.setActive(true);
 	  project3.setTeam(team3);
+	  project3.setDate(Timestamp.from(Instant.now()));
 
 	  team1.setName("Team 1");
 	  team1.setDescription("Greg & Tom");
