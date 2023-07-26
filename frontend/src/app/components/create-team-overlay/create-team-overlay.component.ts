@@ -45,11 +45,8 @@ export class CreateTeamOverlayComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           for (let member of data) this.members.push(member);
-          console.log(this.members);
         },
-        error: (e) => {
-          console.log(e);
-        },
+        error: (e) => console.log(e),
       });
   }
 
@@ -77,7 +74,19 @@ export class CreateTeamOverlayComponent implements OnInit {
       })
       .subscribe({
         next: (res) => console.log(res),
-        error: (e) => console.log(e),
+        error: (e) => {
+          console.log(e);
+          this.fail = true;
+          setTimeout(() => {
+            this.isOpen = false;
+          }, 700);
+        },
+        complete: () => {
+          this.success = true;
+          setTimeout(() => {
+            this.isOpen = false;
+          }, 700);
+        },
       });
   }
 }

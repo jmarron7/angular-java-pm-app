@@ -6,18 +6,17 @@ import { ProjectDto } from 'src/app/services/general.service';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent {
- 
   projects: ProjectDto[] = [];
   teamName: string = '';
   teamId: number = 0;
+  creatingProject: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router) {
     let input = this.router.getCurrentNavigation();
 
-    
     let receivedProjects = input?.extras?.state?.['projects'];
     if (receivedProjects != null) {
       this.projects = receivedProjects;
@@ -36,18 +35,25 @@ export class ProjectsComponent {
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') as string);
     if (this.projects.length === 0 && !user.admin) {
-    this.teamName = JSON.parse(localStorage.getItem('user') as string).teams[0].name;
-    this.teamId = JSON.parse(localStorage.getItem('user') as string).teams[0].id;
-    let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') +  '/teams/' + user.teams[0].id + '/projects';
-    this.http.get<any>(url).subscribe({
-        next: data => {
-            this.projects = data as ProjectDto[];
+        console.log('we are in the if!');
+        this.teamName = JSON.parse(
+          localStorage.getItem('user') as string
+          ).teams[0].name;
+        this.teamId = JSON.parse(localStorage.getItem('user') as string).teams[0].id;
+      let url =
+        'http://localhost:8080/company/' +
+        localStorage.getItem('companyId') +
+        '/teams/' +
+        user.teams[0].id +
+        '/projects';
+      this.http.get<any>(url).subscribe({
+        next: (data) => {
+          this.projects = data as ProjectDto[];
         },
-        error: error => {
-            console.error(error);
-          }
-      })
+        error: (error) => {
+          console.error(error);
+        },
+      });
     }
   }
 }
-
