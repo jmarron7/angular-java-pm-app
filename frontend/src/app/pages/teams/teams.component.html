@@ -1,5 +1,7 @@
+<app-create-team-overlay *ngIf="creatingTeam"></app-create-team-overlay>
 <h1>teams</h1>
+<button (click)="creatingTeam = !creatingTeam">Test - Open Create Modal</button>
 
 <div *ngFor="let team of teams">
-    <app-team-card team="{{ team }}"></app-team-card>
+  <app-team-card team="{{ team }}"></app-team-card>
 </div>
