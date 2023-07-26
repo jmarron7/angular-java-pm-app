@@ -7,6 +7,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./create-project-overlay.component.css'],
 })
 export class CreateProjectOverlayComponent implements OnInit {
+  // just for testing
+  admin: boolean = true;
+  //
   modalVisible: boolean = true;
   projectName: string = '';
   description: string = '';
