@@ -1,8 +1,12 @@
 <nav class="navbar">
-    <ul class="nav-links">
-      <li><a routerLink="/">Home</a></li>
-      <li *ngIf="!user.isAdmin"><a routerLink="/projects">Projects</a></li>
-      <li *ngIf="user.isAdmin"><a routerLink="/teams">Teams</a></li>
-      <li routerLink="/" id="logout" *ngIf="navLogout()"><a  routerLinkActive="active">LogOut</a></li>
-    </ul>
-  </nav>
+  <ul class="nav-links">
+    <li><a routerLink="/">Home</a></li>
+    <li *ngIf="user.isAdmin"><a routerLink="/select-company">Company</a></li>
+    <li *ngIf="!user.isAdmin"><a routerLink="/projects">Projects</a></li>
+    <li *ngIf="user.isAdmin"><a routerLink="/teams">Teams</a></li>
+    <li routerLink="/" id="logout" *ngIf="navLogout()">
+      <a routerLinkActive="active">LogOut</a>
+    </li>
+  </ul>
+  <button (click)="test()">test</button>
+</nav>
