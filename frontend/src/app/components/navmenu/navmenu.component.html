@@ -7,12 +7,14 @@
   </button>
   <ul class="dropdown-menu">
     <li><a routerLink="/">Home</a></li>
+
     <li *ngIf="user.isAdmin"><a routerLink="/select-company">Company</a></li>
     <li *ngIf="!user.isAdmin"><a routerLink="/projects">Projects</a></li>
     <li *ngIf="user.isAdmin"><a routerLink="/teams">Teams</a></li>
     <li routerLink="/" id="logout" *ngIf="navLogout()">
       <a routerLinkActive="active">LogOut</a>
     </li>
+
   </ul>
 </div>
 </nav>

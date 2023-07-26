@@ -1,14 +1,38 @@
-<div class="create-project" [ngClass]="{ hide: !isOpen }">
-    <div class="create-project-container">
-      <div class="exit-button" (click)="isOpen = !isOpen">[ X ]</div>
-      <form class="add-user-form" #addUserForm="ngForm">
-        <div class="name-container">
-          <label for="project-name">project name</label>
-          <input type="text" id="project-name" ngModel class="form-control" />
-          <label for="description">description</label>
-          <input type="text" id="description" ngModel class="form-control" />
-        </div>
-        <button class="submit-button" value="Login">Submit</button>
-      </form>
+<div class="add-user-overlay" [ngClass]="{ hide: !isOpen }">
+  <div class="add-user-container">
+    <div class="exit-button" (click)="isOpen = !isOpen">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/x-icon.svg"
+        alt="exit"
+      />
+    </div>
+    <div>
+      <div class="label-input">
+        <label for="name">Project Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="projectName" />
+      </div>
+      <div class="label-input">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        />
+      </div>
+    </div>
+    <div>
+      <button
+        (click)="createProject()"
+        class="submit-button"
+        value="Login"
+        [disabled]="projectName == '' || description == ''"
+      >
+        Submit
+      </button>
+      <p *ngIf="success">Success!</p>
+      <p *ngIf="fail">Oops, something went wrong</p>
     </div>
   </div>
+</div>
