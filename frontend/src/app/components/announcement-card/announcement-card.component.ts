@@ -11,5 +11,6 @@ export class AnnouncementCardComponent {
   @Input() name: string = '';
   @Input() content: string = '';
   @Input() date: string = '';
-
+  @Input() title: string = '';
+  
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 interface Announcement {
   name: string,
   date: string,
+  title: string,
   content: string
 }
 
@@ -28,6 +29,7 @@ export class AnnouncementsComponent {
           return {
             name: announcement.author.profile.firstName + ' ' + announcement.author.profile.lastName,
             date: new Date(announcement.date).toDateString(),
+            title: announcement.title,
             content: announcement.message
           };
         });
