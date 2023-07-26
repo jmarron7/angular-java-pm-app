@@ -4,5 +4,6 @@
     <div class="teams-container">
         <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
     </div>
-    
+    <button (click)="creatingTeam = !creatingTeam">Test - Open Create Modal</button>
 </div>
+<app-create-team-overlay *ngIf="creatingTeam"></app-create-team-overlay>
