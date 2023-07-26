@@ -1,7 +1,15 @@
-<div (click)="goToProjects()"> 
-    {{ team.name }}
-    <div *ngFor="let member of team.members">
-        {{ member.profile.firstName + ' ' + member.profile.lastName[0] + '.'}}
+<div (click)="goToProjects()" class="team-card-container"> 
+    <div class="card-header">
+        <h3 class="team-name">
+            {{ team.name }}
+        </h3>
+        <div class="projects-count">
+            {{ "# of Projects: " + projectCount }}
+        </div>
     </div>
-    {{ projectCount }}
+    <div class="member-container">
+        <div class="member-name" *ngFor="let member of team.members">
+            {{ member.profile.firstName + ' ' + member.profile.lastName[0] + '.'}}
+        </div>
+    </div>
 </div>
