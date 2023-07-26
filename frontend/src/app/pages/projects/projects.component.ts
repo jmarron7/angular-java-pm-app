@@ -12,6 +12,7 @@ export class ProjectsComponent {
  
   projects: ProjectDto[] = [];
   teamName: string = '';
+  teamId: number = 0;
 
   constructor(private http: HttpClient, private router: Router) { 
     let input = this.router.getCurrentNavigation();
@@ -25,14 +26,18 @@ export class ProjectsComponent {
     if (receivedTeamName != null) {
       this.teamName = receivedTeamName;
     }
+    let receivedTeamId = input?.extras?.state?.['teamId'];
+    if (receivedTeamId != null) {
+      this.teamId = receivedTeamId;
+    }
     console.log("Team Name from Projects: " + this.teamName)
   }
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') as string);
     if (this.projects.length === 0 && !user.admin) {
-    console.log('we are in the if!');
-      this.teamName = JSON.parse(localStorage.getItem('user') as string).teams[0].name;
+    this.teamName = JSON.parse(localStorage.getItem('user') as string).teams[0].name;
+    this.teamId = JSON.parse(localStorage.getItem('user') as string).teams[0].id;
     let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') +  '/teams/' + user.teams[0].id + '/projects';
     this.http.get<any>(url).subscribe({
         next: data => {

@@ -11,6 +11,9 @@ export class NavmenuComponent {
 
   constructor(private authService: AuthService) {}
 
+  ngOnInit() {
+    this.createUser();
+  }
   createUser() {
     const user = JSON.parse(localStorage.getItem('user')!);
     if (user) this.user = user;
