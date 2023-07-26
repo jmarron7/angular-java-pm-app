@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 interface Announcement {
   name: string;
-  date: string;
+  date: Date;
   title: string;
   content: string;
 }
@@ -34,15 +34,18 @@ export class AnnouncementsComponent {
               announcement.author.profile.firstName +
               ' ' +
               announcement.author.profile.lastName,
-            date: new Date(announcement.date).toDateString(),
+            date: new Date(announcement.date),
             title: announcement.title,
             content: announcement.message,
           };
-        });
+        })
+        this.announcements.sort((a: Announcement, b: Announcement) => a.date > b.date ? -1 : 1);
+        console.log(this.announcements)
       },
       error: (error) => {
         console.error(error);
       },
     });
+    
   }
 }

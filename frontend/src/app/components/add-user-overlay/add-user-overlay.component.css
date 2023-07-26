@@ -48,7 +48,7 @@ button {
 }
 
 .add-user-container {
-  position: initial;
+  position: relative;
   box-sizing: border-box;
   width: 600px;
   margin-left: 20px;
@@ -63,6 +63,7 @@ button {
   background-color: #0b2d45;
   border: 1px solid var(--blue-text);
   border-radius: 3px;
+  cursor: default;
 }
 
 .add-user-form {
@@ -91,7 +92,12 @@ button {
 }
 
 .exit-button {
-  position: relative;
-  left: 20px;
-  top: 5px;
-}
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+  }
+  
+  .exit-icon {
+    width: 30px;
+  }

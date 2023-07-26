@@ -57,6 +57,7 @@ export class LoginComponent {
           if (userData.admin) {
             this.router.navigate(['/select-company'])
           } else {
+            localStorage.setItem('companyId', userData.companies[0].id)
             this.router.navigate(['/']);
           }
         }
