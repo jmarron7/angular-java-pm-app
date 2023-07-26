@@ -11,7 +11,6 @@ import { TeamDto, ProjectDto, GeneralService } from '../../services/general.serv
 export class TeamsComponent {
 
   teams: any[] = [];
-  projects: ProjectDto[] = [];
 
   constructor(private generalService: GeneralService, private http: HttpClient, private router: Router) { 
   }
@@ -26,12 +25,11 @@ export class TeamsComponent {
             let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') + '/teams/' + team.id + '/projects';
             this.http.get<any>(url).subscribe({
                 next: data => {
-                    (JSON.parse(JSON.stringify(data)) as ProjectDto[]).forEach((project) => this.projects.push(project));
                     this.teams.push({
                       id: team.id,
                       name: team.name,
                       members: team.teammates,
-                      projectCount: JSON.parse(JSON.stringify(data)).length
+                      projects: JSON.parse(JSON.stringify(data))
                     });
                   },
                   error: error => {
@@ -40,7 +38,6 @@ export class TeamsComponent {
                 })
             });
             console.log(this.teams);
-            console.log(this.projects);
             
           },
         error: error => {

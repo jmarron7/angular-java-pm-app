@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { ProjectDto } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-team-card',
@@ -8,14 +9,19 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class TeamCardComponent {
 
-  @Input() teamId = '';
+  @Input() team: any = {
+    id: 0,
+    name: '',
+    members: [],
+    projects: []
+  }
 
   constructor(private router: Router) {}
 
   goToProjects() {
     let navigationExtras: NavigationExtras = {
       state: {
-        teamId: this.teamId
+        projects: this.team.projects
       }
     };
     this.router.navigate(['/projects'], navigationExtras);
