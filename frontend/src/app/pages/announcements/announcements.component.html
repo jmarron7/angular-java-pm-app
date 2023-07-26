@@ -1,11 +1,12 @@
 <app-create-announcement-overlay
-  *ngIf="isCreatingPost"
+  *ngIf="showOverlay"
+  (updateOverlay)="toggleOverlay()"
 ></app-create-announcement-overlay>
 <app-navmenu> </app-navmenu>
 <div class="container">
   <div class="title">
     <h1>Announcements</h1>
-    <button class="btn" (click)="isCreatingPost = !isCreatingPost">New</button>
+    <button class="btn" (click)="toggleOverlay()">New</button>
   </div>
   <div *ngFor="let announcement of announcements">
     <app-announcement-card
