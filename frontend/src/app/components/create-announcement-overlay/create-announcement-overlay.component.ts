@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-announcement-overlay',
@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-announcement-overlay.component.css'],
 })
 export class CreateAnnouncementOverlayComponent implements OnInit {
-  // TODO, have to click new announcement twice to open
-  isOpen: boolean = true;
+  modalVisible: boolean = true;
   title: string = '';
   message: string = '';
   fail: boolean = false;
@@ -16,6 +15,8 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
   submit: boolean = false;
   companyId: number = 0;
   user: any;
+
+  @Output() updateOverlay = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
@@ -53,15 +54,19 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
           this.fail = true;
           this.submit = true;
           setTimeout(() => {
-            this.isOpen = false;
+            this.exit();
           }, 700);
         },
         complete: () => {
           (this.success = true),
             setTimeout(() => {
-              this.isOpen = false;
+              this.exit();
             }, 700);
         },
       });
+  }
+
+  exit() {
+    this.updateOverlay.emit();
   }
 }

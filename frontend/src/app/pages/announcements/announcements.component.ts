@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 interface Announcement {
   name: string;
@@ -16,9 +15,9 @@ interface Announcement {
 })
 export class AnnouncementsComponent {
   announcements: Announcement[] = [];
-  isCreatingPost: boolean = false;
+  showOverlay: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     let url =
@@ -38,14 +37,19 @@ export class AnnouncementsComponent {
             title: announcement.title,
             content: announcement.message,
           };
-        })
-        this.announcements.sort((a: Announcement, b: Announcement) => a.date > b.date ? -1 : 1);
-        console.log(this.announcements)
+        });
+        this.announcements.sort((a: Announcement, b: Announcement) =>
+          a.date > b.date ? -1 : 1
+        );
+        console.log(this.announcements);
       },
       error: (error) => {
         console.error(error);
       },
     });
-    
+  }
+
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
   }
 }

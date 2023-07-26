@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-project-overlay',
@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-project-overlay.component.css'],
 })
 export class CreateProjectOverlayComponent implements OnInit {
-  isOpen: boolean = true;
+  modalVisible: boolean = true;
   projectName: string = '';
   description: string = '';
   success: boolean = false;
   fail: boolean = false;
   companyId: number = 0;
-  teamId: number = 0;
+  @Input() teamId: number = 0;
+  @Input() project: any;
+  @Output() updateOverlay = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -59,16 +61,20 @@ export class CreateProjectOverlayComponent implements OnInit {
           console.log(e);
           this.fail = true;
           setTimeout(() => {
-            this.isOpen = false;
+            this.exit();
           }, 700);
         },
         complete: () => {
           console.log('complete');
           this.success = true;
           setTimeout(() => {
-            this.isOpen = false;
+            this.exit();
           }, 700);
         },
       });
+  }
+
+  exit() {
+    this.updateOverlay.emit();
   }
 }

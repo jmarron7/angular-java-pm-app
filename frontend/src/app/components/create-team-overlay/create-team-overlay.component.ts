@@ -1,19 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BasicUserDto } from 'src/app/services/general.service';
-
-interface basicUserDto {
-  id: number;
-  profile: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-  };
-  admin: boolean;
-  active: boolean;
-  status: string;
-}
 
 @Component({
   selector: 'app-create-team-overlay',
@@ -21,7 +8,7 @@ interface basicUserDto {
   styleUrls: ['./create-team-overlay.component.css'],
 })
 export class CreateTeamOverlayComponent implements OnInit {
-  isOpen: boolean = true;
+  modalVisible: boolean = true;
   teamName: string = '';
   description: string = '';
   success: boolean = false;
@@ -30,6 +17,8 @@ export class CreateTeamOverlayComponent implements OnInit {
   addedMembers: Array<BasicUserDto> = [];
   selectedMember: any;
   companyId: number = 0;
+
+  @Output() updateOverlay = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -78,15 +67,19 @@ export class CreateTeamOverlayComponent implements OnInit {
           console.log(e);
           this.fail = true;
           setTimeout(() => {
-            this.isOpen = false;
+            this.exit();
           }, 700);
         },
         complete: () => {
           this.success = true;
           setTimeout(() => {
-            this.isOpen = false;
+            this.exit();
           }, 700);
         },
       });
+  }
+
+  exit() {
+    this.updateOverlay.emit();
   }
 }
