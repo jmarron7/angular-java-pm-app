@@ -4,8 +4,8 @@
 <div class="teams-page-container">
   <div class="teams-container">
     <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
-  </div>
-  <button (click)="toggleOverlay()">Test - Open Create Modal</button>
+    <button (click)="toggleOverlay()">Test - Open Create Modal</button>
+</div>
 </div>
 <app-create-team-overlay
   (updateOverlay)="toggleOverlay()"
