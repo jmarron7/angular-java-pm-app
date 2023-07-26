@@ -1,0 +1,14 @@
+.teams-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.teams-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
