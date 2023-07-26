@@ -28,6 +28,7 @@ export class TeamCardComponent {
     let navigationExtras: NavigationExtras = {
       state: {
         projects: this.team.projects,
+        teamName: this.team.name
       }
     };
     this.router.navigate(['/projects'], navigationExtras);
