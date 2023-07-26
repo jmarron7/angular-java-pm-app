@@ -3,13 +3,7 @@ package com.cooksys.groupfinal.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,7 +35,12 @@ public class User {
 	@EqualsAndHashCode.Exclude
 	private Set<Announcement> announcements = new HashSet<>();
 	
-	@ManyToMany(mappedBy = "employees")
+	@ManyToMany
+	@JoinTable(
+			name = "company_employees",
+			joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id")
+	)
 	@EqualsAndHashCode.Exclude
 	private Set<Company> companies = new HashSet<>();
 	
