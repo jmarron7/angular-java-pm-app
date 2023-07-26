@@ -1,7 +1,9 @@
 <div id="title">
     <p id="name"> {{ project.name }} </p>
     <div class="last-edited" *ngIf="daysAgo > 0">Last edited {{ daysAgo }} days ago</div>
-    <div class="last-edited" *ngIf="daysAgo < 1">Last edited today</div>
+    <div class="last-edited" *ngIf="hoursAgo > 0">Last edited {{ hoursAgo }} hours ago</div>
+    <div class="last-edited" *ngIf="minutesAgo > 0">Last edited {{ minutesAgo }} minutes ago</div>
+    <div class="last-edited" *ngIf="minutesAgo < 1">Last edited now</div>
 </div>
 <div id="content">
     {{ project.description }}
