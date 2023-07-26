@@ -1,4 +1,8 @@
-<h1>{{ teamName }}'s projects</h1>
+<h1 *ngIf="projects.length > 0">{{ teamName }}'s projects</h1>
+
+<div *ngIf="projects.length === 0"> 
+    <h1>{{ teamName }} has no active projects</h1>
+</div>
 
 <div *ngFor="let project of projects">
     <app-project-card
