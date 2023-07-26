@@ -33,7 +33,7 @@ const routes: Routes = [
   {
     path: 'navigation',
     component: NavmenuComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    // canActivate: [AuthGuard, RoleGuard],
   },
   {
     path: 'add-user',
