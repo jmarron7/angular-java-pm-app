@@ -18,7 +18,7 @@ export class AddAdminOverlayComponent {
     this.updateAdminOverlayVisibility.emit()
   }
 
-  addAdminToCompany(form: any) {
+  addAdmin(form: any) {
     let url = 'http://localhost:8080' +'/users/' + form.email;
     this.http.get<any>(url).subscribe({
       next: data => {

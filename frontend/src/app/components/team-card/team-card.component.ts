@@ -16,12 +16,18 @@ export class TeamCardComponent {
     projects: []
   }
 
+  projectCount: number = 0;
+
   constructor(private router: Router) {}
 
+  ngOnInit() {
+    this.projectCount = this.team.projects.length
+  }
+  
   goToProjects() {
     let navigationExtras: NavigationExtras = {
       state: {
-        projects: this.team.projects
+        projects: this.team.projects,
       }
     };
     this.router.navigate(['/projects'], navigationExtras);

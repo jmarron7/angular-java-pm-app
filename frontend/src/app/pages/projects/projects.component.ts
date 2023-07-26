@@ -11,15 +11,18 @@ import { ProjectDto } from 'src/app/services/general.service';
 export class ProjectsComponent {
  
   projects: ProjectDto[] = [];
+  teamName: string = '';
 
   constructor(private http: HttpClient, private router: Router) { 
     let input = this.router.getCurrentNavigation();
     this.projects = input?.extras?.state?.['projects'];
+    this.teamName = input?.extras?.state?.['teamName'];
+    console.log("Team Name from Projects: " + this.teamName)
   }
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') as string);
-    if (this.projects.length === 0 && user.admin) {
+    if (this.projects.length === 0 && !user.admin) {
     let url = 'company/' + localStorage.getItem('companyId') +  '/teams' + user.teams[0] + '/projects';
     this.http.get<any>(url).subscribe({
         next: data => {

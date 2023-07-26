@@ -1,5 +1,7 @@
-<h1>projects</h1>
+<h1>{{ teamName }} projects</h1>
 
 <div *ngFor="let project of projects">
-    <app-project-card></app-project-card>
+    <app-project-card
+    [project]="project"
+    ></app-project-card>
 </div>

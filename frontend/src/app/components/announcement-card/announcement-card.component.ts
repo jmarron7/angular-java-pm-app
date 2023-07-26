@@ -10,7 +10,12 @@ export class AnnouncementCardComponent {
 
   @Input() name: string = '';
   @Input() content: string = '';
-  @Input() date: string = '';
+  @Input() date: Date = new Date();
   @Input() title: string = '';
+
+  displayedDate: string = '';
   
+  ngOnInit() {
+    this.displayedDate = this.date.toDateString();
+  }
 }

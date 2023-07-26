@@ -38,17 +38,4 @@ export class AddUserOverlayComponent {
   handleOverlayExit() {
     this.updateUserOverlayVisibility.emit()
   }
-
-  addAdminToCompany(form: any) {
-    let url = 'http://localhost:8080' +'/user/' + form.email;
-    this.http.get<any>(url).subscribe({
-      next: data => {
-        console.log(data);
-      },
-      error: error => {
-        console.error(error);
-      }
-    })
-  }
-
 }
