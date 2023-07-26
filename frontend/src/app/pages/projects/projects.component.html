@@ -6,14 +6,11 @@
   Click Create Proj test
 </button>
 
+<div id="projects-container">
+    <h1 class="title"*ngIf="projects.length > 0">{{ teamName }}'s projects</h1>
+    <h1 class="title" *ngIf="projects.length === 0">{{ teamName }} has no active projects</h1>
 
-<h1 *ngIf="projects.length > 0">{{ teamName }}'s projects</h1>
-
-<div id="no-project" *ngIf="projects.length === 0">
-  <h1>{{ teamName }} has no active projects</h1>
-</div>
-
-
-<div *ngFor="let project of projects">
-  <app-project-card [project]="project"></app-project-card>
+    <div class="projects" *ngFor="let project of projects">
+      <app-project-card [project]="project"></app-project-card>
+    </div>
 </div>
