@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TeamDto } from '../../services/general.service';
+import { ProjectDto, TeamDto } from '../../services/general.service';
 
 @Component({
   selector: 'app-teams',
@@ -30,6 +30,7 @@ export class TeamsComponent {
             '/projects';
           this.http.get<any>(url).subscribe({
             next: (data) => {
+              console.log(data as ProjectDto[])
               this.teams.push({
                 id: team.id,
                 name: team.name,
