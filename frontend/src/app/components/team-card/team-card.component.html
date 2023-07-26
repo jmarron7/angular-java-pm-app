@@ -7,9 +7,20 @@
             {{ "# of Projects: " + projectCount }}
         </div>
     </div>
+    <div class="member-header">
+        <div class="member-title">
+            Members
+        </div>
+    </div>
     <div class="member-container">
-        <div class="member-name" *ngFor="let member of team.members">
-            {{ member.profile.firstName + ' ' + member.profile.lastName[0] + '.'}}
+        <div *ngFor="let member of team.members; let i = index">
+            <div class="member-item" *ngIf="i < 4">
+                <div class="member-name-container">
+                    <h3 class="member-name">
+                        {{ member.profile.firstName + ' ' + member.profile.lastName[0] + '.'}}
+                    </h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>
