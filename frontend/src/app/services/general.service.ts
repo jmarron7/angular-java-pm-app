@@ -182,4 +182,9 @@ export class GeneralService {
     const url = this.backendApiUrl + 'companies';
     return this.http.get<CompanyDto[]>(url);
   }
+
+  getProject(): Observable<ProjectDto[]> {
+    const url = this.backendApiUrl + 'companies';
+    return this.http.get<ProjectDto[]>(url);
+  }
 }
