@@ -13,6 +13,9 @@ import com.cooksys.groupfinal.services.ValidateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 @Service
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
@@ -28,6 +31,7 @@ public class ProjectServiceImpl implements ProjectService {
         Team team = validateService.findTeam(teamId);
         if (!company.getTeams().contains(team)) throw new BadRequestException("Could not find team with ID " + teamId);
         Project project = projectMapper.dtoToEntity(projectDto);
+        project.setDate(Timestamp.from(Instant.now()));
         return projectMapper.entityToDto(projectRepository.saveAndFlush(project));
     }
 
@@ -43,6 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
         project.setActive(projectDto.isActive());
         if (projectDto.getTeam() != null)
             project.setTeam(teamMapper.dtoToEntity(projectDto.getTeam()));
+        project.setDate(Timestamp.from(Instant.now()));
         return projectMapper.entityToDto(projectRepository.saveAndFlush(project));
     }
 }

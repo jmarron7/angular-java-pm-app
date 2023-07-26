@@ -3,6 +3,8 @@ package com.cooksys.groupfinal.dtos;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @NoArgsConstructor
 @Data
 public class ProjectDto {
@@ -16,5 +18,7 @@ public class ProjectDto {
     private boolean active;
     
     private TeamDto team;
+
+    private Timestamp date;
 
 }

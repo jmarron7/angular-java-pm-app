@@ -6,6 +6,8 @@ import javax.persistence.Embeddable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Embeddable
 @NoArgsConstructor
 @Data
