@@ -1,1 +1,14 @@
-<p>create-project-overlay works!</p>
+<div class="create-project" [ngClass]="{ hide: !isOpen }">
+    <div class="create-project-container">
+      <div class="exit-button" (click)="isOpen = !isOpen">[ X ]</div>
+      <form class="add-user-form" #addUserForm="ngForm">
+        <div class="name-container">
+          <label for="project-name">project name</label>
+          <input type="text" id="project-name" ngModel class="form-control" />
+          <label for="description">description</label>
+          <input type="text" id="description" ngModel class="form-control" />
+        </div>
+        <button class="submit-button" value="Login">Submit</button>
+      </form>
+    </div>
+  </div>

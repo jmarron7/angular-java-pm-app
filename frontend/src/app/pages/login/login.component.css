@@ -1,3 +1,39 @@
-#new-password {
-  margin-top: 15px;
+
+body {
+  background-color: #f0f0f0; 
+  padding: 20px; 
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+.container {
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+#login-header {
+  color: #333; 
+}
+
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.submit-button {
+
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  
+}
+
+
