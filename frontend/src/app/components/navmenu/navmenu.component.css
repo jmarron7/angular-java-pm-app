@@ -39,3 +39,12 @@ nav {
   display: block;
   text-decoration: none;
 }
+
+button {
+  color: rgb(0, 0, 0);
+}
+
+.navbar {
+  width: 98vw;
+  border-bottom: 1px solid var(--beige);
+}

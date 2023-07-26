@@ -24,9 +24,17 @@ export class SelectCompanyComponent implements OnInit {
     }
   }
 
+  setCompany(selectedCompanyId: any) {
+    if (selectedCompanyId.length === 0) {
+      this.selectedCompanyId = 0
+    } else {
+    this.selectedCompanyId = selectedCompanyId;
+    }
+
+    localStorage.setItem('companyId', selectedCompanyId)
+  }
+
   nextPage() {
-    alert(this.selectedCompanyId);
-    localStorage.setItem('companyId', String(this.selectedCompanyId));
     this.router.navigateByUrl('');
   }
 }
