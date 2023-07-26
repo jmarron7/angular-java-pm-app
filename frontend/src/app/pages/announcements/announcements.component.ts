@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 interface Announcement {
-  name: string,
-  date: string,
-  title: string,
-  content: string
+  name: string;
+  date: string;
+  title: string;
+  content: string;
 }
 
 @Component({
@@ -17,20 +17,26 @@ interface Announcement {
 export class AnnouncementsComponent {
   announcements: Announcement[] = [];
   isCreatingPost: boolean = false;
-  
-  constructor(private http: HttpClient, private router: Router) {  }
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') + '/announcements';
+    let url =
+      'http://localhost:8080/company/' +
+      localStorage.getItem('companyId') +
+      '/announcements';
     this.http.get<any>(url).subscribe({
       next: (data) => {
         console.log(data);
-        this.announcements = data.map((announcement: any) => { 
+        this.announcements = data.map((announcement: any) => {
           return {
-            name: announcement.author.profile.firstName + ' ' + announcement.author.profile.lastName,
+            name:
+              announcement.author.profile.firstName +
+              ' ' +
+              announcement.author.profile.lastName,
             date: new Date(announcement.date).toDateString(),
             title: announcement.title,
-            content: announcement.message
+            content: announcement.message,
           };
         });
       },
