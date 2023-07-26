@@ -7,6 +7,10 @@
     <button class="btn" (click)="isCreatingPost = !isCreatingPost">New</button>
   </div>
   <div *ngFor="let announcement of announcements">
-    <app-announcement-card></app-announcement-card>
+    <app-announcement-card 
+    [name]="announcement.name"
+    [date]="announcement.date"
+    [content]="announcement.content"
+    ></app-announcement-card>
   </div>
 </div>
