@@ -3,11 +3,7 @@ package com.cooksys.groupfinal.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,7 +26,7 @@ public class Company {
 	@EqualsAndHashCode.Exclude
 	private Set<Announcement> announcements = new HashSet<>();
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "companies")
 	@EqualsAndHashCode.Exclude
 	private Set<User> employees = new HashSet<>();
 	

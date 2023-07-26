@@ -45,8 +45,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public FullUserDto createUser(Long id, UserRequestDto userRequestDto) {
+        System.out.println("IN HERE!!!!!!!!!!!!!!");
         Company company = validateService.findCompany(id);
-        System.out.println(company);
+//        System.out.println(company);
         if (userRequestDto.getCredentials() == null || userRequestDto.getProfile() == null)
             throw new BadRequestException("User request body requires profile and credentials");
         if (userRequestDto.getCredentials().getUsername() == null || userRequestDto.getCredentials().getPassword() == null)
