@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import {
-  TeamDto,
-  ProjectDto,
-  GeneralService,
-} from '../../services/general.service';
+import { TeamDto } from '../../services/general.service';
 
 @Component({
   selector: 'app-teams',
@@ -14,13 +9,9 @@ import {
 })
 export class TeamsComponent {
   teams: any[] = [];
-  creatingTeam: boolean = false;
+  showOverlay: boolean = false;
 
-  constructor(
-    private generalService: GeneralService,
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     let url =
@@ -57,5 +48,9 @@ export class TeamsComponent {
         console.error(error);
       },
     });
+  }
+
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
   }
 }

@@ -1,13 +1,14 @@
 <app-navmenu> </app-navmenu>
 
 <div class="teams-page-container">
-    <h1>Teams</h1>
-    
-    <div class="teams-container">
-        <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
-    </div>
-    <button (click)="creatingTeam = !creatingTeam">Test - Open Create Modal</button>
+  <h1>Teams</h1>
+
+  <div class="teams-container">
+    <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
+  </div>
+  <button (click)="toggleOverlay()">Test - Open Create Modal</button>
 </div>
-<app-create-team-overlay *ngIf="creatingTeam"></app-create-team-overlay>
-
-
+<app-create-team-overlay
+  (updateOverlay)="toggleOverlay()"
+  *ngIf="showOverlay"
+></app-create-team-overlay>
