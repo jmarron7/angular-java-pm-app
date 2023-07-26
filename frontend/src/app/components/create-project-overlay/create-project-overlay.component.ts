@@ -17,6 +17,7 @@ export class CreateProjectOverlayComponent implements OnInit {
   fail: boolean = false;
   companyId: number = 0;
   active: boolean = true;
+  teamProjects: any;
   @Input() teamId: number = 0;
   @Input() project: any;
   @Output() updateOverlay = new EventEmitter<any>();
@@ -32,10 +33,34 @@ export class CreateProjectOverlayComponent implements OnInit {
     }
   }
 
+  // handles the submit click and posts new project if no project came in as input (as it should when edit button is clicked)
+  // put, updates project if project field is populated by input (edit button was clicked to get here)
   postOrPut() {
-    console.log(this.active);
     if (this.project) this.updateProject();
-    else this.createProject();
+    else {
+      this.getTeamData();
+    }
+  }
+
+  getTeamData() {
+    this.http
+      .get(
+        `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/projects`
+      )
+      .subscribe({
+        next: (data: any) => {
+          this.teamProjects = data[0];
+          console.log(this.teamProjects.team);
+        },
+        error: (e) => {
+          console.log(e);
+          this.fail = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+        complete: () => this.createProject(),
+      });
   }
 
   updateProject() {}
@@ -48,29 +73,12 @@ export class CreateProjectOverlayComponent implements OnInit {
           name: this.projectName,
           description: this.description,
           active: this.active,
-          team: {
-            id: 0,
-            name: 'test',
-            description: 'test',
-            teammates: [
-              {
-                id: 0,
-                profile: {
-                  firstName: 'test',
-                  lastName: 'test',
-                  email: 'test',
-                  phone: 'test',
-                },
-                admin: false,
-                active: true,
-                status: 'JOINED',
-              },
-            ],
-          },
+          team: this.teamProjects.team,
         }
       )
       .subscribe({
         next: (res) => {
+          console.log('here');
           console.log(res);
         },
         error: (e) => {
