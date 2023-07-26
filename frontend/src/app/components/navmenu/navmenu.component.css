@@ -1,34 +1,43 @@
-nav {
-  border-bottom: 1px solid #777777;
-} 
+
 
 .navbar {
+  border-bottom: 1px solid #777777;
+ 
   list-style: none;
   padding: 0;
-  margin: 0;
+  width: 98vw;
+  border-bottom: 1px solid var(--beige);
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
+  float: right;
+  vertical-align: middle;
+
+  
 }
 
 .dropdown {
   position: relative;
+  
+  
 }
 
 .dropdown-menu {
   display: none;
   list-style: none;
   padding: 0;
-  position: absolute;
-  top: 100%;
+  
+  margin-top: 0;
   left: 0;
-  background-color: #fff; 
+  color: white;
+  background-color: darkblue;
   border: 1px solid #777777; 
   z-index: 1;
 }
 
 .dropdown-menu li {
   cursor: pointer;
-  padding: 10px;
+  
+  padding: 8px 12px;
 }
 
 .dropbtn {
@@ -50,14 +59,17 @@ nav {
 
 .dropdown:hover .dropdown-menu {
   display: block;
-  transform: translateY(100%);
+  padding: 10px 20px;
+  
 }
 
 button {
   color: rgb(0, 0, 0);
+  padding: 10px 20px;
 }
 
-.navbar {
-  width: 98vw;
-  border-bottom: 1px solid var(--beige);
+
+#adtext{
+  justify-content: start;
+  color:red
 }

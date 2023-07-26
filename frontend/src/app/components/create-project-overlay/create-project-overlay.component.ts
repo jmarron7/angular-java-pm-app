@@ -17,6 +17,7 @@ export class CreateProjectOverlayComponent implements OnInit {
   fail: boolean = false;
   companyId: number = 0;
   active: boolean = true;
+  teamProjects: any;
   @Input() teamId: number = 0;
   @Input() project: any;
   @Output() updateOverlay = new EventEmitter<any>();
@@ -33,40 +34,39 @@ export class CreateProjectOverlayComponent implements OnInit {
   }
 
   postOrPut() {
-    console.log(this.active);
     if (this.project) this.updateProject();
-    else this.createProject();
+    else this.getTeamData();
   }
 
-  updateProject() {}
-
-  createProject() {
+  getTeamData() {
     this.http
-      .post(
-        `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/project`,
+      .get(
+        `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/projects`
+      )
+      .subscribe({
+        next: (data: any) => {
+          this.teamProjects = data[0];
+        },
+        error: (e) => {
+          console.log(e);
+          this.fail = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+        complete: () => this.createProject(),
+      });
+  }
+
+  updateProject() {
+    this.http
+      .put(
+        `http://localhost:8080/company/${this.companyId}/teams/${this.project.team.id}/project/${this.project.id}`,
         {
           name: this.projectName,
           description: this.description,
           active: this.active,
-          team: {
-            id: 0,
-            name: 'test',
-            description: 'test',
-            teammates: [
-              {
-                id: 0,
-                profile: {
-                  firstName: 'test',
-                  lastName: 'test',
-                  email: 'test',
-                  phone: 'test',
-                },
-                admin: false,
-                active: true,
-                status: 'JOINED',
-              },
-            ],
-          },
+          team: this.project.team,
         }
       )
       .subscribe({
@@ -81,7 +81,37 @@ export class CreateProjectOverlayComponent implements OnInit {
           }, 700);
         },
         complete: () => {
-          console.log('complete');
+          this.success = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+      });
+  }
+
+  createProject() {
+    this.http
+      .post(
+        `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/project`,
+        {
+          name: this.projectName,
+          description: this.description,
+          active: this.active,
+          team: this.teamProjects.team,
+        }
+      )
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => {
+          console.log(e);
+          this.fail = true;
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
+        complete: () => {
           this.success = true;
           setTimeout(() => {
             this.exit();
