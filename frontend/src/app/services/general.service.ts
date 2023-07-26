@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Timestamp } from 'rxjs';
 
 export class CredentialsDto {
   username: string = '';
@@ -93,6 +93,7 @@ export class ProjectDto {
     description: '',
     teammates: [],
   };
+  date: string = '';
 }
 
 @Injectable({
@@ -181,5 +182,10 @@ export class GeneralService {
   getAllCompanies(): Observable<CompanyDto[]> {
     const url = this.backendApiUrl + 'companies';
     return this.http.get<CompanyDto[]>(url);
+  }
+
+  getProject(): Observable<ProjectDto[]> {
+    const url = this.backendApiUrl + 'companies';
+    return this.http.get<ProjectDto[]>(url);
   }
 }

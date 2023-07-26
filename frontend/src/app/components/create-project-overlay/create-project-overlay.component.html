@@ -1,13 +1,13 @@
-<div class="add-user-overlay" [ngClass]="{ hide: !isOpen }">
+<div class="add-user-overlay" *ngIf="modalVisible">
   <div class="add-user-container">
-    <div class="exit-button" (click)="isOpen = !isOpen">
+    <div class="exit-button" (click)="exit()">
       <img
         class="exit-icon"
-        src="../../../assets/images/x-icon.svg"
+        src="../../../assets/images/exit-icon.svg"
         alt="exit"
       />
     </div>
-    <div>
+    <div class="content-div">
       <div class="label-input">
         <label for="name">Project Name</label>
         <input type="text" id="name" name="name" [(ngModel)]="projectName" />
@@ -21,6 +21,14 @@
           [(ngModel)]="description"
         />
       </div>
+      <div *ngIf="admin" class="admin-div">
+        <h2 class="active">Active?</h2>
+        <select name="active-select" id="active-select">
+          <option value="0" disabled selected>Pick an option</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
     </div>
     <div>
       <button
@@ -29,7 +37,7 @@
         value="Login"
         [disabled]="projectName == '' || description == ''"
       >
-        Submit
+        {{ admin ? "Save" : "Submit" }}
       </button>
       <p *ngIf="success">Success!</p>
       <p *ngIf="fail">Oops, something went wrong</p>

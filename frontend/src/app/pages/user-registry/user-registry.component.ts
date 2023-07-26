@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registry',
@@ -14,22 +13,25 @@ export class UserRegistryComponent {
 
   constructor(private http: HttpClient) {}
   ngOnInit() {
-    let url = 'http://localhost:8080/company/' + localStorage.getItem('companyId') +  '/users';
+    let url =
+      'http://localhost:8080/company/' +
+      localStorage.getItem('companyId') +
+      '/users';
     this.http.get<any>(url).subscribe({
-        next: data => {
-            this.users = data;
-        },
-        error: error => {
-            console.error(error);
-          }
-      })
+      next: (data) => {
+        this.users = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 
   toggleAdminOverlay() {
-    this.showAdminOverlay = !this.showAdminOverlay
+    this.showAdminOverlay = !this.showAdminOverlay;
   }
-  
+
   toggleUserOverlay() {
-    this.showUserOverlay = !this.showUserOverlay
+    this.showUserOverlay = !this.showUserOverlay;
   }
 }
