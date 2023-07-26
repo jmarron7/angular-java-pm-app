@@ -11,6 +11,7 @@ import { ProjectDto } from 'src/app/services/general.service';
 export class ProjectsComponent {
   projects: ProjectDto[] = [];
   teamName: string = '';
+  teamId: number = 0;
   creatingProject: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -24,16 +25,21 @@ export class ProjectsComponent {
     if (receivedTeamName != null) {
       this.teamName = receivedTeamName;
     }
-    console.log('Team Name from Projects: ' + this.teamName);
+    let receivedTeamId = input?.extras?.state?.['teamId'];
+    if (receivedTeamId != null) {
+      this.teamId = receivedTeamId;
+    }
+    console.log("Team Name from Projects: " + this.teamName)
   }
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') as string);
     if (this.projects.length === 0 && !user.admin) {
-      console.log('we are in the if!');
-      this.teamName = JSON.parse(
-        localStorage.getItem('user') as string
-      ).teams[0].name;
+        console.log('we are in the if!');
+        this.teamName = JSON.parse(
+          localStorage.getItem('user') as string
+          ).teams[0].name;
+        this.teamId = JSON.parse(localStorage.getItem('user') as string).teams[0].id;
       let url =
         'http://localhost:8080/company/' +
         localStorage.getItem('companyId') +
