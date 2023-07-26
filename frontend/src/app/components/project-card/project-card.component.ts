@@ -16,22 +16,18 @@ export class ProjectCardComponent {
   @Output() toggleModal = new EventEmitter<any>();
 
   ngOnInit() {
-    this.daysAgo = (() => {
-      let date1 = new Date(this.project.date);
-      let date2 = new Date();
+    let date1 = new Date(this.project.date);
+    let date2 = new Date();
 
-      console.log(this.project.date);
-      console.log(date2);
-      let millDifference = date2.getTime() - date1.getTime();
+    console.log(this.project.date);
+    console.log(date2);
+    let millDifference = date2.getTime() - date1.getTime();
 
-      this.daysAgo = Math.floor(millDifference / (1000 * 3600 * 24));
-      this.hoursAgo = Math.floor(millDifference / (1000 * 3600));
-      this.minutesAgo = Math.floor(millDifference / (1000 * 60));
-    })();
+    this.daysAgo = Math.floor(millDifference / (1000 * 3600 * 24));
+    this.hoursAgo = Math.floor(millDifference / (1000 * 3600));
+    this.minutesAgo = Math.floor(millDifference / (1000 * 60));
   }
-
   edit() {
     this.modalVisible = !this.modalVisible;
   }
-
 }
