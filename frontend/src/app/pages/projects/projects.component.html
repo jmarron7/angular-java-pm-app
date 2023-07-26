@@ -3,10 +3,10 @@
   (updateOverlay)="toggleOverlay()"
   [teamId]="teamId"
 ></app-create-project-overlay>
-<button (click)="toggleOverlay()">Click Create Proj test</button>
 
 <div id="projects-container">
   <h1 class="title" *ngIf="projects.length > 0">Projects for {{ teamName }}</h1>
+  <button class="new-btn" (click)="toggleOverlay()">New</button>
   <h1 class="title" *ngIf="projects.length === 0">
     {{ teamName }} has no active projects
   </h1>
