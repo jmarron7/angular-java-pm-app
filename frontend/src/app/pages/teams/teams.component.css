@@ -8,7 +8,9 @@
 }
 
 .teams-container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 320px 320px 320px;
+    gap: 20px;
+    justify-content: space-between;
     width: 80%;
 }
