@@ -1,10 +1,11 @@
+<app-add-user-overlay *ngIf="isAddingUser"></app-add-user-overlay>
 <div class="container">
   <div class="title-div">
     <h1>User Registry</h1>
     <p>A general view of all your members in your organization</p>
   </div>
   <div class="users-table-div">
-    <table>
+    <table class="table1">
       <thead>
         <tr>
           <th>Name</th>
@@ -15,17 +16,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Chris Purnell</td>
-          <td>yocrizzle@gmail.com</td>
-          <td>YES</td>
-          <td>YES</td>
-          <td>JOINED</td>
+        <tr *ngFor="let user of users">
+          <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
+          <td>{{ user.profile.email }}</td>
+          <td [ngClass]="{ green: user.active, red: !user.active }">
+            {{ user.active ? "YES" : "NO" }}
+          </td>
+          <td [ngClass]="{ green: user.admin, red: !user.admin }">
+            {{ user.admin ? "YES" : "NO" }}
+          </td>
+          <td>{{ user.status }}</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="add-btn-div">
-    <button class="add-btn">Add User</button>
+    <button class="add-btn" (click)="isAddingUser = !isAddingUser">
+      Add User
+    </button>
   </div>
 </div>

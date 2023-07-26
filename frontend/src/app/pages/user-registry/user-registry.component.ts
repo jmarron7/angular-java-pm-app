@@ -8,12 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-registry.component.css'],
 })
 export class UserRegistryComponent {
+  users: any;
+  isAddingUser: boolean = false;
 
-  users: any[] = [1,2,3,4];
-
-  constructor(private http: HttpClient, private router: Router) { 
-  }
-
+  constructor(private http: HttpClient, private router: Router) {}
   ngOnInit() {
     let url = 'company/' + localStorage.getItem('companyId') +  '/users';
     this.http.get<any>(url).subscribe({
