@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navmenu.component.css'],
 })
 export class NavmenuComponent {
+
   isAdmin: boolean = false;
 
   constructor(private authService: AuthService) {}
@@ -27,4 +28,5 @@ export class NavmenuComponent {
   // test() {
   //   console.log(this.user);
   // }
+
 }
