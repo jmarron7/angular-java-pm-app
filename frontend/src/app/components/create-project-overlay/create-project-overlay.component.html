@@ -1,1 +1,38 @@
-<p>create-project-overlay works!</p>
+<div class="add-user-overlay" [ngClass]="{ hide: !isOpen }">
+  <div class="add-user-container">
+    <div class="exit-button" (click)="isOpen = !isOpen">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/x-icon.svg"
+        alt="exit"
+      />
+    </div>
+    <div>
+      <div class="label-input">
+        <label for="name">Project Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="projectName" />
+      </div>
+      <div class="label-input">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        />
+      </div>
+    </div>
+    <div>
+      <button
+        (click)="createProject()"
+        class="submit-button"
+        value="Login"
+        [disabled]="projectName == '' || description == ''"
+      >
+        Submit
+      </button>
+      <p *ngIf="success">Success!</p>
+      <p *ngIf="fail">Oops, something went wrong</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+input {
+  background: none;
+  font-weight: 600;
+  color: var(--beige);
+  border: none;
+  border-bottom: 1px solid var(--beige);
+  width: 400px;
+  margin-bottom: 30px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.submit-button {
+  cursor: pointer;
+  background-color: var(--blue-text);
+  padding: 10px 60px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+.submit-button:disabled {
+  background-color: rgb(63, 63, 63);
+  color: rgb(143, 143, 143);
+  cursor: default;
+}
+
+.add-user-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  inset: 0px;
+  background-color: rgba(18, 18, 18, 0.6);
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-user-container {
+  position: relative;
+  box-sizing: border-box;
+  width: 600px;
+  height: 80vh;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 40px;
+  z-index: 1;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  color: var(--beige);
+  background-color: #0b2d45;
+  border: 1px solid var(--blue-text);
+  border-radius: 10px;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  height: 150px;
+}
+
+label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.exit-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.exit-icon {
+  width: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+#members {
+  position: relative;
+  outline: none;
+  padding: 6px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 150px;
+}
+
+.add-btn {
+  position: absolute;
+  right: 50px;
+  cursor: pointer;
+  background-color: var(--beige);
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+}
+
+.added-user {
+  background-color: var(--blue-text);
+  padding: 5px 30px;
+  margin: 6px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  outline: none;
+  width: 80px;
+}
+
+.added-user-container {
+  position: relative;
+}
+
+.exit-icon-user {
+  position: absolute;
+  width: 20px;
+  left: 160px;
+  bottom: 3px;
+  cursor: pointer;
+}
