@@ -1,1 +1,14 @@
-<p>edit-project-overlay works!</p>
+<div class="ed" [ngClass]="{ hide: !isOpen }">
+    <div class="edit--project-container">
+      <div class="exit-button" (click)="isOpen = !isOpen">[ X ]</div>
+      <form class="add-user-form" #addUserForm="ngForm">
+        <div class="name-container">
+          <label for="project-name">project name</label>
+          <input type="text" id="project-name" ngModel class="form-control" />
+          <label for="description">description</label>
+          <input type="text" id="description" ngModel class="form-control" />
+        </div>
+        <button class="save-button" value="Login">Save</button>
+      </form>
+    </div>
+  </div>

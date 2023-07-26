@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-project-overlay.component.css']
 })
 export class EditProjectOverlayComponent {
+  isOpen: boolean = true;
 
 }
