@@ -1,3 +1,13 @@
-#no-project {
-    align-self: center;
+#projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(222, 185, 146, .6);
+    color: rgba(255, 255, 255, .69)
 }
