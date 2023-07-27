@@ -1,22 +1,22 @@
-
 <app-navmenu> </app-navmenu>
 <div class="projects-page-container">
-
   <app-create-project-overlay
-  *ngIf="showOverlay"
-  (updateOverlay)="toggleOverlay()"
-  [teamId]="teamId"
-></app-create-project-overlay>
+    *ngIf="showOverlay"
+    (updateOverlay)="toggleOverlay()"
+    [teamId]="teamId"
+  ></app-create-project-overlay>
 
-<div id="projects-container">
-  <h1 class="title" *ngIf="projects.length > 0">Projects for {{ teamName }}</h1>
-  <button class="new-btn" (click)="toggleOverlay()">New</button>
-  <h1 class="title" *ngIf="projects.length === 0">
-    {{ teamName }} has no active projects
-  </h1>
+  <div id="projects-container">
+    <h1 class="title" *ngIf="projects.length > 0">
+      Projects for {{ teamName }}
+    </h1>
+    <button class="new-btn" (click)="toggleOverlay()">New</button>
+    <h1 class="title" *ngIf="projects.length === 0">
+      {{ teamName }} has no active projects
+    </h1>
 
-  <div class="projects" *ngFor="let project of projects">
-    <app-project-card [project]="project"></app-project-card>
+    <div class="projects" *ngFor="let project of projects">
+      <app-project-card [project]="project"></app-project-card>
+    </div>
   </div>
-</div>
 </div>
