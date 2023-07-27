@@ -5,16 +5,19 @@
       <div class="logo-div">
         <img class="logo" src="../../../assets/images/icon.png" alt="company logo"/>
       </div>
-      <form #loginForm="ngForm" class="form" (ngSubmit)="login(loginForm.form.value)">
+      <form #loginForm="ngForm" *ngIf="!isPending" class="form" (ngSubmit)="login(loginForm.form.value)">
         <input [disabled]="isPending" type="text" name="username" ngModel #nameField="ngModel" class="form-control" placeholder="username" />
         <input [disabled]="isPending" type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="password" />
         <button [disabled]="isPending" class="submit-button" value="Login">Login</button>
+        <div *ngIf="isInvalid">
+          <p>Invalid username and/or password</p>
+        </div>
       </form>
-      <div *ngIf="isInvalid">
-        <p>Invalid username and/or password</p>
-      </div>
       <div class="new-password" *ngIf="isPending">
-        <form #loginForm="ngForm" (ngSubmit)="updatePassword(loginForm.form.value)" >
+        <form class="form" #loginForm="ngForm" (ngSubmit)="updatePassword(loginForm.form.value)" >
+          <div class="new-password-label">
+            Please update your password
+          </div>
           <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="new password" />
           <button class="submit-button" value="Login">Update Password</button>
         </form>
