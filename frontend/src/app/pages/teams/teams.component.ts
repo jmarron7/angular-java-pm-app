@@ -21,33 +21,39 @@ export class TeamsComponent {
     this.http.get<any>(url).subscribe({
       next: (data) => {
         console.log(data);
-        data.forEach((team: TeamDto) => {
-          let url =
-            'http://localhost:8080/company/' +
-            localStorage.getItem('companyId') +
-            '/teams/' +
-            team.id +
-            '/projects';
-          this.http.get<any>(url).subscribe({
-            next: (data) => {
-              console.log(data as ProjectDto[])
-              this.teams.push({
-                id: team.id,
-                name: team.name,
-                members: team.teammates,
-                projects: JSON.parse(JSON.stringify(data)),
-              });
-            },
-            error: (error) => {
-              console.error(error);
-            },
+        let index = 0;
+        data.forEach((team: any) => {
+          
+          this.teams.push({
+            id: team.id,
+            name: team.name,
+            members: team.teammates,
+            projects: [],
           });
+
+          let url =
+            'http://localhost:8080/company/' + localStorage.getItem('companyId') + '/teams/' + team.id + '/projects';
+          
+            this.http.get<any>(url).subscribe({
+              next: (data) => {
+                this.teams[index].projects = data;
+              },
+              error: (error) => {
+                console.error(error);
+              },
+              complete: () => {
+                console.log(this.teams[index].projects)
+                index++;
+              }
+            });
         });
-        console.log(this.teams);
+        this.teams.sort((a: any, b: any) => 
+          a.name > b.name ? 1 : -1
+        );
       },
       error: (error) => {
         console.error(error);
-      },
+      }
     });
   }
 

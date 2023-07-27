@@ -16,7 +16,7 @@ export class CreateProjectOverlayComponent implements OnInit {
   result: string = "";
   companyId: number = 0;
   active: boolean = true;
-  teamProjects: any;
+  // teamProjects: any;
   @Input() teamId: number = 0;
   @Input() project: any;
   @Output() updateOverlay = new EventEmitter<any>();
@@ -34,25 +34,25 @@ export class CreateProjectOverlayComponent implements OnInit {
 
   postOrPut() {
     if (this.project) this.updateProject();
-    else this.getTeamData();
+    else this.createProject();
   }
 
-  getTeamData() {
-    this.http
-      .get(
-        `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/projects`
-      )
-      .subscribe({
-        next: (data: any) => {
-          this.teamProjects = data[0];
-          this.createProject();
-        },
-        error: (e) => {
-          console.log(e);
-          this.result = e.error.message;
-        }
-      });
-  }
+  // getTeamData() {
+  //   this.http
+  //     .get(
+  //       `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/projects`
+  //     )
+  //     .subscribe({
+  //       next: (data: any) => {
+  //         this.teamProjects = data[0];
+  //         this.createProject();
+  //       },
+  //       error: (e) => {
+  //         console.log(e);
+  //         this.result = e.error.message;
+  //       }
+  //     });
+  // }
 
   updateProject() {
     this.http
@@ -86,7 +86,7 @@ export class CreateProjectOverlayComponent implements OnInit {
           name: this.projectName,
           description: this.description,
           active: this.active,
-          team: this.teamProjects.team,
+          team: this.project.team,
         }
       )
       .subscribe({
