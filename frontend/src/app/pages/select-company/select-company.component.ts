@@ -26,6 +26,10 @@ export class SelectCompanyComponent implements OnInit {
     if (selectedCompanyId.length === 0) this.selectedCompanyId = 0;
     else this.selectedCompanyId = selectedCompanyId;
     localStorage.setItem('companyId', selectedCompanyId);
+    this.companies.forEach((c) => {
+      if (c.id == this.selectedCompanyId)
+        localStorage.setItem('companyName', c.name);
+    });
   }
 
   nextPage() {
