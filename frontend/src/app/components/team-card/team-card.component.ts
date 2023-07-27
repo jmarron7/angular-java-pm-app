@@ -21,7 +21,10 @@ export class TeamCardComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.projectCount = this.team.projects.length
+    setTimeout(() => {
+      this.projectCount = this.team.projects.length
+    }, 700)
+    console.log(this.team as any)
   }
   
   goToProjects() {
