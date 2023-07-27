@@ -44,23 +44,26 @@ td {
 }
 
 .red {
-  color: rgba(255,0,0,0.8);
+  color: rgba(255, 0, 0, 0.8);
 }
 
 .green {
   color: green;
 }
 
+.btn {
+  box-shadow: 5px 5px 5px black;
+}
+
 .btn-container-div {
   padding-top: 20px;
-
 }
 
 .add-admin-btn {
   cursor: pointer;
   border-radius: 10px;
   border: none;
-  background-color: #0B2D45;
+  background-color: #0b2d45;
   color: white;
   padding: 10px 20px;
   margin: 5px;

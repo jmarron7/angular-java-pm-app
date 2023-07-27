@@ -24,6 +24,7 @@
   color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
+  box-shadow: 5px 5px 5px black;
 }
 
 .projects-page-container {

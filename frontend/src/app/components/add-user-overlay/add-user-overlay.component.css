@@ -29,6 +29,7 @@ button {
   border: none;
   color: white;
   cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.284);
 }
 
 .add-user-overlay {
@@ -61,9 +62,8 @@ button {
   align-items: center;
   flex-direction: column;
   color: var(--beige);
-  background-color: #0b2d45;
-  border: 1px solid var(--blue-text);
-  border-radius: 3px;
+  background-color: var(--darker-blue);
+  border-radius: 10px;
   cursor: default;
 }
 

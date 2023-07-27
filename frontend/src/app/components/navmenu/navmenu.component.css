@@ -81,7 +81,7 @@ button {
 
 #adtext {
   color: red;
-  position: fixed;
+  position: absolute;
   left: 90px;
-  top: 20px;
+  top: 15px;
 }

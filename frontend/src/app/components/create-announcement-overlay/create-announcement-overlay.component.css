@@ -19,6 +19,7 @@ input:focus {
   border-radius: 10px;
   border: none;
   color: white;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.336);
 }
 
 .submit-button:disabled {

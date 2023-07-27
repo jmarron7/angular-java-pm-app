@@ -10,7 +10,7 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
   modalVisible: boolean = true;
   title: string = '';
   message: string = '';
-  result: string = "";
+  result: string = '';
   submit: boolean = false;
   companyId: number = 0;
   user: any;
@@ -59,7 +59,6 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
               this.exit();
               window.location.reload();
             }, 700);
-
         },
       });
   }

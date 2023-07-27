@@ -1,33 +1,33 @@
 <div class="add-admin-overlay" *ngIf="modalVisible">
-    <div class="add-admin-container">
-      <div class="exit-button" (click)="handleOverlayExit()">
-          <img
-            class="exit-icon"
-            src="../../../assets/images/exit-icon.svg"
-            alt="exit"
-            width=30
-          />
-        </div>
-      <h3>Add Existing Admin</h3>
-      <form
-        class="add-admin-form"
-        #addAdminForm="ngForm"
-        (ngSubmit)="addAdmin(addAdminForm.form.value)"
-      >
-        <div class="email-container">
-          <input
-            class="email"
-            type="text"
-            name="email"
-            class="form-control"
-            placeholder="email"
-            [(ngModel)]="email"/>
-        <button         
-        [disabled]="email == ''"
-        class="submit-button" value="Add">Add</button>
-        </div>
-      </form>
-      <p>{{ result }}</p>
+  <div class="add-admin-container">
+    <div class="exit-button" (click)="handleOverlayExit()">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/exit-icon.svg"
+        alt="exit"
+        width="30"
+      />
     </div>
+    <h3>Add Existing Admin</h3>
+    <form
+      class="add-admin-form"
+      #addAdminForm="ngForm"
+      (ngSubmit)="addAdmin(addAdminForm.form.value)"
+    >
+      <div class="email-container">
+        <input
+          class="email"
+          type="text"
+          name="email"
+          class="form-control"
+          placeholder="email"
+          [(ngModel)]="email"
+        />
+        <button [disabled]="email == ''" class="submit-button" value="Add">
+          Add
+        </button>
+      </div>
+    </form>
+    <p>{{ result }}</p>
   </div>
-  
+</div>

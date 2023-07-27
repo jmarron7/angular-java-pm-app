@@ -23,9 +23,9 @@ export class TeamCardComponent {
   ngOnInit() {
     setTimeout(() => {
       this.teamId = this.team.id;
-      this.projectCount = this.team.projects.length
-    }, 500)
-    console.log(this.team as any)
+      this.projectCount = this.team.projects.length;
+    }, 500);
+    console.log(this.team as any);
   }
 
   goToProjects() {
