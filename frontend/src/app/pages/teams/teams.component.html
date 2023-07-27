@@ -1,6 +1,7 @@
 <app-navmenu> </app-navmenu>
 
 <div class="teams-page-container">
+  <h1>Teams</h1>
   <div class="teams-container">
     <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
     <div class="new-team-container" (click)="toggleOverlay()">

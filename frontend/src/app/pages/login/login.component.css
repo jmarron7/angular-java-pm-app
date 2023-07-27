@@ -77,6 +77,11 @@ input {
   margin-top: 70px;
   padding: 10px 40px;
   cursor: pointer;
+  transition: all 0.2s
+}
+
+button:hover .submit-button {
+  border: 2px solid rgba(27, 160, 152, 0.8)
 }
 
 button:disabled button:hover .submit-button {
