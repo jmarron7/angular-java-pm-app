@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  GeneralService,
-  UserRequestDto,
-} from 'src/app/services/general.service';
+import { UserRequestDto } from 'src/app/services/general.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -13,14 +10,11 @@ import { HttpClient } from '@angular/common/http';
 export class AddUserOverlayComponent {
   modalVisible: boolean = true;
   user: UserRequestDto = new UserRequestDto();
-  result: string = "";
+  result: string = '';
 
   @Output() updateUserOverlayVisibility = new EventEmitter<any>();
 
-  constructor(
-    private generalService: GeneralService,
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
   addUser(form: any) {
     this.user.credentials.username = form.firstName + '.' + form.lastName;
@@ -37,13 +31,15 @@ export class AddUserOverlayComponent {
       localStorage.getItem('companyId') +
       '/user';
     this.http.post<any>(url, this.user).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.result = "success!"
+      next: (res) => console.log(res),
+      error: (e) => {
+        console.error(e);
+        this.result = e.error.message;
       },
-      error: (err) => {
-        console.error(err);
-        this.result = err.error.message;
+      complete: () => {
+        this.result = 'success!';
+        window.location.reload();
+        setTimeout(() => this.handleOverlayExit(), 700);
       },
     });
   }
