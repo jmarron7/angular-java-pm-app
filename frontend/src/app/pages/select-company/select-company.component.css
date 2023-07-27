@@ -24,3 +24,7 @@ select,
   cursor: pointer;
   outline: none;
 }
+
+.btn:disabled {
+  cursor: default;
+}

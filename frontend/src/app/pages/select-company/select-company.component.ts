@@ -37,6 +37,10 @@ export class SelectCompanyComponent implements OnInit {
     console.log(index)
     if (index != -1)
       localStorage.setItem('companyTeamIds', JSON.stringify(this.companies[index].teams.map((team: any) => team.id)));
+    this.companies.forEach((c) => {
+      if (c.id == this.selectedCompanyId)
+        localStorage.setItem('companyName', c.name);
+    });
   }
 
 
