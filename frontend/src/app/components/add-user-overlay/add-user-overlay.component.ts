@@ -33,7 +33,7 @@ export class AddUserOverlayComponent {
     this.http.post<any>(url, this.user).subscribe({
       error: (e) => {
         console.log(e);
-        this.result = 'unable to create user';
+        this.result = 'required fields (*) missing';
       },
       complete: () => {
         this.result = 'success!';
