@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ export class NavmenuComponent {
   toggleMenu: boolean = false;
   profile: any;
   companyName: any;
+  scrolled: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,6 +22,11 @@ export class NavmenuComponent {
     if (user) this.profile = user.profile;
     const companyName = String(localStorage.getItem('companyName')!);
     if (companyName) this.companyName = companyName;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrolled = window.scrollY > 0;
   }
 
   logout() {
