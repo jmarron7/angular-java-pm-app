@@ -23,7 +23,11 @@
           placeholder="email"
           [(ngModel)]="email"
         />
-        <button [disabled]="email == ''" class="submit-button" value="Add">
+        <button
+          [disabled]="email == '' || !email.includes('@')"
+          class="submit-button"
+          value="Add"
+        >
           Add
         </button>
       </div>
