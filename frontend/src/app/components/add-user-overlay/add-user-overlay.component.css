@@ -38,7 +38,7 @@ button {
   inset: 0px;
   background-color: rgba(18, 18, 18, 0.6);
   z-index: 10000140;
-  cursor: pointer;
+  cursor: default;
   overflow: hidden;
   display: flex;
   -webkit-box-align: center;
