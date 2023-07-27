@@ -5,9 +5,11 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name = "user_table")
@@ -20,14 +22,16 @@ public class User {
 	private Long id;
 
   @Embedded
+  @Column(nullable = false)
   private Credentials credentials;
 	
   @Embedded
+  @Column(nullable = false)
   private Profile profile;
 	
-	private boolean active;
-	
-	private boolean admin;
+	private boolean active = true;
+
+	private boolean admin = false;
 	
 	private String status = "PENDING";
 	

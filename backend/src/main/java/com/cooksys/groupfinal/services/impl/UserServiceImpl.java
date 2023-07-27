@@ -19,6 +19,8 @@ import com.cooksys.groupfinal.services.ValidateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -48,21 +50,18 @@ public class UserServiceImpl implements UserService {
     public FullUserDto createUser(Long id, UserRequestDto userRequestDto) {
 
         Company company = validateService.findCompany(id);
-//        System.out.println(company);
-        if (userRequestDto.getCredentials() == null || userRequestDto.getProfile() == null)
-            throw new BadRequestException("User request body requires profile and credentials");
-        if (userRequestDto.getCredentials().getUsername() == null || userRequestDto.getCredentials().getPassword() == null)
-            throw new BadRequestException("User must include credentials (username and password)");
-        try {
-            validateService.findUser(userRequestDto.getCredentials().getUsername());
-        } catch (NotFoundException e) {
-            // all good!
-            User user = fullUserMapper.requestDtoToEntity(userRequestDto);
-            user.setActive(true);
-            user.getCompanies().add(company);
-            return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+        if (userRequestDto.getCredentials() == null || userRequestDto.getProfile() == null ||
+                userRequestDto.getCredentials().getUsername().isEmpty() ||
+                userRequestDto.getCredentials().getPassword().isEmpty() ||
+                userRequestDto.getProfile().getFirstName().isEmpty() ||
+                userRequestDto.getProfile().getLastName().isEmpty() ||
+                userRequestDto.getProfile().getEmail().isEmpty()) {
+            throw new BadRequestException("missing profile and/or credentials");
         }
-        throw new BadRequestException(("user with provided username already exists"));
+        User user = fullUserMapper.requestDtoToEntity(userRequestDto);
+        user.setActive(true);
+        user.getCompanies().add(company);
+        return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
     }
 
     @Override
