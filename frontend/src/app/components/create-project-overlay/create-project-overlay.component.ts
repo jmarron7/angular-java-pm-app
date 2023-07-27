@@ -13,12 +13,13 @@ export class CreateProjectOverlayComponent implements OnInit {
   modalVisible: boolean = true;
   projectName: string = '';
   description: string = '';
-  result: string = "";
+  result: string = '';
   companyId: number = 0;
   active: boolean = true;
   // teamProjects: any;
   @Input() teamId: number = 0;
   @Input() project: any;
+  @Input() team: any;
   @Output() updateOverlay = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
@@ -37,23 +38,6 @@ export class CreateProjectOverlayComponent implements OnInit {
     else this.createProject();
   }
 
-  // getTeamData() {
-  //   this.http
-  //     .get(
-  //       `http://localhost:8080/company/${this.companyId}/teams/${this.teamId}/projects`
-  //     )
-  //     .subscribe({
-  //       next: (data: any) => {
-  //         this.teamProjects = data[0];
-  //         this.createProject();
-  //       },
-  //       error: (e) => {
-  //         console.log(e);
-  //         this.result = e.error.message;
-  //       }
-  //     });
-  // }
-
   updateProject() {
     this.http
       .put(
@@ -68,13 +52,17 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.result = "success!";
-          this.exit();
         },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
-        }
+        },
+        complete: () => {
+          this.result = 'success!';
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
       });
   }
 
@@ -86,21 +74,23 @@ export class CreateProjectOverlayComponent implements OnInit {
           name: this.projectName,
           description: this.description,
           active: this.active,
-          team: this.project.team,
+          team: this.team,
         }
       )
       .subscribe({
         next: (res) => {
-          this.result = "success!";
           console.log(res);
-          setTimeout(() => {
-            this.exit();
-          }, 700)
         },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
-        }
+        },
+        complete: () => {
+          this.result = 'success!';
+          setTimeout(() => {
+            this.exit();
+          }, 700);
+        },
       });
   }
 

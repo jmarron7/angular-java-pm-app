@@ -5,32 +5,32 @@ import { ProjectDto } from 'src/app/services/general.service';
 @Component({
   selector: 'app-team-card',
   templateUrl: './team-card.component.html',
-  styleUrls: ['./team-card.component.css']
+  styleUrls: ['./team-card.component.css'],
 })
 export class TeamCardComponent {
-
   @Input() team: any = {
     id: 0,
     name: '',
     members: [],
-    projects: []
-  }
+    projects: [],
+  };
 
   projectCount: number = 0;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.projectCount = this.team.projects.length
+    this.projectCount = this.team.projects.length;
   }
-  
+
   goToProjects() {
     let navigationExtras: NavigationExtras = {
       state: {
         projects: this.team.projects,
         teamName: this.team.name,
-        teamId: this.team.id
-      }
+        teamId: this.team.id,
+        team: this.team,
+      },
     };
     this.router.navigate(['/projects'], navigationExtras);
   }
