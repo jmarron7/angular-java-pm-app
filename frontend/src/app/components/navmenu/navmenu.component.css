@@ -9,13 +9,15 @@
   align-items: center;
   z-index: 999;
   position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
   width: 50px;
   position: absolute;
   left: 10px;
-  top: 2px;
+  top: 8px;
   cursor: pointer;
 }
 
@@ -55,7 +57,7 @@ a {
 
 .dropdown-menu li:hover {
   opacity: 0.7;
-  color: var(--dark-blue)
+  color: var(--dark-blue);
 }
 .dropbtn {
   cursor: pointer;
@@ -96,4 +98,5 @@ button {
   height: 75%;
   color: var(--blue-text);
   font-size: 1.5rem;
+  cursor: pointer;
 }
