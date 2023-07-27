@@ -11,7 +11,10 @@
     <h1 class="title" *ngIf="projects.length > 0">
       Projects for {{ teamName }}
     </h1>
-    <button class="new-btn" (click)="toggleOverlay()">New</button>
+    <div>
+      <button class="new-btn" routerLink="/teams">Go Back</button>
+      <button class="new-btn" (click)="toggleOverlay()">New</button>
+    </div>
     <h1 class="title" *ngIf="projects.length === 0">
       {{ teamName }} has no active projects
     </h1>
