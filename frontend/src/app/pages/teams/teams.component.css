@@ -16,6 +16,7 @@
 }
 
 .new-team-container {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,5 +35,7 @@
 }
 
 .plus {
+    box-sizing: border-box;
     font-size: 200px;
+    font-weight: 200;
 }

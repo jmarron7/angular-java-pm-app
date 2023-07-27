@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .projects {
@@ -22,4 +23,13 @@
   color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
+}
+
+.projects-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0px;
 }

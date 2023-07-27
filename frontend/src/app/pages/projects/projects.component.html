@@ -1,7 +1,8 @@
 
 <app-navmenu> </app-navmenu>
+<div class="projects-page-container">
 
-<app-create-project-overlay
+  <app-create-project-overlay
   *ngIf="showOverlay"
   (updateOverlay)="toggleOverlay()"
   [teamId]="teamId"
@@ -17,4 +18,5 @@
   <div class="projects" *ngFor="let project of projects">
     <app-project-card [project]="project"></app-project-card>
   </div>
+</div>
 </div>
