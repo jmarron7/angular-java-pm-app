@@ -13,10 +13,10 @@
       <div *ngIf="isInvalid">
         <p>Invalid username and/or password</p>
       </div>
-      <div id="new-password" *ngIf="isPending">
+      <div class="new-password" *ngIf="isPending">
         <form #loginForm="ngForm" (ngSubmit)="updatePassword(loginForm.form.value)" >
           <input type="password" name="password" ngModel #passField="ngModel" class="login-field" placeholder="new password" />
-          <button class="submit-button" value="Login">Login</button>
+          <button class="submit-button" value="Login">Update Password</button>
         </form>
       </div>
     </div>

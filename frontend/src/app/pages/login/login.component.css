@@ -78,3 +78,13 @@ input {
   padding: 10px 40px;
   cursor: pointer;
 }
+
+button:disabled button:hover .submit-button {
+  cursor: default;
+}
+
+.new-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
