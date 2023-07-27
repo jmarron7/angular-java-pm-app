@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { GeneralService, UserRequestDto } from '../../services/general.service';
+import { UserRequestDto } from '../../services/general.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
   constructor(
-    private generalService: GeneralService,
     private authService: AuthService,
     private router: Router,
     private http: HttpClient
@@ -50,14 +49,13 @@ export class LoginComponent {
 
         localStorage.setItem('user', JSON.stringify(userData));
         console.log(userData);
-        if (userData.status === "PENDING") {
+        if (userData.status === 'PENDING') {
           this.isPending = true;
-        }
-        else {
+        } else {
           if (userData.admin) {
-            this.router.navigate(['/select-company'])
+            this.router.navigate(['/select-company']);
           } else {
-            localStorage.setItem('companyId', userData.companies[0].id)
+            localStorage.setItem('companyId', userData.companies[0].id);
             this.router.navigate(['/']);
           }
         }
@@ -77,7 +75,7 @@ export class LoginComponent {
       next: (data) => {
         console.log(data);
         if (this.user.admin) {
-          this.router.navigate(['/select-company'])
+          this.router.navigate(['/select-company']);
         } else {
           this.router.navigate(['/']);
         }
