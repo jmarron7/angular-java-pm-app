@@ -70,7 +70,7 @@ a {
   background-color: transparent;
   padding: 10px;
   background-color: var(--darker-blue);
-  transiion: all 0.2s;
+  transition: all 0.2s;
 }
 
 .dropbtn:hover {
