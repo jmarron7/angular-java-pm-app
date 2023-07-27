@@ -14,6 +14,10 @@ export class TeamsComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    this.teams.sort((a: any, b: any) => 
+      a.id < b.id ? 1 : -1
+    );
+
     let url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
@@ -36,20 +40,21 @@ export class TeamsComponent {
           
             this.http.get<any>(url).subscribe({
               next: (data) => {
-                this.teams[index].projects = data;
+                this.teams[index].projects = JSON.stringify(data);
               },
               error: (error) => {
                 console.error(error);
               },
               complete: () => {
-                console.log(this.teams[index].projects)
+                this.teams[index].projects = JSON.parse(this.teams[index].projects) as any[];
                 index++;
               }
             });
         });
         this.teams.sort((a: any, b: any) => 
-          a.name > b.name ? 1 : -1
+          a.id < b.id ? 1 : -1
         );
+        console.log(this.teams);
       },
       error: (error) => {
         console.error(error);
