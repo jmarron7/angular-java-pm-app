@@ -45,15 +45,12 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.teamProjects = data[0];
+          this.createProject();
         },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
-          setTimeout(() => {
-            this.exit();
-          }, 700);
-        },
-        complete: () => this.createProject(),
+        }
       });
   }
 
@@ -71,20 +68,13 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.result = "success!";
+          this.exit();
         },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
-          setTimeout(() => {
-            this.exit();
-          }, 700);
-        },
-        complete: () => {
-          this.result = "success!";
-          setTimeout(() => {
-            this.exit();
-          }, 700);
-        },
+        }
       });
   }
 
@@ -101,21 +91,16 @@ export class CreateProjectOverlayComponent implements OnInit {
       )
       .subscribe({
         next: (res) => {
+          this.result = "success!";
           console.log(res);
+          setTimeout(() => {
+            this.exit();
+          }, 700)
         },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
-          setTimeout(() => {
-            this.exit();
-          }, 700);
-        },
-        complete: () => {
-          this.result = "success!";
-          setTimeout(() => {
-            this.exit();
-          }, 700);
-        },
+        }
       });
   }
 

@@ -17,6 +17,7 @@ import com.cooksys.groupfinal.repositories.UserRepository;
 import com.cooksys.groupfinal.services.UserService;
 import com.cooksys.groupfinal.services.ValidateService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -61,7 +62,11 @@ public class UserServiceImpl implements UserService {
         User user = fullUserMapper.requestDtoToEntity(userRequestDto);
         user.setActive(true);
         user.getCompanies().add(company);
-        return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+        try {
+            return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+        } catch (RuntimeException e) {
+            throw new BadRequestException("user with provided username already exists");
+        }
     }
 
     @Override
