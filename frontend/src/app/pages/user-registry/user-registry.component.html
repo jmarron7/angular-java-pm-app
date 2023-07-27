@@ -5,7 +5,7 @@
     <p>A general view of all your members in your organization</p>
   </div>
   <div class="users-table-div">
-    <table class="table1">
+    <table class="table1" cellspacing=0>
       <thead>
         <tr>
           <th>Name</th>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr id="line" *ngFor="let user of users">
           <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
           <td>{{ user.profile.email }}</td>
           <td [ngClass]="{ green: user.active, red: !user.active }">

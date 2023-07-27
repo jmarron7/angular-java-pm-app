@@ -19,14 +19,15 @@
             class="email"
             type="text"
             name="email"
-            ngModel
-            #emailField="ngModel"
             class="form-control"
             placeholder="email"
-          />
-        <button class="submit-button" value="Add">Add</button>
+            [(ngModel)]="email"/>
+        <button         
+        [disabled]="email == ''"
+        class="submit-button" value="Add">Add</button>
         </div>
       </form>
+      <p>{{ result }}</p>
     </div>
   </div>
   

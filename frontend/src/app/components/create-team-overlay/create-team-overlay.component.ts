@@ -66,14 +66,12 @@ export class CreateTeamOverlayComponent implements OnInit {
         error: (e) => {
           console.log(e);
           this.fail = true;
-          setTimeout(() => {
-            this.exit();
-          }, 700);
         },
         complete: () => {
           this.success = true;
           setTimeout(() => {
             this.exit();
+            window.location.reload();
           }, 700);
         },
       });

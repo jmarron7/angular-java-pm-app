@@ -10,8 +10,7 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
   modalVisible: boolean = true;
   title: string = '';
   message: string = '';
-  fail: boolean = false;
-  success: boolean = false;
+  result: string = "";
   submit: boolean = false;
   companyId: number = 0;
   user: any;
@@ -51,17 +50,16 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
         },
         error: (e) => {
           console.log(e);
-          this.fail = true;
+          this.result = e.error.message;
           this.submit = true;
-          setTimeout(() => {
-            this.exit();
-          }, 700);
         },
         complete: () => {
-          (this.success = true),
+          (this.result = 'success!'),
             setTimeout(() => {
               this.exit();
+              window.location.reload();
             }, 700);
+
         },
       });
   }

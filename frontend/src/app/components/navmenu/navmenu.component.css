@@ -1,5 +1,6 @@
 .navbar {
   border-bottom: 1px solid #777777;
+  background-color: rgba(5, 22, 34, 1);
  
   list-style: none;
   height: 60px;
@@ -9,7 +10,10 @@
   border-bottom: 1px solid var(--beige);
   display: flex;
   justify-content: flex-end;
-  position: relative;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 999;
 }
 
 .dropdown {

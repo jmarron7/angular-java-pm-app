@@ -28,14 +28,23 @@
   color: var(--beige);
   padding: 30px;
   width: 800px;
+  text-align: center;
 }
 
 th {
   color: white;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(222, 185, 146, 0.5);
+}
+
+td {
+  padding-bottom: 8px;
+  padding-top: 8px;
+  border-bottom: 1px solid rgba(222, 185, 146, 0.5);
 }
 
 .red {
-  color: red;
+  color: rgba(255,0,0,0.8);
 }
 
 .green {

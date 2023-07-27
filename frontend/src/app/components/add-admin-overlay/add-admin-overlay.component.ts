@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http'
 export class AddAdminOverlayComponent {
   modalVisible: boolean = true;
   result: string = "";
+  email: string = "";
   
   @Output() updateAdminOverlayVisibility = new EventEmitter<any>()
 
