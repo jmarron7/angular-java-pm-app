@@ -35,7 +35,7 @@ export class AddUserOverlayComponent {
       '/company/' +
       localStorage.getItem('companyId') +
       '/user';
-    this.http.post<UserRequestDto>(url, this.user).subscribe({
+    this.http.post<any>(url, this.user).subscribe({
       next: (data) => {
         console.log(data);
       },
