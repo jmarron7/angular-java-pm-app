@@ -21,16 +21,19 @@ export class AddAdminOverlayComponent {
   }
 
   addAdmin(form: any) {
-    let url = 'http://localhost:8080' +'/users/' + form.email;
-    this.http.get<any>(url).subscribe({
+    let url = 'http://localhost:8080' +'/company/' + JSON.parse(localStorage.getItem('companyId') as string) + "/user/";
+    this.http.put<any>(url, form.email).subscribe({
       next: data => {
         console.log(data);
         this.result = "success!"
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       },
       error: (err) => {
         console.error(err);
         this.result = err.error.message;
-      }
+      },
     })
   }
 

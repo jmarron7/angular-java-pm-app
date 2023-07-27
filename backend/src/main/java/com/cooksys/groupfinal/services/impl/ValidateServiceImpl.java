@@ -5,6 +5,7 @@ import com.cooksys.groupfinal.entities.Company;
 import com.cooksys.groupfinal.entities.Project;
 import com.cooksys.groupfinal.entities.Team;
 import com.cooksys.groupfinal.entities.User;
+import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
 import com.cooksys.groupfinal.mappers.BasicUserMapper;
 import com.cooksys.groupfinal.repositories.CompanyRepository;
@@ -51,13 +52,7 @@ public class ValidateServiceImpl implements ValidateService {
         return user.get();
     }
 
-    @Override
-    public BasicUserDto findUserByEmail(String email) {
-        Optional<User> user = userRepository.findByProfileEmailAndActiveTrue(email);
-        if (user.isEmpty())
-            throw new NotFoundException("The email provided does not belong to an active user.");
-        return basicUserMapper.entityToBasicUserDto(user.get());
-    }
+
 
     @Override
     public Team findTeam(Long id) {

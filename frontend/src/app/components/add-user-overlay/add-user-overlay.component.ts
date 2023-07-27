@@ -31,10 +31,12 @@ export class AddUserOverlayComponent {
       localStorage.getItem('companyId') +
       '/user';
     this.http.post<any>(url, this.user).subscribe({
-      next: (res) => console.log(res),
-      error: (e) => {
-        console.error(e);
-        this.result = e.error.message;
+      next: (data) => {
+        console.log(data);
+        this.result = "success!"
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       },
       complete: () => {
         this.result = 'success!';

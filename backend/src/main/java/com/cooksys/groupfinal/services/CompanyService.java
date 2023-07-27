@@ -18,4 +18,5 @@ public interface CompanyService {
 
     Set<ProjectDto> getAllProjects(Long companyId, Long teamId);
 
+    BasicUserDto addUserByEmail(Long companyId, String email);
 }

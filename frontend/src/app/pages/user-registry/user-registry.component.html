@@ -10,6 +10,7 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
+          <th>Team</th>
           <th>Active</th>
           <th>Admin</th>
           <th>Status</th>
@@ -19,6 +20,7 @@
         <tr id="line" *ngFor="let user of users">
           <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
           <td>{{ user.profile.email }}</td>
+          <td>{{ user.teams.length > 0 ? user.teams[0].name : "N/A" }}</td>
           <td [ngClass]="{ green: user.active, red: !user.active }">
             {{ user.active ? "YES" : "NO" }}
           </td>

@@ -76,4 +76,8 @@ public class CompanyController {
         return projectService.updateProject(companyId, teamId, projectId, projectDto);
     }
 
+    @PutMapping("/{companyId}/user")
+    public BasicUserDto addUserByEmail(@PathVariable Long companyId, @RequestBody String email) {
+        return companyService.addUserByEmail(companyId, email);
+    }
 }
