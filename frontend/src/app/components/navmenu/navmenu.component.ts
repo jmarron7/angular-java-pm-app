@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 export class NavmenuComponent {
   isAdmin: boolean = false;
   toggleMenu: boolean = false;
+  profile: any;
+  companyName: any;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.isAdmin = JSON.parse(localStorage.getItem('user') as string).admin;
+    const user = JSON.parse(localStorage.getItem('user')!);
+    if (user) this.profile = user.profile;
+    const companyName = String(localStorage.getItem('companyName')!);
+    if (companyName) this.companyName = companyName;
   }
 
   logout() {
