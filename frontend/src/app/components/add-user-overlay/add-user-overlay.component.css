@@ -29,7 +29,12 @@ button {
   border: none;
   color: white;
   cursor: pointer;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.284);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.284);
+  transition: all 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 .add-user-overlay {

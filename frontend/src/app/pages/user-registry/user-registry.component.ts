@@ -22,7 +22,13 @@ export class UserRegistryComponent {
     this.http.get<any>(url).subscribe({
       next: (res) => {        
         let companyTeamIds = JSON.parse(localStorage.getItem('companyTeamIds') as string);
-        this.users = res as FullUserDto[];
+        this.users = (res as FullUserDto[]).sort((a: FullUserDto, b: FullUserDto) => {
+          if (a.admin && !b.admin) 
+            return -1;
+          if (b.admin && !a.admin)
+            return 1;
+          return a.profile.firstName > b.profile.firstName ? 1 : -1;
+        });
 
         for (let i = 0; i < this.users.length; i++) {
           this.users[i].teams = this.users[i].teams.filter((team: any) => companyTeamIds.includes(team.id))
