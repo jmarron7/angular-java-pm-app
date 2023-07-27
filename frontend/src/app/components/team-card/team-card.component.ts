@@ -15,20 +15,26 @@ export class TeamCardComponent {
     projects: [],
   };
 
+  teamId: number = 0;
   projectCount: number = 0;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.projectCount = this.team.projects.length;
+    setTimeout(() => {
+      this.teamId = this.team.id;
+      this.projectCount = this.team.projects.length
+    }, 500)
+    console.log(this.team as any)
   }
 
   goToProjects() {
+    console.log(this.teamId);
     let navigationExtras: NavigationExtras = {
       state: {
         projects: this.team.projects,
         teamName: this.team.name,
-        teamId: this.team.id,
+        teamId: this.teamId,
         team: this.team,
       },
     };

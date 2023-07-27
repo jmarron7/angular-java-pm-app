@@ -13,45 +13,36 @@ export class ProjectsComponent {
   projects: ProjectDto[] = [];
   teamName: string = '';
   teamId: number = 0;
-  team: any;
+  team: any = undefined;
 
   constructor(private http: HttpClient, private router: Router) {
     let input = this.router.getCurrentNavigation();
-
-    let receivedProjects = input?.extras?.state?.['projects'];
-    if (receivedProjects != null) {
-      this.projects = receivedProjects;
+    let receivedTeamId = input?.extras?.state?.['teamId'];
+    if (receivedTeamId != null) {
+      this.teamId = receivedTeamId;
     }
     let receivedTeamName = input?.extras?.state?.['teamName'];
     if (receivedTeamName != null) {
       this.teamName = receivedTeamName;
     }
-    let receivedTeamId = input?.extras?.state?.['teamId'];
-    if (receivedTeamId != null) {
-      this.teamId = receivedTeamId;
-    }
     let receivedTeam = input?.extras?.state?.['team'];
     if (receivedTeam != null) {
       this.team = receivedTeam;
     }
-    console.log('Team Name from Projects: ' + this.teamName);
+
   }
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') as string);
-    if (this.projects.length === 0 && !user.admin) {
-      console.log('we are in the if!');
-      this.teamName = JSON.parse(
-        localStorage.getItem('user') as string
-      ).teams[0].name;
-      this.teamId = JSON.parse(
-        localStorage.getItem('user') as string
-      ).teams[0].id;
+    if (this.teamId === 0) this.teamId = user.teams[0].id;
+    if (this.teamName === '') this.teamName = user.teams[0].name;
+    if (!this.team) this.team = user.teams[0];
+
       let url =
         'http://localhost:8080/company/' +
         localStorage.getItem('companyId') +
         '/teams/' +
-        user.teams[0].id +
+        this.teamId +
         '/projects';
       this.http.get<any>(url).subscribe({
         next: (data) => {
@@ -61,10 +52,26 @@ export class ProjectsComponent {
           console.error(error);
         },
       });
-    }
   }
 
   toggleOverlay() {
     this.showOverlay = !this.showOverlay;
+  }
+
+  updateProjectList() {
+    let url =
+        'http://localhost:8080/company/' +
+        localStorage.getItem('companyId') +
+        '/teams/' +
+        this.teamId +
+        '/projects';
+      this.http.get<any>(url).subscribe({
+        next: (data) => {
+          this.projects = data as ProjectDto[];
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
 }
