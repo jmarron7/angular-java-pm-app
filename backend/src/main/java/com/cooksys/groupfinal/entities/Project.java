@@ -27,5 +27,4 @@ public class Project {
 
 	private Timestamp date;
 
-
 }
