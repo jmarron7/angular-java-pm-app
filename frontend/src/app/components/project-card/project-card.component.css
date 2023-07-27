@@ -1,0 +1,48 @@
+.project-card-container {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--beige);
+  position: relative;
+}
+
+.card-info {
+  width: 85%;
+}
+.card-header {
+  width: 100%;
+}
+
+.button-container {
+  align-self: flex-end;
+}
+
+.btn {
+  height: 30px;
+  width: 100px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--beige);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+#title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.last-edited {
+  margin-top: 3px;
+  margin-left: 30px;
+  font-size: small;
+}
+
+#name {
+  font-size: x-large;
+  color: rgba(255, 255, 255, 1);
+}

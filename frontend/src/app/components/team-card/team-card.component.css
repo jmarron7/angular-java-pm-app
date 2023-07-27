@@ -1,0 +1,78 @@
+.team-card-container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 21%;
+    margin: 20px;
+    width: 320px;
+    height: 250px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #0B2D45;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.team-name {
+    color: #FFF;
+}
+
+.projects-count {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.member-container {
+    display: grid;
+    grid-template-columns: 120px 120px;
+    grid-row-gap: 10px;
+    gap: 10px;
+    justify-content: center;
+    width: 80%;
+    width: 90%;
+    height: 90%;
+}
+
+.member-header {
+    display: flex;
+    border-top: 1px solid var(--beige);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px 0px 0px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.member-title {
+    align-self: center;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 35px;
+    min-height: 35px;
+    border-radius: 10px;
+    background-color: rgb(27, 160, 152);
+    margin: 10px;
+}
+
+.member-name-container {
+    width: 100%;
+}
+
+.member-name {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFF;
+    margin: 0px;
+}

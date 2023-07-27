@@ -1,0 +1,50 @@
+<app-navmenu> </app-navmenu>
+<div class="container">
+  <div class="title-div">
+    <h1>User Registry</h1>
+    <p>A general view of all your members in your organization</p>
+  </div>
+  <div class="users-table-div">
+    <table class="table1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Active</th>
+          <th>Admin</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
+          <td>{{ user.profile.email }}</td>
+          <td [ngClass]="{ green: user.active, red: !user.active }">
+            {{ user.active ? "YES" : "NO" }}
+          </td>
+          <td [ngClass]="{ green: user.admin, red: !user.admin }">
+            {{ user.admin ? "YES" : "NO" }}
+          </td>
+          <td>{{ user.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="btn-container-div">
+    <button class="add-admin-btn" (click)="toggleAdminOverlay()">
+      Add Existing Admin
+    </button>
+    <button class="create-user-btn" (click)="toggleUserOverlay()">
+      Create New User
+    </button>
+  </div>
+
+  <app-add-user-overlay
+    *ngIf="showUserOverlay"
+    (updateUserOverlayVisibility)="toggleUserOverlay()"
+  ></app-add-user-overlay>
+  <app-add-admin-overlay
+    *ngIf="showAdminOverlay"
+    (updateAdminOverlayVisibility)="toggleAdminOverlay()"
+  ></app-add-admin-overlay>
+</div>

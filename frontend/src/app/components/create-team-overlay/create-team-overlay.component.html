@@ -1,0 +1,62 @@
+<div class="add-user-overlay" *ngIf="modalVisible">
+  <div class="add-user-container">
+    <div class="exit-button" (click)="exit()">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/exit-icon.svg"
+        alt="exit"
+      />
+    </div>
+    <div>
+      <div class="label-input">
+        <label for="name">Team Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="teamName" />
+      </div>
+      <div class="label-input">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        />
+        <h1>Select Members</h1>
+        <div>
+          <select name="members" id="members" [(ngModel)]="selectedMember">
+            <option *ngFor="let member of members" [ngValue]="member">
+              {{ member.profile.firstName }}
+              {{ member.profile.lastName.substring(0, 1) }}.
+            </option>
+          </select>
+          <button class="add-btn" (click)="addMember()">Add</button>
+        </div>
+        <div class="added-members" *ngIf="addedMembers.length > 0">
+          <div *ngFor="let member of addedMembers" class="added-user-container">
+            <div class="added-user">
+              {{ member.profile.firstName }}
+              {{ member.profile.lastName.substring(0, 1) }}.
+            </div>
+            <img
+              class="exit-icon-user"
+              src="../../../assets/images/exit-icon.svg"
+              alt="exit"
+              (click)="removeMember(member)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        class="submit-button"
+        value="Login"
+        (click)="createTeam()"
+        [disabled]="teamName == '' || description == ''"
+      >
+        Submit
+      </button>
+      <p *ngIf="success">Success!</p>
+      <p *ngIf="fail">Oops, something went wrong</p>
+    </div>
+  </div>
+</div>

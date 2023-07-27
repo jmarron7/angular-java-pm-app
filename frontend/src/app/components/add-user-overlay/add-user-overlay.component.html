@@ -1,0 +1,93 @@
+<div class="add-user-overlay" *ngIf="modalVisible">
+  <div class="add-user-container">
+    <div class="exit-button" (click)="handleOverlayExit()">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/exit-icon.svg"
+        alt="exit"
+        width="30"
+      />
+    </div>
+    <h3>Create A New User</h3>
+    <form
+      class="add-user-form"
+      #addUserForm="ngForm"
+      (ngSubmit)="addUser(addUserForm.form.value)"
+    >
+      <div class="name-container">
+        <input
+          type="text"
+          name="firstName"
+          ngModel
+          #firstNameField="ngModel"
+          class="form-control"
+          placeholder="first name"
+        />
+        <input
+          type="text"
+          name="lastName"
+          ngModel
+          #lastNameField="ngModel"
+          class="form-control"
+          placeholder="last name"
+        />
+      </div>
+      <br />
+      <div class="email-phone-container">
+        <input
+          class="email"
+          type="text"
+          name="email"
+          ngModel
+          #emailField="ngModel"
+          class="form-control"
+          placeholder="email"
+        />
+        <input
+          class="phone-number"
+          type="text"
+          name="phoneNumber"
+          ngModel
+          #phoneField="ngModel"
+          class="form-control"
+          placeholder="phone"
+        />
+      </div>
+      <br />
+      <div class="pass-container">
+        <input
+          type="password"
+          name="password"
+          ngModel
+          #passField="ngModel"
+          class="login-field"
+          placeholder="password"
+        />
+        <input
+          type="password"
+          name="confirmedPassword"
+          ngModel
+          #confirmedPassField="ngModel"
+          class="login-field"
+          placeholder="confirm password"
+        />
+      </div>
+      <br />
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          name="userIsAdmin"
+          id="isAdminCheckbox"
+          ngModel
+          #isAdminField="ngModel"
+          class="admin-checkbox"
+          value="isAdmin"
+        />
+        <label for="isAdminCheckbox">Admin?</label>
+      </div>
+      <br />
+      <button class="submit-button" value="Submit">Submit</button>
+    </form>
+    <p>{{ result }}</p>
+  </div>
+</div>
