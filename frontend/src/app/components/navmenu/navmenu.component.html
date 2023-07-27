@@ -10,7 +10,10 @@
       <li><a routerLink="/">Home</a></li>
       <li *ngIf="!isAdmin"><a routerLink="/projects">Projects</a></li>
       <li *ngIf="isAdmin"><a routerLink="/teams">Teams</a></li>
-      <!-- <li  id="logout" *ngIf="navLogout()"><a  routerLink="/" routerLinkActive="active">LogOut</a></li> -->
+      <li *ngIf="isAdmin"><a routerLink="/user-registry">Users</a></li>
+      <!-- <li id="logout" *ngIf="navLogout()">
+        <a routerLink="/" routerLinkActive="active">LogOut</a>
+      </li> -->
     </ul>
   </div>
 </nav>
