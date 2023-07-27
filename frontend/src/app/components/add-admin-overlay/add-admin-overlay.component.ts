@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class AddAdminOverlayComponent {
   modalVisible: boolean = true;
+  result: string = "";
   
   @Output() updateAdminOverlayVisibility = new EventEmitter<any>()
 
@@ -23,9 +24,11 @@ export class AddAdminOverlayComponent {
     this.http.get<any>(url).subscribe({
       next: data => {
         console.log(data);
+        this.result = "success!"
       },
-      error: error => {
-        console.error(error);
+      error: (err) => {
+        console.error(err);
+        this.result = err.error.message;
       }
     })
   }
