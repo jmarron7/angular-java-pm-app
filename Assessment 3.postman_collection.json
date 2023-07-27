@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "7ccea4b7-eed4-4953-a33c-5be255753906",
+		"name": "Assessment 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28265467"
+	},
+	"item": [
+		{
+			"name": "POST /users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"cousingreg\",\n    \"password\": \"mosteligiblebachelor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/{id}/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/{id}/announcements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/announcements",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"announcements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/{id}/teams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/teams",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/{id}/teams/{id}/projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/projects",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /company/all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"cousingreg\",\r\n    \"password\": \"mosteligiblebachelor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /company/{id}/announcement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Testing testing\",\r\n  \"message\": \"Does this work?\",\r\n  \"author\": {\r\n      \"id\": 23,\r\n    \"profile\": {\r\n      \"id\": 23,\r\n      \"firstname\": \"Logan\",\r\n      \"lastname\": \"Roy\",\r\n      \"email\":\"lroy@email.com\",\r\n      \"phone\": \"(555) 555-5555\"\r\n    },\r\n    \"isAdmin\": true,\r\n    \"active\": true,\r\n    \"status\": \"PENDING\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/announcement",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"announcement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /company/{id}/team",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"8\",\r\n  \"name\": \"Team 8\",\r\n  \"description\": \"Roman & Kendall\",\r\n  \"teammates\": [\r\n      {\r\n        \"id\": \"21\",\r\n        \"profile\": {\r\n            \"firstname\": \"Roman\",\r\n            \"lastname\": \"Roy\",\r\n            \"email\": \"rroy@email.com\",\r\n            \"phone\": \"(333) 333-3333\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": true,\r\n        \"status\": \"PENDING\"\r\n        },\r\n        {\r\n        \"id\": \"20\",\r\n        \"profile\": {\r\n            \"firstname\": \"Kendall\",\r\n            \"lastname\": \"Roy\",\r\n            \"email\": \"rroy@email.com\",\r\n            \"phone\": \"(222) 222-2222\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": false,\r\n        \"status\": \"string\"\r\n        }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/team",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"team"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST company{id}/teams/{id}/project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"32\",\r\n  \"name\": \"Test Project Title\",\r\n  \"description\": \"Test Project Description\",\r\n  \"active\": true,\r\n  \"team\": {\r\n    \"id\": \"11\",\r\n    \"name\": \"Team 1\",\r\n    \"description\": \"Greg & Tom\" ,\r\n    \"teammates\": [\r\n      {\r\n        \"id\": \"18\",\r\n        \"profile\": {\r\n            \"firstname\": \"Greg\",\r\n            \"lastname\": \"Hirsch\",\r\n            \"email\": \"ghirsh@email.com\",\r\n            \"phone\": \"(000) 000-0000\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": true,\r\n        \"status\": \"JOINED\"\r\n        },\r\n        {\r\n        \"id\": \"19\",\r\n        \"profile\": {\r\n            \"firstname\": \"Tom\",\r\n            \"lastname\": \"Wambsgans\",\r\n            \"email\": \"tambsgans@email.com\",\r\n            \"phone\": \"(111) 111-1111\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": true,\r\n        \"status\": \"PENDING\"\r\n        }\r\n  ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/project",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"project"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT company/{id}/teams/{id}/project/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated: Test Project Title\",\r\n  \"description\": \"Updated: Test Project Description\",\r\n  \"active\": true,\r\n  \"team\": {\r\n    \"id\": \"11\",\r\n    \"name\": \"Team 1\",\r\n    \"description\": \"Greg & Tom\" ,\r\n    \"teammates\": [\r\n      {\r\n        \"id\": \"18\",\r\n        \"profile\": {\r\n            \"firstname\": \"Greg\",\r\n            \"lastname\": \"Hirsch\",\r\n            \"email\": \"ghirsh@email.com\",\r\n            \"phone\": \"(000) 000-0000\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": true,\r\n        \"status\": \"JOINED\"\r\n        },\r\n        {\r\n        \"id\": \"19\",\r\n        \"profile\": {\r\n            \"firstname\": \"Tom\",\r\n            \"lastname\": \"Wambsgans\",\r\n            \"email\": \"tambsgans@email.com\",\r\n            \"phone\": \"(111) 111-1111\"\r\n            },\r\n        \"isAdmin\": false,\r\n        \"active\": true,\r\n        \"status\": \"PENDING\"\r\n        }\r\n  ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/company/6/teams/11/project/32",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"6",
+						"teams",
+						"11",
+						"project",
+						"32"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
