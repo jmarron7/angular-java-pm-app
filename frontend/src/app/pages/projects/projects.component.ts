@@ -13,6 +13,7 @@ export class ProjectsComponent {
   projects: ProjectDto[] = [];
   teamName: string = '';
   teamId: number = 0;
+  team: any;
 
   constructor(private http: HttpClient, private router: Router) {
     let input = this.router.getCurrentNavigation();
@@ -28,6 +29,10 @@ export class ProjectsComponent {
     let receivedTeamId = input?.extras?.state?.['teamId'];
     if (receivedTeamId != null) {
       this.teamId = receivedTeamId;
+    }
+    let receivedTeam = input?.extras?.state?.['team'];
+    if (receivedTeam != null) {
+      this.team = receivedTeam;
     }
     console.log('Team Name from Projects: ' + this.teamName);
   }
