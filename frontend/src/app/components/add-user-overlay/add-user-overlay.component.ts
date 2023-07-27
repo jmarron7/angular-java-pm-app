@@ -41,9 +41,9 @@ export class AddUserOverlayComponent {
         console.log(data);
         this.result = "success!"
       },
-      error: (error) => {
-        console.error(error);
-        this.result = error.message;
+      error: (err) => {
+        console.error(err);
+        this.result = err.error.message;
       },
     });
   }
