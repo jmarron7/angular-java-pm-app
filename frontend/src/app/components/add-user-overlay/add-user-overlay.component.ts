@@ -31,17 +31,16 @@ export class AddUserOverlayComponent {
       localStorage.getItem('companyId') +
       '/user';
     this.http.post<any>(url, this.user).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.result = "success!"
-        setTimeout(() => {
-          window.location.reload();
-        }, 700);
+      error: (e) => {
+        console.log(e);
+        this.result = 'unable to create user';
       },
       complete: () => {
         this.result = 'success!';
-        window.location.reload();
-        setTimeout(() => this.handleOverlayExit(), 700);
+        setTimeout(() => {
+          window.location.reload();
+          this.handleOverlayExit();
+        }, 700);
       },
     });
   }

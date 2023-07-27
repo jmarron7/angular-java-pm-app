@@ -18,17 +18,11 @@ export class ProjectsComponent {
   constructor(private http: HttpClient, private router: Router) {
     let input = this.router.getCurrentNavigation();
     let receivedTeamId = input?.extras?.state?.['teamId'];
-    if (receivedTeamId != null) {
-      this.teamId = receivedTeamId;
-    }
+    if (receivedTeamId) this.teamId = receivedTeamId;
     let receivedTeamName = input?.extras?.state?.['teamName'];
-    if (receivedTeamName != null) {
-      this.teamName = receivedTeamName;
-    }
+    if (receivedTeamName) this.teamName = receivedTeamName;
     let receivedTeam = input?.extras?.state?.['team'];
-    if (receivedTeam != null) {
-      this.team = receivedTeam;
-    }
+    if (receivedTeam) this.team = receivedTeam;
   }
 
   ngOnInit() {
@@ -47,14 +41,8 @@ export class ProjectsComponent {
       next: (data) => {
         this.projects = data as ProjectDto[];
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (e) => console.error(e),
     });
-  }
-
-  toggleOverlay() {
-    this.showOverlay = !this.showOverlay;
   }
 
   updateProjectList() {
@@ -68,9 +56,11 @@ export class ProjectsComponent {
       next: (data) => {
         this.projects = data as ProjectDto[];
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (e) => console.error(e),
     });
+  }
+
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
   }
 }

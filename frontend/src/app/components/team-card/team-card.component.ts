@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { ProjectDto } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-team-card',
@@ -14,7 +13,6 @@ export class TeamCardComponent {
     members: [],
     projects: [],
   };
-
   teamId: number = 0;
   projectCount: number = 0;
 
@@ -25,11 +23,9 @@ export class TeamCardComponent {
       this.teamId = this.team.id;
       this.projectCount = this.team.projects.length;
     }, 500);
-    console.log(this.team as any);
   }
 
   goToProjects() {
-    console.log(this.teamId);
     let navigationExtras: NavigationExtras = {
       state: {
         projects: this.team.projects,

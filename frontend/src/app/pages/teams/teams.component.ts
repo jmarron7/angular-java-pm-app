@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProjectDto, TeamDto } from '../../services/general.service';
 
 @Component({
   selector: 'app-teams',
@@ -15,14 +14,12 @@ export class TeamsComponent {
 
   ngOnInit() {
     this.teams.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
-
     let url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/teams';
     this.http.get<any>(url).subscribe({
       next: (data) => {
-        console.log(data);
         data.forEach((team: any) => {
           this.teams.push({
             id: team.id,
@@ -30,7 +27,6 @@ export class TeamsComponent {
             members: team.teammates,
             projects: [],
           });
-
           let index: number = -1;
           let url =
             'http://localhost:8080/company/' +
@@ -38,7 +34,6 @@ export class TeamsComponent {
             '/teams/' +
             team.id +
             '/projects';
-
           this.http.get<any>(url).subscribe({
             next: (data) => {
               for (let i = 0; i < this.teams.length; i++) {
@@ -47,24 +42,15 @@ export class TeamsComponent {
                   break;
                 }
               }
-              console.log(index);
               if (index != -1)
                 this.teams[index].projects = JSON.parse(JSON.stringify(data));
             },
-            error: (error) => {
-              console.error(error);
-            },
-            complete: () => {
-              // if (index != undefined) this.teams[index].projects = JSON.parse(this.teams[index].projects) as any[];
-            },
+            error: (e) => console.error(e),
           });
         });
         this.teams.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
-        console.log(this.teams);
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (e) => console.error(e),
     });
   }
 

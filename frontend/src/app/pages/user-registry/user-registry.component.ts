@@ -12,18 +12,17 @@ export class UserRegistryComponent {
   showAdminOverlay: boolean = false;
 
   constructor(private http: HttpClient) {}
+
   ngOnInit() {
     let url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/users';
     this.http.get<any>(url).subscribe({
-      next: (data) => {
-        this.users = data;
+      next: (res) => {
+        this.users = res;
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (e) => console.error(e),
     });
   }
 

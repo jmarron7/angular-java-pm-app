@@ -10,12 +10,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private http: HttpClient
-  ) {}
-
   isInvalid: boolean = false;
   isPending: boolean = false;
   userId = 0;
@@ -33,11 +27,15 @@ export class LoginComponent {
     admin: false,
   };
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+
   login(form: any) {
     this.authService.login(form.username, form.password).subscribe({
       next: (data) => {
-        console.log(data);
-
         let userData = JSON.parse(JSON.stringify(data));
         this.userId = userData.id;
         this.user.profile = userData.profile;
@@ -46,12 +44,10 @@ export class LoginComponent {
           password: form.password,
         };
         this.user.admin = userData.admin;
-
         localStorage.setItem('user', JSON.stringify(userData));
         console.log(userData);
-        if (userData.status === 'PENDING') {
-          this.isPending = true;
-        } else {
+        if (userData.status === 'PENDING') this.isPending = true;
+        else {
           if (userData.admin) {
             this.router.navigate(['/select-company']);
           } else {
@@ -60,8 +56,8 @@ export class LoginComponent {
           }
         }
       },
-      error: (error) => {
-        console.error(error);
+      error: (e) => {
+        console.error(e);
         this.isInvalid = true;
       },
     });
@@ -70,18 +66,13 @@ export class LoginComponent {
   updatePassword(form: any) {
     let url = 'http://localhost:8080/users/' + this.userId;
     this.user.credentials.password = form.password;
-    console.log(this.user);
     this.http.put<any>(url, this.user).subscribe({
-      next: (data) => {
-        console.log(data);
-        if (this.user.admin) {
-          this.router.navigate(['/select-company']);
-        } else {
-          this.router.navigate(['/']);
-        }
+      next: () => {
+        if (this.user.admin) this.router.navigate(['/select-company']);
+        else this.router.navigate(['/']);
       },
-      error: (error) => {
-        console.error(error);
+      error: (e) => {
+        console.error(e);
         this.isInvalid = true;
       },
     });

@@ -16,7 +16,6 @@ export class CreateProjectOverlayComponent implements OnInit {
   result: string = '';
   companyId: number = 0;
   active: boolean = true;
-  // teamProjects: any;
   @Input() teamId: number = 0;
   @Input() project: any;
   @Input() team: any;
@@ -50,9 +49,6 @@ export class CreateProjectOverlayComponent implements OnInit {
         }
       )
       .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
@@ -79,17 +75,14 @@ export class CreateProjectOverlayComponent implements OnInit {
         }
       )
       .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
         error: (e) => {
           console.log(e);
           this.result = e.error.message;
         },
         complete: () => {
           this.result = 'success!';
-          window.location.reload();
           setTimeout(() => {
+            window.location.reload();
             this.exit();
           }, 700);
         },

@@ -40,7 +40,7 @@ export class CreateTeamOverlayComponent implements OnInit {
   }
 
   addMember() {
-    if (this.selectedMember != undefined) {
+    if (this.selectedMember) {
       if (!this.addedMembers.includes(this.selectedMember))
         this.addedMembers.push(this.selectedMember);
       let index = this.members.indexOf(this.selectedMember);
@@ -64,7 +64,6 @@ export class CreateTeamOverlayComponent implements OnInit {
         teammates: this.addedMembers,
       })
       .subscribe({
-        next: (res) => console.log(res),
         error: (e) => {
           console.log(e);
           this.fail = true;
@@ -72,8 +71,8 @@ export class CreateTeamOverlayComponent implements OnInit {
         complete: () => {
           this.success = true;
           setTimeout(() => {
-            this.exit();
             window.location.reload();
+            this.exit();
           }, 700);
         },
       });
