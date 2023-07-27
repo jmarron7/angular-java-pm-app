@@ -37,6 +37,16 @@ button:hover {
   opacity: 0.8;
 }
 
+button:disabled {
+  background-color: rgb(99, 102, 104);
+  color: rgb(165, 162, 162);
+  cursor: default;
+}
+
+button:disabled:hover {
+  opacity: 1;
+}
+
 .add-user-overlay {
   position: fixed;
   width: 100%;

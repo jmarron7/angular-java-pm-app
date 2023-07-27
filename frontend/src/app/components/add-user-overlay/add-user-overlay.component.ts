@@ -11,6 +11,11 @@ export class AddUserOverlayComponent {
   modalVisible: boolean = true;
   user: UserRequestDto = new UserRequestDto();
   result: string = '';
+  firstName: string = '';
+  lastName: string = '';
+  password: string = '';
+  confirmPassword: string = '';
+  email: string = '';
 
   @Output() updateUserOverlayVisibility = new EventEmitter<any>();
 
