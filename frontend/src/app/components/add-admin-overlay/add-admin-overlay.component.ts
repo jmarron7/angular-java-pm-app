@@ -31,10 +31,10 @@ export class AddAdminOverlayComponent {
         this.result = e.error.message;
       },
       complete: () => {
-        this.result = 'success!';
+        this.result = '';
         setTimeout(() => {
           window.location.reload();
-        }, 700);
+        }, 500);
       },
     });
   }

@@ -79,7 +79,7 @@ export class CreateTeamOverlayComponent implements OnInit {
           setTimeout(() => {
             window.location.reload();
             this.exit();
-          }, 700);
+          }, 500);
         },
       });
   }

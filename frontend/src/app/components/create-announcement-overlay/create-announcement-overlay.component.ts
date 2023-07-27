@@ -51,11 +51,11 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
           this.submit = true;
         },
         complete: () => {
-          this.result = 'success!';
+          this.result = '';
           setTimeout(() => {
             window.location.reload();
             this.exit();
-          }, 700);
+          }, 500);
         },
       });
   }
