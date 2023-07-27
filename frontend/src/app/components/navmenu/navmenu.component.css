@@ -9,13 +9,15 @@
   align-items: center;
   z-index: 999;
   position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
   width: 50px;
   position: absolute;
   left: 10px;
-  top: 2px;
+  top: 8px;
   cursor: pointer;
 }
 

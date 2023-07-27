@@ -6,6 +6,10 @@
   --darker-blue: rgba(11, 45, 69, 255);
 }
 
+body {
+  margin: 0;
+}
+
 @font-face {
   font-family: Mulish;
   src: url(./assets/fonts/Mulish-Regular.ttf) format("truetype");
