@@ -15,17 +15,8 @@ export class NavmenuComponent {
   ngOnInit() {
     this.isAdmin = JSON.parse(localStorage.getItem('user') as string).admin;
   }
-  // createUser() {
-  //   const user = JSON.parse(localStorage.getItem('user')!);
-  //   if (user) this.user = user;
-  //   else console.error('User not found in local storage.');
-  // }
 
-  navLogout() {
-    this.authService.logout();
+  logout() {
+    if (this.authService.isLoggedIn()) this.authService.logout();
   }
-
-  // test() {
-  //   console.log(this.user);
-  // }
 }
