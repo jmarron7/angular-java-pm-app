@@ -132,6 +132,7 @@ public class Seeder implements CommandLineRunner {
 	  profile6.setEmail("lroy@email.com");
 	  profile6.setPhone("(555) 555-5555");
 	  user6.setProfile(profile6);
+	  user6.setStatus("JOINED");
 	  user6.setActive(true);
 	  user6.setAdmin(true);
 
