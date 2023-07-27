@@ -74,6 +74,8 @@ button {
 
 
 #adtext{
-  justify-content: start;
-  color:red
+  color:red;
+  position: fixed;
+  left: 20px;
+  top: 20px;
 }

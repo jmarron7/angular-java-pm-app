@@ -13,8 +13,7 @@ export class CreateProjectOverlayComponent implements OnInit {
   modalVisible: boolean = true;
   projectName: string = '';
   description: string = '';
-  success: boolean = false;
-  fail: boolean = false;
+  result: string = "";
   companyId: number = 0;
   active: boolean = true;
   teamProjects: any;
@@ -49,7 +48,7 @@ export class CreateProjectOverlayComponent implements OnInit {
         },
         error: (e) => {
           console.log(e);
-          this.fail = true;
+          this.result = e.error.message;
           setTimeout(() => {
             this.exit();
           }, 700);
@@ -75,13 +74,13 @@ export class CreateProjectOverlayComponent implements OnInit {
         },
         error: (e) => {
           console.log(e);
-          this.fail = true;
+          this.result = e.error.message;
           setTimeout(() => {
             this.exit();
           }, 700);
         },
         complete: () => {
-          this.success = true;
+          this.result = "success!";
           setTimeout(() => {
             this.exit();
           }, 700);
@@ -106,13 +105,13 @@ export class CreateProjectOverlayComponent implements OnInit {
         },
         error: (e) => {
           console.log(e);
-          this.fail = true;
+          this.result = e.error.message;
           setTimeout(() => {
             this.exit();
           }, 700);
         },
         complete: () => {
-          this.success = true;
+          this.result = "success!";
           setTimeout(() => {
             this.exit();
           }, 700);

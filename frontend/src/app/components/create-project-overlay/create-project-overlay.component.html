@@ -15,7 +15,6 @@
           id="name"
           name="name"
           [(ngModel)]="projectName"
-          [placeholder]="project ? project.name : ''"
         />
       </div>
       <div class="label-input">
@@ -24,16 +23,8 @@
           type="text"
           id="description"
           name="description"
-          [placeholder]="project ? project.description : ''"
           [(ngModel)]="description"
         />
-      </div>
-      <div *ngIf="admin" class="admin-div">
-        <h2 class="active">Active?</h2>
-        <select name="active-select" id="active-select" [(ngModel)]="active">
-          <option [value]="true">Yes</option>
-          <option [value]="false">No</option>
-        </select>
       </div>
     </div>
     <div>
@@ -45,8 +36,7 @@
       >
         {{ admin ? "Save" : "Submit" }}
       </button>
-      <p *ngIf="success">Success!</p>
-      <p *ngIf="fail">Oops, something went wrong</p>
+      <p>{{ result }}</p>
     </div>
   </div>
 </div>

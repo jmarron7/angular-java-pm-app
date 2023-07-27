@@ -15,7 +15,7 @@ export class CreateTeamOverlayComponent implements OnInit {
   fail: boolean = false;
   members: Array<any> = [];
   addedMembers: Array<BasicUserDto> = [];
-  selectedMember: any;
+  selectedMember: any = undefined;
   companyId: number = 0;
 
   @Output() updateOverlay = new EventEmitter<any>();
@@ -40,10 +40,12 @@ export class CreateTeamOverlayComponent implements OnInit {
   }
 
   addMember() {
-    if (!this.addedMembers.includes(this.selectedMember))
-      this.addedMembers.push(this.selectedMember);
-    let index = this.members.indexOf(this.selectedMember);
-    if (index != -1) this.members.splice(index, 1);
+    if (this.selectedMember != undefined) {
+      if (!this.addedMembers.includes(this.selectedMember))
+        this.addedMembers.push(this.selectedMember);
+      let index = this.members.indexOf(this.selectedMember);
+      if (index != -1) this.members.splice(index, 1);
+    }
   }
 
   removeMember(member: any) {
