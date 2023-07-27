@@ -40,6 +40,9 @@ export class AddUserOverlayComponent {
       next: (data) => {
         console.log(data);
         this.result = "success!"
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       },
       error: (err) => {
         console.error(err);
