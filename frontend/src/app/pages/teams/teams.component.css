@@ -5,7 +5,6 @@
   align-items: center;
   width: 100%;
   padding: 20px 0px;
-  margin-top: 60px;
 }
 
 .teams-container {
@@ -33,10 +32,18 @@
   color: var(--beige);
   font-weight: 400;
   line-height: 1;
+  box-shadow: 0px 0px 6px black;
+}
+
+.new-team-container:hover .plus {
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .plus {
   box-sizing: border-box;
   font-size: 200px;
-  font-weight: 200;
+  font-weight: 100;
+  transition: all 0.2s;
 }
+

@@ -64,6 +64,12 @@ export class CreateTeamOverlayComponent implements OnInit {
         teammates: this.addedMembers,
       })
       .subscribe({
+        next: (response) => {
+          let companyIds = JSON.parse(localStorage.getItem('companyId') as string);
+          companyIds.push(JSON.parse(JSON.stringify(response)).id);
+          
+          localStorage.setItem('companyTeamIds', JSON.stringify(companyIds));
+        },
         error: (e) => {
           console.log(e);
           this.fail = true;

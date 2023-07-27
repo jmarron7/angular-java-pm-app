@@ -26,11 +26,23 @@ export class SelectCompanyComponent implements OnInit {
     if (selectedCompanyId.length === 0) this.selectedCompanyId = 0;
     else this.selectedCompanyId = selectedCompanyId;
     localStorage.setItem('companyId', selectedCompanyId);
+    
+    let index = -1;
+    for (let i = 0; i < this.companies.length; i++) {
+      if (this.companies[i].id == selectedCompanyId) {
+        index = i;
+        break;
+      }
+    }
+    console.log(index)
+    if (index != -1)
+      localStorage.setItem('companyTeamIds', JSON.stringify(this.companies[index].teams.map((team: any) => team.id)));
     this.companies.forEach((c) => {
       if (c.id == this.selectedCompanyId)
         localStorage.setItem('companyName', c.name);
     });
   }
+
 
   nextPage() {
     this.router.navigateByUrl('');
