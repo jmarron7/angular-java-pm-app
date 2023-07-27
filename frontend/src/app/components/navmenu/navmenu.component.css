@@ -1,7 +1,6 @@
 .navbar {
   border-bottom: 1px solid #777777;
   background-color: rgba(5, 22, 34, 1);
- 
   list-style: none;
   height: 60px;
   border-bottom: 1px solid var(--beige);
@@ -10,10 +9,18 @@
   border-bottom: 1px solid var(--beige);
   display: flex;
   justify-content: flex-end;
-  position: fixed; 
-  top: 0; 
-  width: 100%; 
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 999;
+  position: relative;
+}
+
+.logo {
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  top: 2px;
 }
 
 .dropdown {
@@ -72,10 +79,9 @@ button {
   padding: 10px 20px;
 }
 
-
-#adtext{
-  color:red;
+#adtext {
+  color: red;
   position: fixed;
-  left: 20px;
+  left: 90px;
   top: 20px;
 }
