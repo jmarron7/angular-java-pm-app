@@ -24,7 +24,9 @@ const routes: Routes = [
     component: TeamsComponent,
     canActivate: [AuthGuard, RoleGuard],
   },
-  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsComponent, 
+  // canActivate: [AuthGuard]
+ },
   {
     path: 'user-registry',
     component: UserRegistryComponent,
