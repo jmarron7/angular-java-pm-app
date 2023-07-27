@@ -39,7 +39,7 @@ export class ProjectsComponent {
       '/projects';
     this.http.get<any>(url).subscribe({
       next: (data) => {
-        this.projects = (data as ProjectDto[]).sort((a: ProjectDto, b: ProjectDto) => a.date > b.date ? 1 : -1);
+        this.projects = (data as ProjectDto[]).sort((a: ProjectDto, b: ProjectDto) => a.date < b.date ? 1 : -1);
       },
       error: (e) => console.error(e),
     });

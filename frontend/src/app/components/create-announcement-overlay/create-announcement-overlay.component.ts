@@ -51,11 +51,9 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
           this.submit = true;
         },
         complete: () => {
-          this.result = 'success!';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 700);
+          this.result = '';
+          window.location.reload();
+          this.exit();
         },
       });
   }

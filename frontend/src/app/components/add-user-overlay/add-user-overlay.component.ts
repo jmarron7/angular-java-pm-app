@@ -41,11 +41,9 @@ export class AddUserOverlayComponent {
         this.result = 'required fields (*) missing';
       },
       complete: () => {
-        this.result = 'success!';
-        setTimeout(() => {
-          window.location.reload();
-          this.handleOverlayExit();
-        }, 700);
+        this.result = '';
+        window.location.reload();
+        this.handleOverlayExit();
       },
     });
   }

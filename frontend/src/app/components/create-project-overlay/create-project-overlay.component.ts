@@ -54,11 +54,9 @@ export class CreateProjectOverlayComponent implements OnInit {
           this.result = e.error.message;
         },
         complete: () => {
-          this.result = 'success!';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 700);
+          this.result = '';
+          window.location.reload();
+          this.exit();
         },
       });
   }
@@ -80,11 +78,9 @@ export class CreateProjectOverlayComponent implements OnInit {
           this.result = e.error.message;
         },
         complete: () => {
-          this.result = 'success!';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 700);
+          this.result = '';
+          window.location.reload();
+          this.exit();
         },
       });
   }
