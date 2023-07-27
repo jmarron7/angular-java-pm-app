@@ -16,6 +16,7 @@ input[type="text"] {
     border-radius: 10px;
     border: none;
     color: white;
+    cursor: pointer;
   }
   
   .add-admin-overlay {

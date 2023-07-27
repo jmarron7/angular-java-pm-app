@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class AddUserOverlayComponent {
   modalVisible: boolean = true;
   user: UserRequestDto = new UserRequestDto();
+  result: string = "";
 
   @Output() updateUserOverlayVisibility = new EventEmitter<any>();
 
@@ -38,9 +39,11 @@ export class AddUserOverlayComponent {
     this.http.post<any>(url, this.user).subscribe({
       next: (data) => {
         console.log(data);
+        this.result = "success!"
       },
       error: (error) => {
         console.error(error);
+        this.result = error.message;
       },
     });
   }

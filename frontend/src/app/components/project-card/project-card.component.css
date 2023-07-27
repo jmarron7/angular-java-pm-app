@@ -1,17 +1,25 @@
-.card {
+.project-card-container {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--beige);
   position: relative;
 }
 
-.card1 {
-  width: 500px;
-  margin-bottom: 30px;
+.card-info {
+  width: 85%;
+}
+.card-header {
+  width: 100%;
+}
+
+.button-container {
+  align-self: flex-end;
 }
 
 .btn {
-  position: absolute;
-  right: 10px;
-  bottom: 40px;
+  height: 30px;
+  width: 100px;
   padding: 5px 30px;
   border-radius: 10px;
   outline: none;
@@ -21,24 +29,11 @@
   cursor: pointer;
 }
 
-.active {
-  position: absolute;
-  right: 20px;
-}
-
-.green {
-  color: green;
-}
-
-.red {
-  color: red;
-}
-
 #title {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 80%;
+  width: 100%;
 }
 
 .last-edited {
