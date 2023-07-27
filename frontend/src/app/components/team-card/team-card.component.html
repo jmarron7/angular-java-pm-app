@@ -1,26 +1,26 @@
-<div (click)="goToProjects()" class="team-card-container"> 
-    <div class="card-header">
-        <h3 class="team-name">
-            {{ team.name }}
-        </h3>
-        <div class="projects-count">
-            {{ "# of Projects: " + projectCount }}
-        </div>
+<div (click)="goToProjects()" class="team-card-container">
+  <div class="card-header">
+    <h3 class="team-name">
+      {{ team.name }}
+    </h3>
+    <div class="projects-count">
+      {{ "# of Projects: " + projectCount }}
     </div>
-    <div class="member-header">
-        <div class="member-title">
-            Members
+  </div>
+  <div class="member-header">
+    <div class="member-title">Members</div>
+  </div>
+  <div class="member-container">
+    <div *ngFor="let member of team.members; let i = index">
+      <div class="member-item" *ngIf="i < 4">
+        <div class="member-name-container">
+          <h3 class="member-name">
+            {{
+              member.profile.firstName + " " + member.profile.lastName[0] + "."
+            }}
+          </h3>
         </div>
+      </div>
     </div>
-    <div class="member-container">
-        <div *ngFor="let member of team.members; let i = index">
-            <div class="member-item" *ngIf="i < 4">
-                <div class="member-name-container">
-                    <h3 class="member-name">
-                        {{ member.profile.firstName + ' ' + member.profile.lastName[0] + '.'}}
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

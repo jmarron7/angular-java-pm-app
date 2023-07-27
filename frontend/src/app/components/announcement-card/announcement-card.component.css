@@ -15,7 +15,8 @@
   flex-direction: column;
   width: 40%;
   color: white;
-  background-color: rgba(11, 45, 69, 1);
+  background-color: var(--darker-blue);
+  box-shadow: 5px 5px 5px black;
 }
 
 .card-header {

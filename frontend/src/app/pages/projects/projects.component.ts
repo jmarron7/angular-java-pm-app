@@ -29,7 +29,6 @@ export class ProjectsComponent {
     if (receivedTeam != null) {
       this.team = receivedTeam;
     }
-
   }
 
   ngOnInit() {
@@ -38,20 +37,20 @@ export class ProjectsComponent {
     if (this.teamName === '') this.teamName = user.teams[0].name;
     if (!this.team) this.team = user.teams[0];
 
-      let url =
-        'http://localhost:8080/company/' +
-        localStorage.getItem('companyId') +
-        '/teams/' +
-        this.teamId +
-        '/projects';
-      this.http.get<any>(url).subscribe({
-        next: (data) => {
-          this.projects = data as ProjectDto[];
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+    let url =
+      'http://localhost:8080/company/' +
+      localStorage.getItem('companyId') +
+      '/teams/' +
+      this.teamId +
+      '/projects';
+    this.http.get<any>(url).subscribe({
+      next: (data) => {
+        this.projects = data as ProjectDto[];
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 
   toggleOverlay() {
@@ -60,18 +59,18 @@ export class ProjectsComponent {
 
   updateProjectList() {
     let url =
-        'http://localhost:8080/company/' +
-        localStorage.getItem('companyId') +
-        '/teams/' +
-        this.teamId +
-        '/projects';
-      this.http.get<any>(url).subscribe({
-        next: (data) => {
-          this.projects = data as ProjectDto[];
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+      'http://localhost:8080/company/' +
+      localStorage.getItem('companyId') +
+      '/teams/' +
+      this.teamId +
+      '/projects';
+    this.http.get<any>(url).subscribe({
+      next: (data) => {
+        this.projects = data as ProjectDto[];
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }
