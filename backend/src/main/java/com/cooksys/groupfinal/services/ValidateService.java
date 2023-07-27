@@ -14,8 +14,6 @@ public interface ValidateService {
 
     User findUser(String username);
 
-    BasicUserDto findUserByEmail(String email);
-
     Team findTeam(Long id);
 
     Project findProject(Long id);

@@ -30,8 +30,4 @@ public class UserController {
         return userService.updateUser(id, userRequestDto);
     }
 
-    @GetMapping("/{email}")
-    public BasicUserDto searchUserByEmail(@PathVariable String email) {
-        return validateService.findUserByEmail(email);
-    }
 }

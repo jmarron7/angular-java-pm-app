@@ -2,11 +2,10 @@ package com.cooksys.groupfinal.services.impl;
 
 import com.cooksys.groupfinal.dtos.*;
 import com.cooksys.groupfinal.entities.*;
+import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
-import com.cooksys.groupfinal.mappers.AnnouncementMapper;
-import com.cooksys.groupfinal.mappers.FullUserMapper;
-import com.cooksys.groupfinal.mappers.ProjectMapper;
-import com.cooksys.groupfinal.mappers.TeamMapper;
+import com.cooksys.groupfinal.mappers.*;
+import com.cooksys.groupfinal.repositories.UserRepository;
 import com.cooksys.groupfinal.services.CompanyService;
 import com.cooksys.groupfinal.services.UserService;
 import com.cooksys.groupfinal.services.ValidateService;
@@ -24,7 +23,9 @@ public class CompanyServiceImpl implements CompanyService {
     private final TeamMapper teamMapper;
     private final ProjectMapper projectMapper;
     private final UserService userService;
+    private final UserRepository userRepository;
     private final ValidateService validateService;
+    private final BasicUserMapper basicUserMapper;
 
     @Override
     public Set<CompanyDto> getAllCompanies(CredentialsDto credentialsDto) {
@@ -66,6 +67,25 @@ public class CompanyServiceImpl implements CompanyService {
         team.getProjects().forEach(filteredProjects::add);
         filteredProjects.removeIf(project -> !project.isActive());
         return projectMapper.entitiesToDtos(filteredProjects);
+    }
+
+    @Override
+    public BasicUserDto addUserByEmail(Long companyId, String email) {
+            Optional<User> user = userRepository.findByProfileEmailAndActiveTrue(email);
+            if (user.isEmpty())
+                throw new BadRequestException("The email provided does not belong to an active user.");
+            if (!user.get().isAdmin()) {
+                throw new BadRequestException("The email provided does not belong to an admin");
+            }
+
+            Company company = validateService.findCompany(companyId);
+            if (user.get().getCompanies().contains(company)) {
+                throw new BadRequestException("This user already belongs to this company");
+            }
+
+            user.get().getCompanies().add(company);
+
+            return basicUserMapper.entityToBasicUserDto(userRepository.saveAndFlush(user.get()));
     }
 
 }
