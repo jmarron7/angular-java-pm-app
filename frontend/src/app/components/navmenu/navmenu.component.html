@@ -1,20 +1,16 @@
 <div  *ngIf="isAdmin" id="adtext">Acting as Admin</div>
 <nav class="navbar">
-  
-<div class="dropdown">
-  <button class="dropbtn"> 
-    <span class="line"></span>
-    <span class="line"></span>
-    <span class="line"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a routerLink="/">Home</a></li>
-    <li *ngIf="!isAdmin"><a routerLink="/projects">Projects</a></li>
-    <li *ngIf="isAdmin"><a routerLink="/teams">Teams</a></li>
-    <!-- <li  id="logout" *ngIf="navLogout()"><a  routerLink="/" routerLinkActive="active">LogOut</a></li> -->
-  </ul>
-</div>
+  <div class="dropdown">
+    <button class="dropbtn" (click)="toggleMenu = !toggleMenu">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+    <ul class="dropdown-menu" *ngIf="toggleMenu">
+      <li><a routerLink="/">Home</a></li>
+      <li *ngIf="!isAdmin"><a routerLink="/projects">Projects</a></li>
+      <li *ngIf="isAdmin"><a routerLink="/teams">Teams</a></li>
+      <!-- <li  id="logout" *ngIf="navLogout()"><a  routerLink="/" routerLinkActive="active">LogOut</a></li> -->
+    </ul>
+  </div>
 </nav>
-
-
- 
