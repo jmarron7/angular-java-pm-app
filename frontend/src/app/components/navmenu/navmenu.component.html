@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" [ngClass]="{ opaque: scrolled }">
   <div>
     <img
       (click)="goHome()"
