@@ -28,7 +28,6 @@ export class AnnouncementsComponent {
       '/announcements';
     this.http.get<any>(url).subscribe({
       next: (data) => {
-        console.log(data);
         this.announcements = data.map((announcement: any) => {
           return {
             name:
@@ -43,11 +42,8 @@ export class AnnouncementsComponent {
         this.announcements.sort((a: Announcement, b: Announcement) =>
           a.date > b.date ? -1 : 1
         );
-        console.log(this.announcements);
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (e) => console.error(e),
     });
   }
 

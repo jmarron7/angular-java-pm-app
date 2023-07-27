@@ -1,40 +1,41 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { GeneralService, UserRequestDto } from 'src/app/services/general.service';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-admin-overlay',
   templateUrl: './add-admin-overlay.component.html',
-  styleUrls: ['./add-admin-overlay.component.css']
+  styleUrls: ['./add-admin-overlay.component.css'],
 })
 export class AddAdminOverlayComponent {
   modalVisible: boolean = true;
-  result: string = "";
-  email: string = "";
-  
-  @Output() updateAdminOverlayVisibility = new EventEmitter<any>()
+  result: string = '';
+  email: string = '';
 
-  constructor(private generalService: GeneralService, private http: HttpClient) {}
+  @Output() updateAdminOverlayVisibility = new EventEmitter<any>();
+
+  constructor(private http: HttpClient) {}
 
   handleOverlayExit() {
-    this.updateAdminOverlayVisibility.emit()
+    this.updateAdminOverlayVisibility.emit();
   }
 
   addAdmin(form: any) {
-    let url = 'http://localhost:8080' +'/company/' + JSON.parse(localStorage.getItem('companyId') as string) + "/user/";
+    let url =
+      'http://localhost:8080' +
+      '/company/' +
+      JSON.parse(localStorage.getItem('companyId') as string) +
+      '/user/';
     this.http.put<any>(url, form.email).subscribe({
-      next: data => {
-        console.log(data);
-        this.result = "success!"
+      error: (e) => {
+        console.error(e);
+        this.result = e.error.message;
+      },
+      complete: () => {
+        this.result = 'success!';
         setTimeout(() => {
           window.location.reload();
         }, 700);
       },
-      error: (err) => {
-        console.error(err);
-        this.result = err.error.message;
-      },
-    })
+    });
   }
-
 }

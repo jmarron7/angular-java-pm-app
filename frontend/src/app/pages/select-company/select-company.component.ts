@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyDto, GeneralService } from '../../services/general.service';
+import { CompanyDto } from '../../services/general.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,19 +19,13 @@ export class SelectCompanyComponent implements OnInit {
 
   loadCompanies() {
     let user = JSON.parse(localStorage.getItem('user')!);
-    if (user) {
-      this.companies = user.companies;
-    }
+    if (user) this.companies = user.companies;
   }
 
   setCompany(selectedCompanyId: any) {
-    if (selectedCompanyId.length === 0) {
-      this.selectedCompanyId = 0
-    } else {
-    this.selectedCompanyId = selectedCompanyId;
-    }
-
-    localStorage.setItem('companyId', selectedCompanyId)
+    if (selectedCompanyId.length === 0) this.selectedCompanyId = 0;
+    else this.selectedCompanyId = selectedCompanyId;
+    localStorage.setItem('companyId', selectedCompanyId);
   }
 
   nextPage() {
