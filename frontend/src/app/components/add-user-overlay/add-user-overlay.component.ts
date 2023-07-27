@@ -42,10 +42,8 @@ export class AddUserOverlayComponent {
       },
       complete: () => {
         this.result = '';
-        setTimeout(() => {
-          window.location.reload();
-          this.handleOverlayExit();
-        }, 500);
+        window.location.reload();
+        this.handleOverlayExit();
       },
     });
   }

@@ -32,9 +32,7 @@ export class AddAdminOverlayComponent {
       },
       complete: () => {
         this.result = '';
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        window.location.reload();
       },
     });
   }

@@ -55,10 +55,8 @@ export class CreateProjectOverlayComponent implements OnInit {
         },
         complete: () => {
           this.result = '';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 500);
+          window.location.reload();
+          this.exit();
         },
       });
   }
@@ -81,10 +79,8 @@ export class CreateProjectOverlayComponent implements OnInit {
         },
         complete: () => {
           this.result = '';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 500);
+          window.location.reload();
+          this.exit();
         },
       });
   }

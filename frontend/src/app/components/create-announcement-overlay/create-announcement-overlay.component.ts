@@ -52,10 +52,8 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
         },
         complete: () => {
           this.result = '';
-          setTimeout(() => {
-            window.location.reload();
-            this.exit();
-          }, 500);
+          window.location.reload();
+          this.exit();
         },
       });
   }

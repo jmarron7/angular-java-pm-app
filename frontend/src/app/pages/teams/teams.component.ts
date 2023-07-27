@@ -13,7 +13,7 @@ export class TeamsComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.teams.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
+    // this.teams.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
     let url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
