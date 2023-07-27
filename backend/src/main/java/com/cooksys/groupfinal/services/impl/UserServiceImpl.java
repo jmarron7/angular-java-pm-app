@@ -9,6 +9,7 @@ import com.cooksys.groupfinal.entities.Credentials;
 import com.cooksys.groupfinal.entities.User;
 import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotAuthorizedException;
+import com.cooksys.groupfinal.exceptions.NotFoundException;
 import com.cooksys.groupfinal.mappers.BasicUserMapper;
 import com.cooksys.groupfinal.mappers.CredentialsMapper;
 import com.cooksys.groupfinal.mappers.FullUserMapper;
@@ -45,18 +46,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public FullUserDto createUser(Long id, UserRequestDto userRequestDto) {
-        System.out.println("IN HERE!!!!!!!!!!!!!!");
+
         Company company = validateService.findCompany(id);
 //        System.out.println(company);
         if (userRequestDto.getCredentials() == null || userRequestDto.getProfile() == null)
             throw new BadRequestException("User request body requires profile and credentials");
         if (userRequestDto.getCredentials().getUsername() == null || userRequestDto.getCredentials().getPassword() == null)
             throw new BadRequestException("User must include credentials (username and password)");
-        // Could add userRequestDto.getProfile().getAllThoseFields error handling here
-        User user = fullUserMapper.requestDtoToEntity(userRequestDto);
-        user.setActive(true);
-        user.getCompanies().add(company);
-        return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+        try {
+            validateService.findUser(userRequestDto.getCredentials().getUsername());
+        } catch (NotFoundException e) {
+            // all good!
+            User user = fullUserMapper.requestDtoToEntity(userRequestDto);
+            user.setActive(true);
+            user.getCompanies().add(company);
+            return fullUserMapper.entityToFullUserDto(userRepository.saveAndFlush(user));
+        }
+        throw new BadRequestException(("user with provided username already exists"));
     }
 
     @Override
