@@ -23,9 +23,9 @@ export class TeamsComponent {
       localStorage.getItem('companyId') +
       '/teams';
     this.http.get<any>(url).subscribe({
+      
       next: (data) => {
         console.log(data);
-        let index = 0;
         data.forEach((team: any) => {
           
           this.teams.push({
@@ -35,19 +35,26 @@ export class TeamsComponent {
             projects: [],
           });
 
+          let index: number = -1;
           let url =
             'http://localhost:8080/company/' + localStorage.getItem('companyId') + '/teams/' + team.id + '/projects';
           
             this.http.get<any>(url).subscribe({
               next: (data) => {
-                this.teams[index].projects = JSON.stringify(data);
+                for (let i = 0; i < this.teams.length; i++) {
+                  if (this.teams[i].id === team.id) {
+                    index = i;
+                    break;
+                  }
+                }
+                console.log(index);
+                if (index != -1) this.teams[index].projects = JSON.parse(JSON.stringify(data))
               },
               error: (error) => {
                 console.error(error);
               },
               complete: () => {
-                this.teams[index].projects = JSON.parse(this.teams[index].projects) as any[];
-                index++;
+                // if (index != undefined) this.teams[index].projects = JSON.parse(this.teams[index].projects) as any[];
               }
             });
         });

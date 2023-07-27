@@ -31,4 +31,5 @@ export class ProjectCardComponent {
   toggleOverlay() {
     this.showOverlay = !this.showOverlay;
   }
+
 }
