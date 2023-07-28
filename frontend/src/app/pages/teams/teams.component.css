@@ -36,9 +36,8 @@
   box-shadow: 0px 0px 6px black;
 }
 
-.new-team-container:hover .plus {
-  transform: scale(1.05);
-  opacity: 0.8;
+.new-team-container:hover {
+  background: rgba(11, 45, 70, 0.2);
 }
 
 .plus {
@@ -46,4 +45,6 @@
   font-size: 200px;
   font-weight: 100;
   transition: all 0.2s;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }

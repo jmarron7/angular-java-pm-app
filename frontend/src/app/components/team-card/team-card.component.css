@@ -16,7 +16,6 @@
 
 .team-card-container:hover {
   background-color: rgba(11, 45, 69, 0.8);
-  scale: 1.005;
 }
 
 .card-header {

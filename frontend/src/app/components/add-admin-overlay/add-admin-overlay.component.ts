@@ -28,7 +28,7 @@ export class AddAdminOverlayComponent {
     this.http.put<any>(url, form.email).subscribe({
       error: (e) => {
         console.error(e);
-        this.result = 'something went wrong';
+        this.result = e.error.message;
       },
       complete: () => {
         this.result = '';

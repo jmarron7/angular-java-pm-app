@@ -20,7 +20,12 @@ input:focus {
   border: none;
   color: white;
   outline: none;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.281);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.281);
+  transition: all 0.2s;
+}
+
+.submit-button:hover {
+  opacity: 0.8;
 }
 
 .submit-button:disabled {
@@ -98,7 +103,7 @@ label {
   border-radius: 10px;
   margin-bottom: 20px;
   width: 150px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.277);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.277);
 }
 
 .add-btn {
@@ -111,9 +116,13 @@ label {
   border: none;
   outline: none;
   color: rgb(0, 0, 0);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.281);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.281);
+  transition: all 0.2s;
 }
 
+.add-btn:hover {
+  opacity: 0.8;
+}
 .added-user {
   background-color: var(--blue-text);
   padding: 5px 30px;
