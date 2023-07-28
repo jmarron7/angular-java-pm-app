@@ -256,7 +256,7 @@ public class Seeder implements CommandLineRunner {
 	  company2.setName("Cook Systems");
 	  company2.setDescription("We are Cook Systems.");
 	  company2.setAnnouncements(new HashSet<Announcement>(Arrays.asList(announcement3)));
-	  company2.setEmployees(new HashSet<User>(Arrays.asList(user10, user11, user12)));
+	  company2.setEmployees(new HashSet<User>(Arrays.asList(user6, user10, user11, user12)));
 	  company2.setTeams(new HashSet<Team>(Arrays.asList(team7)));
 
 	  project1.setName("Brightstar Theme Park Expansion");
