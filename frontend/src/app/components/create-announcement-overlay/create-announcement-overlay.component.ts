@@ -47,7 +47,7 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
         next: () => (this.submit = true),
         error: (e) => {
           console.log(e);
-          this.result = e.error.message;
+          this.result = 'something went wrong';
           this.submit = true;
         },
         complete: () => {

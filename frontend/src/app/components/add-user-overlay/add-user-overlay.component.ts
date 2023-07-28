@@ -38,7 +38,8 @@ export class AddUserOverlayComponent {
     this.http.post<any>(url, this.user).subscribe({
       error: (e) => {
         console.log(e);
-        this.result = 'required fields (*) missing';
+        if (this.firstName.length <= 1) this.result = 'invalid name';
+        else this.result = 'something went wrong';
       },
       complete: () => {
         this.result = '';

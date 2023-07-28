@@ -51,10 +51,9 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         error: (e) => {
           console.log(e);
-          this.result = e.error.message;
+          this.result = 'something went wrong';
         },
         complete: () => {
-          this.result = '';
           window.location.reload();
           this.exit();
         },
@@ -75,10 +74,9 @@ export class CreateProjectOverlayComponent implements OnInit {
       .subscribe({
         error: (e) => {
           console.log(e);
-          this.result = e.error.message;
+          this.result = 'something went wrong';
         },
         complete: () => {
-          this.result = '';
           window.location.reload();
           this.exit();
         },
