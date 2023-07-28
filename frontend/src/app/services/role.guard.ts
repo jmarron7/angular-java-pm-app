@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  constructor(private router: Router){};
+  constructor(private router: Router){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):boolean {
       console.log('CanActivate called');
-    let user = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     if (user != null) {
       if (JSON.parse(user).admin) {
         return true;

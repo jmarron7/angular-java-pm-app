@@ -8,14 +8,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-user-overlay.component.css'],
 })
 export class AddUserOverlayComponent {
-  modalVisible: boolean = true;
+  modalVisible = true;
   user: UserRequestDto = new UserRequestDto();
-  result: string = '';
-  firstName: string = '';
-  lastName: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  email: string = '';
+  result = '';
+  firstName = '';
+  lastName = '';
+  password = '';
+  confirmPassword = '';
+  email = '';
 
   @Output() updateUserOverlayVisibility = new EventEmitter<any>();
 
@@ -30,7 +30,7 @@ export class AddUserOverlayComponent {
     this.user.profile.phone = form.phoneNumber;
     this.user.admin = form.userIsAdmin;
 
-    let url =
+    const url =
       'http://localhost:8080' +
       '/company/' +
       localStorage.getItem('companyId') +
@@ -38,8 +38,7 @@ export class AddUserOverlayComponent {
     this.http.post<any>(url, this.user).subscribe({
       error: (e) => {
         console.log(e);
-        if (this.firstName.length <= 1) this.result = 'invalid name';
-        else this.result = 'something went wrong';
+        this.result = 'something went wrong';
       },
       complete: () => {
         this.result = '';

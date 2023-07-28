@@ -9,31 +9,31 @@ import { ProjectDto } from 'src/app/services/general.service';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent {
-  showOverlay: boolean = false;
+  showOverlay = false;
   projects: ProjectDto[] = [];
-  teamName: string = '';
-  teamId: number = 0;
+  teamName = '';
+  teamId = 0;
   team: any = undefined;
-  isAdmin: boolean = false;
+  isAdmin = false;
 
   constructor(private http: HttpClient, private router: Router) {
-    let input = this.router.getCurrentNavigation();
-    let receivedTeamId = input?.extras?.state?.['teamId'];
+    const input = this.router.getCurrentNavigation();
+    const receivedTeamId = input?.extras?.state?.['teamId'];
     if (receivedTeamId) this.teamId = receivedTeamId;
-    let receivedTeamName = input?.extras?.state?.['teamName'];
+    const receivedTeamName = input?.extras?.state?.['teamName'];
     if (receivedTeamName) this.teamName = receivedTeamName;
-    let receivedTeam = input?.extras?.state?.['team'];
+    const receivedTeam = input?.extras?.state?.['team'];
     if (receivedTeam) this.team = receivedTeam;
   }
 
   ngOnInit() {
-    let user = JSON.parse(localStorage.getItem('user') as string);
+    const user = JSON.parse(localStorage.getItem('user') as string);
     if (this.teamId === 0) this.teamId = user.teams[0].id;
     if (this.teamName === '') this.teamName = user.teams[0].name;
     if (!this.team) this.team = user.teams[0];
     this.isAdmin = user.admin;
 
-    let url =
+    const url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/teams/' +
@@ -48,7 +48,7 @@ export class ProjectsComponent {
   }
 
   updateProjectList() {
-    let url =
+    const url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/teams/' +

@@ -9,19 +9,19 @@ import { FullUserDto, TeamDto } from 'src/app/services/general.service';
 })
 export class UserRegistryComponent {
   users: FullUserDto[] = [];
-  showUserOverlay: boolean = false;
-  showAdminOverlay: boolean = false;
+  showUserOverlay = false;
+  showAdminOverlay = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    let url =
+    const url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/users';
     this.http.get<any>(url).subscribe({
       next: (res) => {        
-        let companyTeamIds = JSON.parse(localStorage.getItem('companyTeamIds') as string);
+        const companyTeamIds = JSON.parse(localStorage.getItem('companyTeamIds') as string);
         this.users = (res as FullUserDto[]).sort((a: FullUserDto, b: FullUserDto) => {
           if (a.admin && !b.admin) 
             return -1;

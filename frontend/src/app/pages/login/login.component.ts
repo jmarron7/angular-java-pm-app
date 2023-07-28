@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  isInvalid: boolean = false;
-  isPending: boolean = false;
+  isInvalid = false;
+  isPending = false;
   userId = 0;
   user: UserRequestDto = {
     credentials: {
@@ -36,7 +36,7 @@ export class LoginComponent {
   login(form: any) {
     this.authService.login(form.username, form.password).subscribe({
       next: (data) => {
-        let userData = JSON.parse(JSON.stringify(data));
+        const userData = JSON.parse(JSON.stringify(data));
         this.userId = userData.id;
         this.user.profile = userData.profile;
         this.user.credentials = {
@@ -64,7 +64,7 @@ export class LoginComponent {
   }
 
   updatePassword(form: any) {
-    let url = 'http://localhost:8080/users/' + this.userId;
+    const url = 'http://localhost:8080/users/' + this.userId;
     this.user.credentials.password = form.password;
     this.http.put<any>(url, this.user).subscribe({
       next: () => {

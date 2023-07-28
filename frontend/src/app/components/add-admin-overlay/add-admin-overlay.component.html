@@ -24,7 +24,7 @@
           [(ngModel)]="email"
         />
         <button
-          [disabled]="email == '' || !email.includes('@')"
+          [disabled]="email === '' || !email.includes('@')"
           class="submit-button"
           value="Add"
         >

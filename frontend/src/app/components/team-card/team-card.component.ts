@@ -13,8 +13,8 @@ export class TeamCardComponent {
     members: [],
     projects: [],
   };
-  teamId: number = 0;
-  projectCount: number = 0;
+  teamId = 0;
+  projectCount = 0;
 
   constructor(private router: Router) {}
 
@@ -26,7 +26,7 @@ export class TeamCardComponent {
   }
 
   goToProjects() {
-    let navigationExtras: NavigationExtras = {
+    const navigationExtras: NavigationExtras = {
       state: {
         projects: this.team.projects,
         teamName: this.team.name,

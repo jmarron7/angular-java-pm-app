@@ -19,7 +19,7 @@
     </div>
     <div>
       <button
-        [disabled]="title == '' || message == '' || submit"
+        [disabled]="title === '' || message === '' || submit"
         class="submit-button"
         value="Login"
         (click)="post()"

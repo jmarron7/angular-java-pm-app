@@ -27,7 +27,7 @@
         (click)="postOrPut()"
         class="submit-button"
         value="Login"
-        [disabled]="projectName == '' || description == ''"
+        [disabled]="projectName === '' || description === ''"
       >
         {{ admin ? "Save" : "Submit" }}
       </button>

@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./navmenu.component.css'],
 })
 export class NavmenuComponent {
-  isAdmin: boolean = false;
-  toggleMenu: boolean = false;
+  isAdmin = false;
+  toggleMenu = false;
   profile: any;
   companyName: any;
-  scrolled: boolean = false;
+  scrolled = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
