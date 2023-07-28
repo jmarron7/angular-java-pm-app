@@ -14,6 +14,7 @@ export class ProjectsComponent {
   teamName: string = '';
   teamId: number = 0;
   team: any = undefined;
+  isAdmin: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
     let input = this.router.getCurrentNavigation();
@@ -30,6 +31,7 @@ export class ProjectsComponent {
     if (this.teamId === 0) this.teamId = user.teams[0].id;
     if (this.teamName === '') this.teamName = user.teams[0].name;
     if (!this.team) this.team = user.teams[0];
+    this.isAdmin = user.admin;
 
     let url =
       'http://localhost:8080/company/' +
