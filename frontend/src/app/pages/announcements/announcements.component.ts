@@ -15,14 +15,14 @@ interface Announcement {
 })
 export class AnnouncementsComponent {
   announcements: Announcement[] = [];
-  showOverlay: boolean = false;
-  isAdmin: boolean = false;
+  showOverlay = false;
+  isAdmin = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.isAdmin = JSON.parse(localStorage.getItem('user') as string).admin;
-    let url =
+    const url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/announcements';

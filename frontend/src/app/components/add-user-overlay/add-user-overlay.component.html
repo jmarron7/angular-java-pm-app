@@ -96,6 +96,7 @@
         value="Submit"
         [disabled]="
           firstName === '' ||
+          firstName.length <= 1 ||
           lastName === '' ||
           email === '' ||
           !email.includes('@') ||
@@ -107,7 +108,8 @@
         Submit
       </button>
     </form>
-    <p *ngIf="!email.includes('@') && email != ''">invalid email</p>
+    <p *ngIf="firstName.length === 1">invalid name</p>
+    <p *ngIf="!email.includes('@') && email !== ''">invalid email</p>
     <p *ngIf="password != confirmPassword">passwords do not match</p>
     <p>{{ result }}</p>
   </div>

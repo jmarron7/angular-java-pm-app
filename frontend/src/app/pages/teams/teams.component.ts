@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TeamsComponent {
   teams: any[] = [];
-  showOverlay: boolean = false;
+  showOverlay = false;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     // this.teams.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
-    let url =
+    const url =
       'http://localhost:8080/company/' +
       localStorage.getItem('companyId') +
       '/teams';
@@ -27,8 +27,8 @@ export class TeamsComponent {
             members: team.teammates,
             projects: [],
           });
-          let index: number = -1;
-          let url =
+          let index = -1;
+          const url =
             'http://localhost:8080/company/' +
             localStorage.getItem('companyId') +
             '/teams/' +

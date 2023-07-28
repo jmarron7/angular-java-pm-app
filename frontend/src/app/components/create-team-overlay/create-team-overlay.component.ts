@@ -8,15 +8,15 @@ import { BasicUserDto } from 'src/app/services/general.service';
   styleUrls: ['./create-team-overlay.component.css'],
 })
 export class CreateTeamOverlayComponent implements OnInit {
-  modalVisible: boolean = true;
-  teamName: string = '';
-  description: string = '';
-  success: boolean = false;
-  fail: boolean = false;
+  modalVisible = true;
+  teamName = '';
+  description = '';
+  success = false;
+  fail = false;
   members: Array<any> = [];
   addedMembers: Array<BasicUserDto> = [];
   selectedMember: any = undefined;
-  companyId: number = 0;
+  companyId = 0;
 
   @Output() updateOverlay = new EventEmitter<any>();
 
@@ -33,7 +33,7 @@ export class CreateTeamOverlayComponent implements OnInit {
       .get(`http://localhost:8080/company/${this.companyId}/users`)
       .subscribe({
         next: (data: any) => {
-          for (let member of data) this.members.push(member);
+          for (const member of data) this.members.push(member);
         },
         error: (e) => console.log(e),
       });
@@ -43,13 +43,13 @@ export class CreateTeamOverlayComponent implements OnInit {
     if (this.selectedMember) {
       if (!this.addedMembers.includes(this.selectedMember))
         this.addedMembers.push(this.selectedMember);
-      let index = this.members.indexOf(this.selectedMember);
+      const index = this.members.indexOf(this.selectedMember);
       if (index != -1) this.members.splice(index, 1);
     }
   }
 
   removeMember(member: any) {
-    let index = this.addedMembers.indexOf(member);
+    const index = this.addedMembers.indexOf(member);
     if (index != -1) {
       this.addedMembers.splice(index, 1);
       this.members.push(member);
@@ -65,7 +65,7 @@ export class CreateTeamOverlayComponent implements OnInit {
       })
       .subscribe({
         next: (response) => {
-          let companyIds = JSON.parse(localStorage.getItem('companyId') as string);
+          const companyIds = JSON.parse(localStorage.getItem('companyId') as string);
           companyIds.push(JSON.parse(JSON.stringify(response)).id);
           
           localStorage.setItem('companyTeamIds', JSON.stringify(companyIds));

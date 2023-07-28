@@ -7,12 +7,12 @@ import { Input } from '@angular/core';
   styleUrls: ['./announcement-card.component.css'],
 })
 export class AnnouncementCardComponent {
-  @Input() name: string = '';
-  @Input() content: string = '';
+  @Input() name = '';
+  @Input() content = '';
   @Input() date: Date = new Date();
-  @Input() title: string = '';
+  @Input() title = '';
 
-  displayedDate: string = '';
+  displayedDate = '';
 
   ngOnInit() {
     this.displayedDate = this.date.toDateString();

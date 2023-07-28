@@ -8,15 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CreateProjectOverlayComponent implements OnInit {
   // just for testing
-  admin: boolean = true;
+  admin = true;
   //
-  modalVisible: boolean = true;
-  projectName: string = '';
-  description: string = '';
-  result: string = '';
-  companyId: number = 0;
-  active: boolean = true;
-  @Input() teamId: number = 0;
+  modalVisible = true;
+  projectName = '';
+  description = '';
+  result = '';
+  companyId = 0;
+  active = true;
+  @Input() teamId = 0;
   @Input() project: any;
   @Input() team: any;
   @Output() updateOverlay = new EventEmitter<any>();

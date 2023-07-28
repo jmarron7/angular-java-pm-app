@@ -3,38 +3,38 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Timestamp } from 'rxjs';
 
 export class CredentialsDto {
-  username: string = '';
-  password: string = '';
+  username = '';
+  password = '';
 }
 export class ProfileDto {
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  phone: string = '';
+  firstName = '';
+  lastName = '';
+  email = '';
+  phone = '';
 }
 export class BasicUserDto {
-  id: number = 0;
+  id = 0;
   profile: ProfileDto = {
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
   };
-  admin: boolean = false;
-  active: boolean = false;
-  status: string = '';
+  admin = false;
+  active = false;
+  status = '';
 }
 export class FullUserDto {
-  id: number = 0;
+  id = 0;
   profile: ProfileDto = {
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
   };
-  admin: boolean = false;
-  active: boolean = false;
-  status: string = '';
+  admin = false;
+  active = false;
+  status = '';
   companies: CompanyDto[] = [];
   teams: TeamDto[] = [];
 }
@@ -49,26 +49,26 @@ export class UserRequestDto {
     email: '',
     phone: '',
   };
-  admin: boolean = false;
+  admin = false;
 }
 export class TeamDto {
-  id: number = 0;
-  name: string = '';
-  description: string = '';
+  id = 0;
+  name = '';
+  description = '';
   teammates: BasicUserDto[] = [];
 }
 export class CompanyDto {
-  id: number = 0;
-  name: string = '';
-  description: string = '';
+  id = 0;
+  name = '';
+  description = '';
   teams: TeamDto[] = [];
   employees: BasicUserDto[] = [];
 }
 export class AnnouncementDto {
-  id: number = 0;
-  date: string = '';
-  title: string = '';
-  message: string = '';
+  id = 0;
+  date = '';
+  title = '';
+  message = '';
   author: BasicUserDto = {
     id: 0,
     profile: {
@@ -83,17 +83,17 @@ export class AnnouncementDto {
   };
 }
 export class ProjectDto {
-  id: number = 0;
-  name: string = '';
-  description: string = '';
-  active: boolean = false;
+  id = 0;
+  name = '';
+  description = '';
+  active = false;
   team: TeamDto = {
     id: 0,
     name: '',
     description: '',
     teammates: [],
   };
-  date: string = '';
+  date = '';
 }
 
 @Injectable({

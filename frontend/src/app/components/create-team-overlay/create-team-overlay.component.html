@@ -51,7 +51,7 @@
         class="submit-button"
         value="Login"
         (click)="createTeam()"
-        [disabled]="teamName == '' || description == ''"
+        [disabled]="teamName === '' || description === ''"
       >
         Submit
       </button>

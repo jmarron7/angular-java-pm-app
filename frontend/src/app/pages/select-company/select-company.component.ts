@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SelectCompanyComponent implements OnInit {
   companies: CompanyDto[] = [];
-  selectedCompanyId: number = 0;
+  selectedCompanyId = 0;
 
   constructor(private router: Router) {}
 
@@ -18,7 +18,7 @@ export class SelectCompanyComponent implements OnInit {
   }
 
   loadCompanies() {
-    let user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem('user')!);
     if (user) this.companies = user.companies;
   }
 

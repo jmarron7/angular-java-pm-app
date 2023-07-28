@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-admin-overlay.component.css'],
 })
 export class AddAdminOverlayComponent {
-  modalVisible: boolean = true;
-  result: string = '';
-  email: string = '';
+  modalVisible = true;
+  result = '';
+  email = '';
 
   @Output() updateAdminOverlayVisibility = new EventEmitter<any>();
 
@@ -20,7 +20,7 @@ export class AddAdminOverlayComponent {
   }
 
   addAdmin(form: any) {
-    let url =
+    const url =
       'http://localhost:8080' +
       '/company/' +
       JSON.parse(localStorage.getItem('companyId') as string) +

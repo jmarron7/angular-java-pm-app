@@ -7,12 +7,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./create-announcement-overlay.component.css'],
 })
 export class CreateAnnouncementOverlayComponent implements OnInit {
-  modalVisible: boolean = true;
-  title: string = '';
-  message: string = '';
-  result: string = '';
-  submit: boolean = false;
-  companyId: number = 0;
+  modalVisible = true;
+  title = '';
+  message = '';
+  result = '';
+  submit = false;
+  companyId = 0;
   user: any;
 
   @Output() updateOverlay = new EventEmitter<any>();

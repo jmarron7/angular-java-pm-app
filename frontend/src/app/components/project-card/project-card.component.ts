@@ -7,17 +7,17 @@ import { ProjectDto } from 'src/app/services/general.service';
   styleUrls: ['./project-card.component.css'],
 })
 export class ProjectCardComponent {
-  showOverlay: boolean = false;
-  daysAgo: number = 0;
-  hoursAgo: number = 0;
-  minutesAgo: number = 0;
+  showOverlay = false;
+  daysAgo = 0;
+  hoursAgo = 0;
+  minutesAgo = 0;
   @Input() project: ProjectDto = new ProjectDto();
   @Output() toggleModal = new EventEmitter<any>();
 
   ngOnInit() {
-    let date1 = new Date(this.project.date);
-    let date2 = new Date();
-    let millDifference = date2.getTime() - date1.getTime();
+    const date1 = new Date(this.project.date);
+    const date2 = new Date();
+    const millDifference = date2.getTime() - date1.getTime();
     this.daysAgo = Math.floor(millDifference / (1000 * 3600 * 24));
     this.hoursAgo = Math.floor(millDifference / (1000 * 3600));
     this.minutesAgo = Math.floor(millDifference / (1000 * 60));
